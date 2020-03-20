@@ -1,0 +1,51 @@
+const {{properCase name}} = require('../models/{{properCase name}}')
+
+exports.params = (req, res, next, id) => {
+    {{properCase name}}.findById(id, (err, {{camelCase name}}) => {
+        if (err) {
+            next(err)
+        } else if ({{camelCase name}}) {
+            req.{{camelCase name}} = {{camelCase name}}
+            req.id = id
+            next()
+        } else {
+            next(new Error('failed to load user'))
+        }
+    })
+}
+
+exports.get = (req, res, next) => {
+    {{properCase name}}.find({}, (err, {{camelCase name}}s) => {
+        if (err) {
+            next(err)
+        } else {
+            res.json({{camelCase name}}s)
+        }
+    })
+}
+
+exports.getOne = (req, res) => {
+    return res.json( req.{{camelCase name}} )
+}
+
+exports.create = (req, res, next) => {
+    const {{camelCase name}} = new {{properCase name}}(req.body)
+    {{camelCase name}}
+        .save()
+        .then(() => res.json(account))
+        .catch(err => next(err))
+}
+
+exports.update = (req, res, next) => {
+    {{properCase name}}.findByIdAndUpdate(req.id, req.body,
+    { new: true, useFindAndModify: false },
+    (err, {{camelCase name}}) => {
+        if (err) {
+            next(err)
+        } else if ({{camelCase name}}) {
+            res.json({{camelCase name}})
+        } else {
+            next(new Error('failed to update user'))
+        }
+    })
+}
