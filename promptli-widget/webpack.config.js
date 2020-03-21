@@ -1,4 +1,8 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const path = require('path')
+const PostCompile = require('post-compile-webpack-plugin')
+const spawn = require('cross-spawn');
 
 module.exports = {
   output: {
@@ -29,6 +33,7 @@ module.exports = {
     port: 3001,
     host: '0.0.0.0',
     contentBasePublicPath: '/public-assets/widget',
+    contentBase: path.resolve(__dirname, 'dist'),
     allowedHosts: [
       'dev.promptli.app'
     ]
@@ -37,6 +42,13 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html"
+    }),
+    new PostCompile(() => {
+      console.log('Building Widget')
+      spawn('yarn', 'build')
     })
-  ]
+  ],
+  optimization: {
+    minimizer: [new UglifyJsPlugin()],
+  },
 };
