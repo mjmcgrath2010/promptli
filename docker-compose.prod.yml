@@ -1,0 +1,26 @@
+version: "3"
+services:
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile.prod
+    volumes:
+      - '/app'
+      - '/app/node_modules'
+    environment:
+      - NODE_ENV=production
+  widget:
+    build:
+      context: ./widget
+      dockerfile: Dockerfile.prod
+    volumes:
+      - '/app'
+      - '/app/node_modules'
+    environment:
+      - NODE_ENV=production
+  nginx:
+    build:
+      context: ./app/nginx
+      dockerfile: Dockerfile.prod
+    depends_on:
+      - app

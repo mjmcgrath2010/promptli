@@ -6,9 +6,7 @@
 #    S3_BUCKET: my-example-bucket
 build:
   docker:
-    app: app/Dockerfile.prod
-    widget: widget/Dockerfile.prod
-    web: app/nginx/Dockerfile.prod
+    web: Dockerfile
   config:
     NODE_ENV: production
     APP_URL: https://prompltli.app
@@ -16,7 +14,5 @@ build:
 release:
   image: web
 run:
-  web: serve -l $PORT
-  widget: yarn start
-  app: yarn start
+  web: yarn start
 
