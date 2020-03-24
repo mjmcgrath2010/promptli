@@ -6,15 +6,15 @@
 #    S3_BUCKET: my-example-bucket
 build:
   docker:
-    web: app/Dockerfile.prod
-    widget: widget/Dockerfile.prod
+    web.1: app/Dockerfile.prod
+    web.2: widget/Dockerfile.prod
     nginx: app/nginx/Dockerfile.prod
   config:
     NODE_ENV: production
 release:
-  image: web
+  image: web.1
 run:
-  web: yarn start
-  widget: yarn start
+  web.1: yarn start
+  web.2: yarn start
   nginx: nginx -g daemon off;
 
