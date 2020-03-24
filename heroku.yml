@@ -12,7 +12,10 @@ build:
   config:
     NODE_ENV: production
 release:
-  image: web
+  image:
+    -web
+    -widget
+    -nginx
 run:
   web: yarn start
   widget: yarn start
