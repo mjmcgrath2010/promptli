@@ -14,7 +14,7 @@ build:
 release:
   image: web
 run:
-  web: /bin/bash -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
+  web: nginx -g 'daemon off;'
   widget: yarn start
   app: yarn start
 
