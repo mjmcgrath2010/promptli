@@ -14,7 +14,7 @@ build:
 release:
   image: web
 run:
-  web: nginx -g 'daemon off;'
+  web: serve -l $PORT
   widget: yarn start
   app: yarn start
 
