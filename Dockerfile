@@ -8,13 +8,15 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY ./app/package*.json ./app
 COPY ./app/yarn.lock ./app
 
-RUN cd ./app && yarn install
+RUN cd app && yarn install
 COPY ./app ./app
 
 
 # Install dependencies for widget
 COPY ./widget/package.json ./widget
-RUN cd ./widget && yarn install
+RUN cd widget && yarn install
 COPY ./widget ./widget
-RUN cd ./widget && yarn build
+RUN cd widget && yarn build
 COPY ./widget/build ./static/widget
+
+RUN cd app && yarn build
