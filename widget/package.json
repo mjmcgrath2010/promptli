@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --open --mode development"
+    "start": "webpack --mode production && node server.js"
   },
   "keywords": [],
   "author": "",
@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "express": "^4.17.1",
     "preact": "^10.3.4",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",

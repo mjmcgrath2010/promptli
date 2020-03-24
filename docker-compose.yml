@@ -12,6 +12,8 @@ services:
     volumes:
       - './widget:/app'
       - '/app/node_modules'
+    environment:
+      - PORT=3001
   nginx:
     build: ./app/nginx
     depends_on:

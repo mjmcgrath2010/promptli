@@ -18,7 +18,7 @@ const App = props => {
 
   return (
     <div>
-      <Button onClick={openDialog} text={btnText || "Click here"} />
+      <Button onClick={openDialog} text={btnText || "Click here!"} />
       {dialogOpen && <Modal title={title} onClose={closeDialog} />}
     </div>
   );
