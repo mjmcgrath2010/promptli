@@ -17,8 +17,7 @@ COPY ./app ./app
 # Install dependencies for widget
 COPY ./widget/package.json ./widget
 COPY ./widget ./widget
-RUN  cd /widget && yarn install
-RUN  cd /widget && yarn build
+RUN  cd /widget && yarn install && yarn build
 COPY ./widget/build ./static/widget
 WORKDIR /app
 RUN cd /app && yarn build
