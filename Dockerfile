@@ -18,6 +18,5 @@ COPY ./app ./app
 COPY ./widget/package.json ./widget
 COPY ./widget ./widget
 RUN  cd widget && yarn install && yarn build
-COPY ./widget/build ./static/widget
-WORKDIR /app
-RUN cd app && yarn install && yarn build
+COPY ./widget/build ./app/static/widget
+RUN cd app && yarn install
