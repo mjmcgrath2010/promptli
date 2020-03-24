@@ -9,6 +9,7 @@ COPY ./app/package*.json ./app
 COPY ./app/yarn.lock ./app
 
 RUN cd /app && yarn install
+RUN cd /
 COPY ./app ./app
 
 
