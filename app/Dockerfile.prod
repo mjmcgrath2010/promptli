@@ -1,6 +1,6 @@
 FROM node:10
 WORKDIR /app
-EXPOSE 3000
+EXPOSE $PORT
 
 # add `/app/node_modules/.bin` to $PATH
 ENV PATH /app/node_modules/.bin:$PATH
