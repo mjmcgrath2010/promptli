@@ -10,7 +10,7 @@ services:
   widget:
     build: ./widget
     volumes:
-      - './promptli-widget:/app'
+      - './widget:/app'
       - '/app/node_modules'
   nginx:
     build: ./app/nginx
