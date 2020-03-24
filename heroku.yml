@@ -1,8 +1,22 @@
+setup:
+#  addons:
+#    - plan: heroku-postgresql
+#      as: DATABASE
+#  config:
+#    S3_BUCKET: my-example-bucket
 build:
   docker:
-    app: app/Dockerfile
-    widget: widget/Dockerfile
-    nginx: app/nginx/Dockerfile
+    app: app/Dockerfile.prod
+    widget: widget/Dockerfile.prod
+    nginx: app/nginx/Dockerfile.prod
+  config:
+    RAILS_ENV: development
+    FOO: bar
+#release:
+#  command:
+#    - ./deployment-tasks.sh
+#  image: worker
 run:
-  web: yarn start
+  app: yarn start
   widget: yarn start
+  nginx: nginx -g daemon off;
