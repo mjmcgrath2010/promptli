@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
+import {render, h } from 'preact';
+import { useState, useEffect } from 'preact/hooks';
 import Button from "./components/Button";
 import Modal from "./components/Modal";
 
@@ -25,7 +25,7 @@ const App = props => {
 };
 
 export const init = (config, selector) =>
-  ReactDOM.render(<App {...config} />, document.getElementById(selector));
+  render(<App {...config} />, document.getElementById(selector));
 
 const wrapper = document.getElementById("promptli-widget-preview-container");
 wrapper

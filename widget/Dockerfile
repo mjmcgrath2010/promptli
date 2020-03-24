@@ -9,4 +9,4 @@ COPY . .
 RUN yarn build
 
 # Default command
-CMD ["npm", "run", "start"]
+CMD ["yarn", "start"]
