@@ -18,3 +18,4 @@ run:
   app: yarn start
   widget: yarn start
   nginx: nginx -g daemon off;
+
