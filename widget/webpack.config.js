@@ -6,9 +6,19 @@ const spawn = require("cross-spawn");
 
 module.exports = {
   output: {
+
+
     library: "PromptliWidget",
     libraryTarget: "umd",
     umdNamedDefine: true
+  },
+  resolve: {
+    alias: {
+      react: "preact/compat",
+      "react-dom/test-utils": "preact/test-utils",
+      "react-dom": "preact/compat"
+      // Must be below test-utils
+    }
   },
   module: {
     rules: [

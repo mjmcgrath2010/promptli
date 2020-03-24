@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
@@ -11,6 +10,8 @@ const StyledButton = styled.button`
   border-radius: 5px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.42);
 `;
+
+
 
 const Button = ({ text, onClick, variant }) => (
   <StyledButton onClick={onClick} variant={variant}>

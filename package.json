@@ -1,5 +1,24 @@
 {
   "devDependencies": {
+    "mmcgrath-prettier-config": "^1.0.0",
     "prettier": "^1.19.1"
-  }
+  },
+  "name": "promptli",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjmcgrath2010/promptli-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mjmcgrath2010/promptli-app/issues"
+  },
+  "homepage": "https://github.com/mjmcgrath2010/promptli-app#readme",
+  "description": ""
 }

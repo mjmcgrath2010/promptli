@@ -1,21 +1,21 @@
 version: "3"
 services:
-  nextjs:
-    build: ./promptli/
+  app:
+    build: ./app
     volumes:
-      - './promptli:/app'
+      - './app:/app'
       - '/app/node_modules'
     environment:
       - PORT=3000
   widget:
-    build: ./promptli-widget
+    build: ./widget
     volumes:
       - './promptli-widget:/app'
       - '/app/node_modules'
   nginx:
-    build: ./promptli/nginx
+    build: ./app/nginx
     depends_on:
-      - nextjs
+      - app
     ports:
       - 80:80
       - 443:443
