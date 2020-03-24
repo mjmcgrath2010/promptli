@@ -1,0 +1,6 @@
+# NGINX CONFIGUTATIONS
+FROM nginx
+
+RUN rm /etc/nginx/conf.d/*
+
+COPY ./default.prod.conf /etc/nginx/conf.d/
