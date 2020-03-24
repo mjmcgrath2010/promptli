@@ -6,8 +6,6 @@ const spawn = require("cross-spawn");
 
 module.exports = {
   output: {
-
-
     library: "PromptliWidget",
     libraryTarget: "umd",
     umdNamedDefine: true

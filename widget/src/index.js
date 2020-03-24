@@ -1,4 +1,5 @@
-import { render, useState, useEffect } from "preact/compat";
+import {render, h } from 'preact';
+import { useState, useEffect } from 'preact/hooks';
 import Button from "./components/Button";
 import Modal from "./components/Modal";
 
