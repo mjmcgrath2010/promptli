@@ -1,0 +1,8 @@
+build:
+  docker:
+    app: app/Dockerfile
+    widget: widget/Dockerfile
+    nginx: app/nginx/Dockerfile
+run:
+  web: yarn start
+  widget: yarn start
