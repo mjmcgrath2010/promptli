@@ -1,7 +1,8 @@
 # Specify a base image
 FROM node:10-alpine AS alpine
 WORKDIR /app
-
+RUN mkdir app
+RUN mkfir widget
 # add `/app/node_modules/.bin` to $PATH
 ENV PATH /app/node_modules/.bin:$PATH
 
