@@ -12,10 +12,8 @@ build:
   config:
     RAILS_ENV: development
     FOO: bar
-#release:
-#  command:
-#    - ./deployment-tasks.sh
-#  image: worker
+release:
+  image: app
 run:
   app: yarn start
   widget: yarn start
