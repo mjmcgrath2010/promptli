@@ -20,4 +20,4 @@ COPY ./widget ./widget
 RUN  cd widget && yarn install && yarn build
 COPY ./widget/build ./static/widget
 WORKDIR /app
-RUN cd /app && yarn build
+RUN cd app && yarn install && yarn build
