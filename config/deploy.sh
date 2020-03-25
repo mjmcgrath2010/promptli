@@ -1,10 +1,10 @@
 #!/bin/bash
 
 echo "Deploying Started"
+rm -rf ./app/static/widget
 cd widget
 yarn install
 yarn build
-rm -rf ../app/static/widget
 cp -vr ./build ../app/static/widget
 cd ../app
 yarn install
