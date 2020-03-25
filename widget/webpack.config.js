@@ -15,7 +15,7 @@ module.exports = {
     library: "PromptliWidget",
     libraryTarget: "umd",
     umdNamedDefine: true,
-    filename: 'widget/main.js',
+    filename: 'promptli/setup.js',
     path: BUILD_DIR,
   },
   resolve: {
