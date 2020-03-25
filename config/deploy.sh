@@ -13,4 +13,5 @@ cd ../
 git add .
 git commit -m "Deploying to Heroku" --allow-empty
 git push heroku master --force
+git push
 echo "Deployment Complete"

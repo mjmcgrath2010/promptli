@@ -16,7 +16,6 @@ module.exports = {
     libraryTarget: 'umd',
     umdNamedDefine: true,
     filename: 'promptli.js',
-    publicPath: '/static/widget',
     path: BUILD_DIR,
   },
   resolve: {
@@ -24,8 +23,16 @@ module.exports = {
       react: 'preact/compat',
       'react-dom/test-utils': 'preact/test-utils',
       'react-dom': 'preact/compat',
-      // Must be below test-utils
     },
+  },
+  devServer: {
+    contentBase: BUILD_DIR,
+    contentBasePublicPath: '/static/widget',
+    port: 3001,
+    host: '0.0.0.0',
+    hot: true,
+    writeToDisk: true,
+    allowedHosts: ['dev.promptli.app'],
   },
   module: {
     rules: [
