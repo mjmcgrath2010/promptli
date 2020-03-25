@@ -1,8 +1,6 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const path = require('path')
-const PostCompile = require('post-compile-webpack-plugin')
-const spawn = require('cross-spawn')
 
 const APP_DIR = path.resolve(__dirname, 'src')
 const BUILD_DIR = path.resolve(__dirname, 'build')
