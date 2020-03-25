@@ -1,1 +1,0 @@
-{"ast":null,"code":"import dashboard from './dashboard';\nimport admin from './admin';\nimport auth from './login';\nexport { dashboard, admin, auth };","map":null,"metadata":{},"sourceType":"module"}
