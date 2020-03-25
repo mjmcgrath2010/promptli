@@ -14,5 +14,5 @@ build:
 release:
   image: web
 run:
-  web: cd app && yarn start
+  web: yarn start
 

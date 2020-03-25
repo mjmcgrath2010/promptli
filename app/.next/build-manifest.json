@@ -1,24 +1,85 @@
 {
-  "devFiles": [
-    "static/development/dll/dll_397dc449097af0b4e992.js",
-    "static/development/dll/dll_397dc449097af0b4e992.js.map"
-  ],
+  "devFiles": [],
   "pages": {
     "/": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.8852b901530f74d873e8.js",
+      "static/runtime/main-29d83b794830272a281e.js"
     ],
     "/_app": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.8852b901530f74d873e8.js",
+      "static/runtime/main-29d83b794830272a281e.js"
     ],
     "/_error": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.8852b901530f74d873e8.js",
+      "static/runtime/main-29d83b794830272a281e.js"
+    ],
+    "/admin": [
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.8852b901530f74d873e8.js",
+      "static/runtime/main-29d83b794830272a281e.js"
+    ],
+    "/create-account": [
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.8852b901530f74d873e8.js",
+      "static/runtime/main-29d83b794830272a281e.js"
+    ],
+    "/dashboard": [
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.8852b901530f74d873e8.js",
+      "static/runtime/main-29d83b794830272a281e.js"
+    ],
+    "/dashboard/design": [
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.8852b901530f74d873e8.js",
+      "static/runtime/main-29d83b794830272a281e.js"
+    ],
+    "/dashboard/packages": [
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.8852b901530f74d873e8.js",
+      "static/runtime/main-29d83b794830272a281e.js"
+    ],
+    "/dashboard/profile": [
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.8852b901530f74d873e8.js",
+      "static/runtime/main-29d83b794830272a281e.js"
+    ],
+    "/dashboard/reservations": [
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.8852b901530f74d873e8.js",
+      "static/runtime/main-29d83b794830272a281e.js"
+    ],
+    "/dashboard/services": [
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.8852b901530f74d873e8.js",
+      "static/runtime/main-29d83b794830272a281e.js"
+    ],
+    "/dashboard/settings": [
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.8852b901530f74d873e8.js",
+      "static/runtime/main-29d83b794830272a281e.js"
+    ],
+    "/forgot-password": [
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.8852b901530f74d873e8.js",
+      "static/runtime/main-29d83b794830272a281e.js"
     ],
     "/index": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.8852b901530f74d873e8.js",
+      "static/runtime/main-29d83b794830272a281e.js"
+    ],
+    "/login": [
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.8852b901530f74d873e8.js",
+      "static/runtime/main-29d83b794830272a281e.js"
+    ],
+    "/reset-password": [
+      "static/runtime/webpack-035ac2b14bde147cb4a8.js",
+      "static/chunks/commons.8852b901530f74d873e8.js",
+      "static/runtime/main-29d83b794830272a281e.js"
     ]
   }
 }

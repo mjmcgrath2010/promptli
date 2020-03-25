@@ -8,7 +8,8 @@
   "main": "index.js",
   "dependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "/bin/sh config/deploy.sh"
   },
   "repository": {
     "type": "git",
