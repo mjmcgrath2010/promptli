@@ -6,3 +6,5 @@ node_modules
 .idea
 .DS_Store
 */.DS_Store
+app/.next
+widget/build
