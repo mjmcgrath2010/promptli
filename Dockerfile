@@ -17,4 +17,10 @@ COPY ./widget/package.json ./widget
 COPY ./widget ./widget
 RUN  cd widget && yarn install && yarn build
 COPY ./widget/build ./app/static/widget
-RUN cd app && yarn install
+RUN cd app &&  apk add --no-cache --virtual .gyp \
+                      python \
+                      make \
+                      g++ \
+                  && yarn install \
+                  && yarn build \
+                  && apk del .gyp
