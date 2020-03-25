@@ -13,3 +13,4 @@ COPY ./app/yarn.lock ./
 COPY ./app ./
 
 RUN yarn install
+RUN yarn build
