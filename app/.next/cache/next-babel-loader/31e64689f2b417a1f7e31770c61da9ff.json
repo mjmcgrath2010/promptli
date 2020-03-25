@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { adminActionTypes } from '../../constants/index';\nvar adminActions = {\n  initAdmin: function initAdmin() {\n    return {\n      type: adminActionTypes.INIT_ADMIN\n    };\n  }\n};\nexport default adminActions;","map":null,"metadata":{},"sourceType":"module"}
