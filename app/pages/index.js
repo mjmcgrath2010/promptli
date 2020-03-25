@@ -15,7 +15,7 @@ const Home = () => (
           alt="logo"
           src="../static/logos/promptli-color.png"
         />
-        <h2 className="description">Simplify bookings. Changed.</h2>
+        <h2 className="description">Simplify bookings. Changed Again.</h2>
       </div>
     </div>
 

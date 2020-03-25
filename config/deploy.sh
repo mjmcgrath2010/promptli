@@ -4,6 +4,7 @@ echo "Deploying Started"
 cd widget
 yarn install
 yarn build
+rm -rf ../app/static/widget
 cp -vr ./build ../app/static/widget
 cd ../app
 yarn install
