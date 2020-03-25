@@ -4,19 +4,20 @@ const path = require("path");
 const PostCompile = require("post-compile-webpack-plugin");
 const spawn = require("cross-spawn");
 
-const APP_DIR = path.resolve(__dirname, 'src')
-const BUILD_DIR = path.resolve(__dirname, 'build')
+const APP_DIR = path.resolve(__dirname, "src");
+const BUILD_DIR = path.resolve(__dirname, "build");
 
 module.exports = {
   entry: {
-    main: APP_DIR + '/index.js'
+    main: APP_DIR + "/index.js"
   },
   output: {
     library: "PromptliWidget",
     libraryTarget: "umd",
     umdNamedDefine: true,
-    filename: 'promptli/setup.js',
-    path: BUILD_DIR,
+    filename: "promptli.js",
+    publicPath: "/static/widget",
+    path: BUILD_DIR
   },
   resolve: {
     alias: {
@@ -52,7 +53,7 @@ module.exports = {
     }),
     new PostCompile(() => {
       console.log("Building Widget");
-      spawn("yarn", "build", { shell: true });
+      spawn("yarn", "build", {});
     })
   ],
   optimization: {

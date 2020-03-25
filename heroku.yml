@@ -15,4 +15,3 @@ release:
   image: web
 run:
   web: yarn start
-
