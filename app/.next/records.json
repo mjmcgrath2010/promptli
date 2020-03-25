@@ -1,0 +1,49 @@
+{
+  "modules": {
+    "byIdentifier": {},
+    "usedIds": {}
+  },
+  "chunks": {
+    "byName": {
+      "commons": 0,
+      "static/runtime/webpack.js": 1,
+      "static/XDYOZ4lAsYAljLAhynTXZ/pages/_app.js": 2,
+      "static/XDYOZ4lAsYAljLAhynTXZ/pages/_error.js": 3,
+      "static/XDYOZ4lAsYAljLAhynTXZ/pages/admin.js": 4,
+      "static/XDYOZ4lAsYAljLAhynTXZ/pages/create-account.js": 5,
+      "static/XDYOZ4lAsYAljLAhynTXZ/pages/dashboard.js": 6,
+      "static/XDYOZ4lAsYAljLAhynTXZ/pages/dashboard/design.js": 7,
+      "static/XDYOZ4lAsYAljLAhynTXZ/pages/dashboard/packages.js": 8,
+      "static/XDYOZ4lAsYAljLAhynTXZ/pages/dashboard/profile.js": 9,
+      "static/XDYOZ4lAsYAljLAhynTXZ/pages/dashboard/reservations.js": 10,
+      "static/XDYOZ4lAsYAljLAhynTXZ/pages/dashboard/services.js": 11,
+      "static/XDYOZ4lAsYAljLAhynTXZ/pages/dashboard/settings.js": 12,
+      "static/XDYOZ4lAsYAljLAhynTXZ/pages/forgot-password.js": 13,
+      "static/XDYOZ4lAsYAljLAhynTXZ/pages/index.js": 14,
+      "static/XDYOZ4lAsYAljLAhynTXZ/pages/login.js": 15,
+      "static/XDYOZ4lAsYAljLAhynTXZ/pages/reset-password.js": 16,
+      "static/runtime/main.js": 17
+    },
+    "bySource": {},
+    "usedIds": [
+      0,
+      1,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  }
+}
