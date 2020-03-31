@@ -16,7 +16,7 @@ class Design extends Component {
     }
   }
   componentDidMount() {
-    // window.PromptliWidget.init({ title: 'hello from dashboard' }, 'editor')
+    window.PromptliWidget && window.PromptliWidget.init({ title: 'hello from dashboard' }, 'editor')
   }
 
   render() {
@@ -26,7 +26,7 @@ class Design extends Component {
           <title>Dashboard</title>
         </Head>
         <div>Design</div>
-        <div id="editor"></div>
+        <div id="editor" />
       </DashboardLayout>
     )
   }
