@@ -27,6 +27,8 @@ module.exports = {
     contentBase: BUILD_DIR,
     contentBasePublicPath: '/static/widget',
     port: 3001,
+    sockPort: 443,
+    sockHost: 'dev.promptli.app',
     host: '0.0.0.0',
     hot: true,
     writeToDisk: true,
