@@ -8,11 +8,11 @@ const App = props => {
 
   useEffect(() => {
     setState({ ...state, ...props })
-  }, [props])
+  }, [])
 
-  const openDialog = () => setState({ dialogOpen: true })
+  const openDialog = () => setState({ ...state, dialogOpen: true })
 
-  const closeDialog = () => setState({ dialogOpen: false })
+  const closeDialog = () => setState({ ...state, dialogOpen: false })
 
   const { title, btnText, dialogOpen } = state
 
