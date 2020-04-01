@@ -1,7 +1,6 @@
 import { render, h } from 'preact'
 import { useState, useEffect } from 'preact/hooks'
-import Button from './components/Button'
-import Modal from './components/Modal'
+import Widget from './containers/index'
 
 const App = props => {
   const [state, setState] = useState({ dialogOpen: false })
@@ -10,16 +9,9 @@ const App = props => {
     setState({ ...state, ...props })
   }, [])
 
-  const openDialog = () => setState({ ...state, dialogOpen: true })
-
-  const closeDialog = () => setState({ ...state, dialogOpen: false })
-
-  const { title, btnText, dialogOpen } = state
-
   return (
     <div>
-      <Button onClick={openDialog} text={btnText || 'Click here!'} />
-      {dialogOpen && <Modal title={title} onClose={closeDialog} />}
+      <Widget {...state} />
     </div>
   )
 }
