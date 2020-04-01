@@ -2,8 +2,6 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 import _ from 'lodash'
 
-const { API_BASE_URL } = process.env
-
 const API = {
   token() {
     return Cookies.get('token')
@@ -12,7 +10,7 @@ const API = {
     return axios({
       ...{
         method: 'get',
-        url: `${API_BASE_URL}/${resource}`,
+        url: `/api/${resource}`,
         headers: {
           Authorization: `JWT ${this.token()}`,
           'Content-Type': 'application/json',
@@ -25,7 +23,7 @@ const API = {
     return axios({
       ...{
         method: 'post',
-        url: `${API_BASE_URL}/${resource}`,
+        url: `/api/${resource}`,
         headers: {
           Authorization: `JWT ${this.token()}`,
           'Content-Type': 'application/json',
@@ -39,7 +37,7 @@ const API = {
     return axios({
       ...{
         method: 'put',
-        url: `${API_BASE_URL}/${resource}/${id}`,
+        url: `/api/${resource}/${id}`,
         headers: {
           Authorization: `JWT ${this.token()}`,
           'Content-Type': 'application/json',
