@@ -18,6 +18,7 @@ const nextI18next = require('../lib/i18n')
 const initPassport = require('./services/passport')
 const User = require('./models/User')
 const Account = require('./models/Account')
+const { isAdminLogin } = require('./services/auth')
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN,
@@ -77,7 +78,7 @@ nextApp.prepare().then(() => {
   app.use(passport.session())
   initPassport()
   app.use(nextI18NextMiddleware(nextI18next))
-
+  app.use('/admin', isAdminLogin, require('./admin'))
   app.use('/api/', require('./routes/index'))
   app.get('*', (req, res) => {
     return handle(req, res) // for all the react stuff
