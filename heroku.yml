@@ -8,7 +8,6 @@ build:
   docker:
     web: Dockerfile
   config:
-    NODE_ENV: production
     APP_URL: https://prompltli.app
     WIDGET_URL: https://dev.prompltli.app
 release:
