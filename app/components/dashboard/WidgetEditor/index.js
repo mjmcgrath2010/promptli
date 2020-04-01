@@ -2,9 +2,10 @@ import React, { Fragment, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import DashboardLayout from '../../../pages/dashboard/design'
 import styled from 'styled-components'
+import Sidebar from './Sidebar'
 
 const IFrameEditor = styled.iframe`
-  width: 60vw;
+  width: 75vw;
   height: calc(90vh - 70px);
   border: 3px solid gray;
   border-radius: 5px;
@@ -49,6 +50,7 @@ const WidgetEditor = props => {
   }
   return (
     <Fragment>
+      <Sidebar />
       <section className="result">
         <input
           type="text"

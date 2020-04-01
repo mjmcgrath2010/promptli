@@ -16,7 +16,12 @@ class DashboardLayout extends Component {
       Sentry.configureScope(function(scope) {
         scope.setUser({ email: profile.email })
       })
-      this.initDrift(profile)
+      switch (window.location.pathname) {
+        case '/dashboard/design':
+          return
+        default:
+          return this.initDrift(profile)
+      }
     }
   }
 
