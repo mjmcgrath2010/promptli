@@ -17,13 +17,12 @@ const Home = () => {
           <img
             style={{ margin: '15% auto 1em', width: '350px', display: 'block', position: 'relative' }}
             alt="logo"
-            src="../static/logos/promptli-color.png"
+            src="../static/logos/promptli-white.png"
           />
           <h2 className="description">We focus on the logistics, so you don't have to.</h2>
           <h3 className="description">Online booking made easy.</h3>
           <div className="hero-cta">
             <CommonButton
-              variant="contained"
               text="Start for free"
               onClick={() => {
                 router.push('/create-account')
@@ -36,8 +35,8 @@ const Home = () => {
       <style jsx>{`
         .hero {
           width: 100%;
-          color: #333;
-          background: url('/static/backgrounds/background.png');
+          color: #fff;
+          background: url('/static/backgrounds/city-background.jpg');
           height: 100vh;
           position: absolute;
           background-size: cover;

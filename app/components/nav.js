@@ -14,6 +14,21 @@ class Nav extends Component {
             </Link>
           </li>
           <li>
+            <Link href="/#learn">
+              <a>How it Works</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/#learn">
+              <a>Features</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/#learn">
+              <a>Pricing</a>
+            </Link>
+          </li>
+          <li>
             {isLoggedIn ? (
               <Link href="/dashboard">
                 <a>Dashboard</a>
@@ -34,7 +49,7 @@ class Nav extends Component {
             z-index: 1000;
             background: transparent;
             text-align: center;
-            color: rgba(43, 23, 147, 1);
+            color: #fff;
             position: fixed;
             top: 0;
             width: 100%;
@@ -49,14 +64,13 @@ class Nav extends Component {
           li {
             display: flex;
             padding: 6px 8px;
-            color: rgba(43, 23, 147, 1);
+            color: #fff;
           }
           a {
-            color: #067df7;
             text-decoration: none;
             font-size: 13px;
             cursor: pointer;
-            color: rgba(43, 23, 147, 1);
+            color: #fff;
           }
         `}</style>
       </nav>
