@@ -11,10 +11,10 @@ const Widget = props => {
   const closeDialog = () => setState({ ...state, dialogOpen: false })
 
   const { dialogOpen } = state
-  const { btnText, title } = props
+  const { ctaText, title } = props
   return (
     <div>
-      <Button onClick={openDialog} text={btnText || 'Click here!'} />
+      <Button onClick={openDialog} text={ctaText || 'Click here!'} />
       {dialogOpen && <Modal title={title} onClose={closeDialog} />}
     </div>
   )
