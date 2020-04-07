@@ -16,12 +16,21 @@ const IFrameEditor = styled.iframe`
 let iframeRef
 
 const WidgetEditor = props => {
-  const [title, setTitle] = useState('Hello')
+  const [state, updateState] = useState({ title: '', ctaText: '', styles: {}, packages: [], services: [] })
+  const setState = (newState = {}) => {
+    updateState({ ...state, ...newState })
+  }
+
+  useEffect(() => {
+    setState(props)
+  }, [props])
+
   useEffect(() => {
     updateEditor()
-  }, [])
+  }, [state])
 
   const updateEditor = () => {
+    iframeRef.contentWindow.widgetData = state || {}
     const document = iframeRef.contentDocument
     const documentContents = `
           <!DOCTYPE html>
@@ -38,7 +47,7 @@ const WidgetEditor = props => {
             <div id="editor" />
             <script src="${window.location.origin}/static/widget/promptli.js"></script>
             <script type="text/javascript">
-              window.PromptliWidget && window.PromptliWidget.init({ title: '${title}' }, 'editor')
+                window.PromptliWidget && window.PromptliWidget.init(window.widgetData, 'editor')
             </script>
           </body>
           </html>
