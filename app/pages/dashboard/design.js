@@ -20,15 +20,15 @@ class Design extends Component {
           <title>Dashboard</title>
         </Head>
         <div>Design</div>
-        <WidgetEditor />
+        {this.props.displays && this.props.displays.map(display => <div>{display.title}</div>)}
       </DashboardLayout>
     )
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ dashboard }) => {
   return {
-    dashboard: state.dashboard,
+    displays: dashboard.displays,
   }
 }
 

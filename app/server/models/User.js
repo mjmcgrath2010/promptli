@@ -81,6 +81,9 @@ UserSchema.methods = {
   isAdmin() {
     return !!this.admin
   },
+  account() {
+    return this.accounts[0]
+  },
   googleTokens() {
     return {
       access_token: this.google_access_token,

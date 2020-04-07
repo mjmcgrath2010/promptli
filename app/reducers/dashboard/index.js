@@ -6,6 +6,7 @@ const initialState = {
   services: [],
   packages: [],
   reservations: [],
+  displays: [],
 }
 
 const dashboard = (state = initialState, action) => {
@@ -16,7 +17,6 @@ const dashboard = (state = initialState, action) => {
     case loginActionTypes.LOGOUT_SUCCESS:
     case dashboardActionTypes.CREATE_PACKAGE_SUCCESS:
       return { ...state, ...action.payload }
-      return initialState
     default:
       return state
   }

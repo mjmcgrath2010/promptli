@@ -15,7 +15,7 @@ exports.params = (req, res, next, id) => {
 }
 
 exports.get = (req, res, next) => {
-  Service.find({}, (err, services) => {
+  Service.find({ account: req.user.account() }, (err, services) => {
     if (err) {
       next(err)
     } else {
@@ -29,7 +29,7 @@ exports.getOne = (req, res) => {
 }
 
 exports.create = (req, res, next) => {
-  const service = new Service(req.body)
+  const service = new Service({ ...req.body, account: req.user.account() })
   service
     .save()
     .then(service => res.json(service))

@@ -7,6 +7,7 @@ const Account = require('./models/Account')
 const Packages = require('./models/Packages')
 const Service = require('./models/Service')
 const Reservations = require('./models/Reservations')
+const WidgetConfig = require('./models/WidgetConfig')
 
 AdminBro.registerAdapter(AdminBroMongoose)
 const adminBro = new AdminBro({
@@ -30,6 +31,10 @@ const adminBro = new AdminBro({
     },
     {
       resource: Reservations,
+      options: {},
+    },
+    {
+      resource: WidgetConfig,
       options: {},
     },
   ],

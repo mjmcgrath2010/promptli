@@ -8,7 +8,8 @@ const SidebarCpntainer = styled.div`
   top: 64px;
   height: 100vh;
   left: 0;
-  background: gray;
+  background: #f2f2f2;
+  box-shadow: 3px -4px 3px rgba(0, 0, 0, 0.25);
 `
 
 const Sidebar = props => {

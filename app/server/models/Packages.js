@@ -13,7 +13,7 @@ const PackagesModel = new schema({
   services: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'services',
+      ref: 'service',
     },
   ],
   pricingUnits: [
@@ -42,4 +42,4 @@ const PackagesModel = new schema({
   },
 })
 
-module.exports = mongoose.model('packages', PackagesModel)
+module.exports = mongoose.model('package', PackagesModel)

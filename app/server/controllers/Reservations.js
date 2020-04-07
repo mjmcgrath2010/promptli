@@ -16,7 +16,7 @@ exports.params = (req, res, next, id) => {
 }
 
 exports.get = (req, res, next) => {
-  Reservations.find({}, (err, reservations) => {
+  Reservations.find({ account: req.user.account() }, (err, reservations) => {
     if (err) {
       next(err)
     } else {

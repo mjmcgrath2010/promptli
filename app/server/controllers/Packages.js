@@ -15,7 +15,7 @@ exports.params = (req, res, next, id) => {
 }
 
 exports.get = (req, res, next) => {
-  Packages.find({}, (err, packages) => {
+  Packages.find({ account: req.user.account() }, (err, packages) => {
     if (err) {
       next(err)
     } else {
@@ -29,7 +29,7 @@ exports.getOne = (req, res) => {
 }
 
 exports.create = (req, res, next) => {
-  const packages = new Packages(req.body)
+  const packages = new Packages({ ...req.body, account: req.user.account() })
   packages
     .save()
     .then(pkgs => res.json(pkgs))

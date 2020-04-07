@@ -52,13 +52,6 @@ const WidgetEditor = props => {
     <Fragment>
       <Sidebar />
       <section className="result">
-        <input
-          type="text"
-          onChange={e => {
-            setTitle(e.target.value)
-            updateEditor()
-          }}
-        />
         <IFrameEditor ref={ref => (iframeRef = ref)} />
       </section>
     </Fragment>

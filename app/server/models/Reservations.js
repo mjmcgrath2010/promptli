@@ -32,7 +32,7 @@ const ReservationsModel = new schema({
   packages: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'packages',
+      ref: 'package',
     },
   ],
   totalCost: {
@@ -54,4 +54,4 @@ ReservationsModel.methods = {
   },
 }
 
-module.exports = mongoose.model('reservations', ReservationsModel)
+module.exports = mongoose.model('reservation', ReservationsModel)

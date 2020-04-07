@@ -25,7 +25,7 @@ const ServiceModel = new schema({
   packages: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'packages',
+      ref: 'package',
     },
   ],
 })

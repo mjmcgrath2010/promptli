@@ -8,6 +8,7 @@ const AccountSchema = new schema({
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
     required: true,
   },
   users: [
