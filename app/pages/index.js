@@ -19,7 +19,7 @@ const Home = () => {
             alt="logo"
             src="../static/logos/promptli-white.png"
           />
-          <h2 className="description">We focus on the logistics, so you don't have to.</h2>
+          <h2 className="description">We're focused on the logistics, so you don't have to be.</h2>
           <h3 className="description">Online booking made easy.</h3>
           <div className="hero-cta">
             <CommonButton
