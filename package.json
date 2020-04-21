@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "css-loader": "^3.5.2",
     "mmcgrath-prettier-config": "^1.0.0",
     "prettier": "^1.19.1"
   },
