@@ -10,7 +10,7 @@
   "dependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "/bin/sh config/deploy.sh"
+    "start": "cd ./app && yarn start"
   },
   "repository": {
     "type": "git",

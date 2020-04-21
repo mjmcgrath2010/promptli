@@ -1,0 +1,27 @@
+{
+  "name": "Promptli",
+  "description": "Promplti Application",
+  "website": "https://www.promptli.app",
+  "repository": "https://github.com/mjmcgrath2010/promptli-app.git",
+  "addons": [
+    {
+      "plan": "mongolab",
+      "as": "MONGODB"
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-nodejs"
+    },
+    {
+      "url": "https://github.com/niteoweb/heroku-buildpack-shell.git"
+    }
+  ],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "echo 'no tests'"
+      }
+    }
+  }
+}
