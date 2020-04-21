@@ -1,6 +1,5 @@
 #!/bin/bash
 echo "Build Started"
-rm -rf ./app/static/widget
 cd widget
 yarn install
 wait
@@ -12,4 +11,3 @@ yarn install
 wait
 yarn build
 echo "Build Complete"
-echo "hello world"
