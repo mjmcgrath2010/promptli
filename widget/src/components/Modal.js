@@ -2,6 +2,7 @@ import { h } from 'preact'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import Title from './Title'
+import DateSelector from './DateSelector'
 
 const FullScreenModal = styled.div`
   height: 100vh;
@@ -55,7 +56,9 @@ const Modal = props => {
       <ModalHeader>
         <Title text={title} />
       </ModalHeader>
-      <ModalBody>Hello World</ModalBody>
+      <ModalBody>
+        <DateSelector />
+      </ModalBody>
     </FullScreenModal>
   )
 }
