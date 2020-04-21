@@ -1,6 +1,7 @@
 import { h } from 'preact'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import Title from './Title'
 
 const FullScreenModal = styled.div`
   height: 100vh;
@@ -51,7 +52,9 @@ const Modal = props => {
   return (
     <FullScreenModal>
       <CloseButton onClick={onClose} />
-      <ModalHeader>{title}</ModalHeader>
+      <ModalHeader>
+        <Title text={title} />
+      </ModalHeader>
       <ModalBody>Hello World</ModalBody>
     </FullScreenModal>
   )
