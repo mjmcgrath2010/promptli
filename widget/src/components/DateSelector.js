@@ -1,4 +1,4 @@
-import React from 'preact/compat'
+import { h } from 'preact'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 

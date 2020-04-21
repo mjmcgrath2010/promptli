@@ -22,8 +22,6 @@ module.exports = {
       'react-dom/test-utils': 'preact/test-utils',
       'react-dom': 'preact/compat',
     },
-    extensions: ['.js', '.jsx', '.css'],
-    modules: ['node_modules'],
   },
   devServer: {
     contentBase: BUILD_DIR,
