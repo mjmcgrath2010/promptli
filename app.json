@@ -2,7 +2,7 @@
   "name": "Promptli",
   "description": "Promplti Application",
   "website": "https://www.promptli.app",
-  "repository": "https://github.com/mjmcgrath2010/promptli-app.git"
+  "repository": "https://github.com/mjmcgrath2010/promptli-app.git",
   "addons": [
     {
       "plan": "mongolab",
