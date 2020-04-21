@@ -10,7 +10,7 @@
   "dependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "bin/sh config/deploy.sh",
+    "build": "#/bin/bash config/deploy.sh",
     "deploy": "/bin/sh config/deploy.sh"
   },
   "repository": {
