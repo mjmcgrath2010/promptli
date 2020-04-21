@@ -61,7 +61,6 @@ module.exports = {
     minimizer: [
       new UglifyJsPlugin({
         test: /\.js(\?.*)?$/i,
-        exclude: /node_modules/,
         uglifyOptions: {
           output: {
             comments: false,
