@@ -8,11 +8,11 @@
   },
   "addons": [
     {
-      "plan": "mongolab-amorphous-00052",
+      "plan": "mongolab",
       "as": "MONGODB"
     },
     {
-      "plan": "sentry-parallel-83389",
+      "plan": "sentry",
       "as": "SENTRY"
     }
   ],
