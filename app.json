@@ -17,7 +17,9 @@
     }
   ],
   "buildpacks": [
-    "heroku/nodejs"
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-nodejs"
+    }
   ],
   "environments": {
     "test": {
