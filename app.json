@@ -4,7 +4,7 @@
   "website": "https://www.promptli.app",
   "repository": "https://github.com/mjmcgrath2010/promptli-app.git",
   "scripts": {
-    "pr-predestroy": "bin/teardown"
+    "pr-predestroy": "/bin/sh config/deploy.sh"
   },
   "addons": [
     {
