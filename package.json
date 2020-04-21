@@ -10,7 +10,8 @@
   "dependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "/bin/sh config/deploy.sh"
+    "deploy": "/bin/sh config/deploy.sh",
+    "review-app": "/bin/sh config/review-app.sh"
   },
   "repository": {
     "type": "git",
