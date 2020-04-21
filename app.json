@@ -1,0 +1,29 @@
+{
+  "name": "Promptli",
+  "description": "Promplti Application",
+  "website": "https://www.promptli.app",
+  "repository": "https://github.com/mjmcgrath2010/promptli-app.git",
+  "scripts": {
+    "pr-predestroy": "bin/teardown"
+  },
+  "addons": [
+    {
+      "plan": "mongolab-amorphous-00052",
+      "as": "MONGODB"
+    },
+    {
+      "plan": "sentry-parallel-83389",
+      "as": "SENTRY"
+    }
+  ],
+  "buildpacks": [
+    "heroku/nodejs"
+  ],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "echo 'no tests'"
+      }
+    }
+  }
+}
