@@ -1,7 +1,7 @@
 import { render, h } from 'preact'
 import { useState, useEffect } from 'preact/hooks'
-import Button from '../components/Button'
-import Modal from '../components/Modal'
+import Button from '../components/ui/Button'
+import Modal from '../components/ui/Modal'
 
 const Widget = props => {
   const [state, setState] = useState({ dialogOpen: false })

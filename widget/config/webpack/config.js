@@ -1,10 +1,24 @@
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const path = require('path')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { NODE_ENV } = process.env
 
-const APP_DIR = path.resolve(__dirname, 'src')
-const BUILD_DIR = path.resolve(__dirname, 'build')
+const APP_DIR = path.join(__dirname, '/../../src')
+const BUILD_DIR = path.join(__dirname, '/../../build')
 
-module.exports = {
+let envConfig
+
+try {
+  if (NODE_ENV) {
+    envConfig = require(`./${NODE_ENV}`)
+  } else {
+    envConfig = require('./production')
+  }
+} catch (e) {
+  envConfig = require('./production')
+  console.log(e)
+}
+
+const sharedConfig = {
   entry: {
     main: APP_DIR + '/index.js',
   },
@@ -21,17 +35,6 @@ module.exports = {
       'react-dom/test-utils': 'preact/test-utils',
       'react-dom': 'preact/compat',
     },
-  },
-  devServer: {
-    contentBase: BUILD_DIR,
-    contentBasePublicPath: '/static/widget',
-    port: 3001,
-    sockPort: 443,
-    sockHost: 'dev.promptli.app',
-    host: '0.0.0.0',
-    hot: true,
-    writeToDisk: true,
-    allowedHosts: ['dev.promptli.app'],
   },
   module: {
     rules: [
@@ -57,16 +60,10 @@ module.exports = {
     ],
   },
   plugins: [],
-  optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        test: /\.js(\?.*)?$/i,
-        uglifyOptions: {
-          output: {
-            comments: false,
-          },
-        },
-      }),
-    ],
-  },
 }
+
+const webpackConfig = { ...sharedConfig, ...envConfig }
+// Don't override plugins
+webpackConfig.plugins.push(new CleanWebpackPlugin())
+
+module.exports = webpackConfig
