@@ -61,6 +61,8 @@ const Modal = props => {
         <DateTimePicker />
         <Card
           primaryAction={() => console.log('next')}
+          secondaryAction={() => onsole.log('view')}
+          secondaryBtnText="View"
           title="Example Service"
           primaryBtnText="Select"
           description="This is an amazing service!"

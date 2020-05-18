@@ -25,12 +25,14 @@ const Header = styled.div`
 `
 const Title = styled.div``
 
-const Image = styled.image`
+const Image = styled.div`
   display: flex;
   width: 100%;
-  height: 178px;
+  height: 145px;
+  background: ${({ url }) => `url(${url}) center no-repeat`};
+  background-size: cover;
+  top: 56px;
   position: absolute;
-  top: 48px;
 `
 
 const Body = styled.div`
@@ -70,12 +72,12 @@ const Card = props => {
       <Header>
         <Title>{title}</Title>
       </Header>
-      <Image src={imageUrl} alt={title} />
+      <Image url={imageUrl} alt={title} />
       <Body>{description}</Body>
       <Footer>
         {secondaryAction && (
           <FloatLeft>
-            <Button onClick={secondaryAction} text={secondaryBtnText} />
+            <Button type="secondary" onClick={secondaryAction} text={secondaryBtnText} />
           </FloatLeft>
         )}
         <FloatRight>
