@@ -28,28 +28,38 @@ const Title = styled.div``
 const Image = styled.image`
   display: flex;
   width: 100%;
-  height: 150px;
+  height: 178px;
+  position: absolute;
+  top: 48px;
 `
 
-const Body = styled.div``
+const Body = styled.div`
+  background: #fff;
+  position: absolute;
+  bottom: 70px;
+  width: 100%;
+  height: 125px;
+  padding: 1em;
+`
 
 const Footer = styled.div`
   position: absolute;
   bottom: 0;
-  height: 100px;
+  height: 70px;
   width: 100%;
   background: #fff;
+  border-top: 2px solid #dbdbdb;
 `
 
 const FloatLeft = styled.div`
   display: inline-flex;
   float: left;
-  padding: 2em;
+  padding: 1em;
 `
 const FloatRight = styled.div`
   display: inline-flex;
   float: right;
-  padding: 2em;
+  padding: 1em;
 `
 
 const Card = props => {

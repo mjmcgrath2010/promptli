@@ -59,7 +59,12 @@ const Modal = props => {
       </ModalHeader>
       <ModalBody>
         <DateTimePicker />
-        <Card primaryAction={() => console.log('next')} title="Example Service" primaryBtnText="Select" />
+        <Card
+          primaryAction={() => console.log('next')}
+          title="Example Service"
+          primaryBtnText="Select"
+          description="This is an amazing service!"
+        />
       </ModalBody>
     </FullScreenModal>
   )
