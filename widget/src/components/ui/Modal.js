@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import Title from '../Title'
 import DateTimePicker from './DateTImeSelector'
 import Card from './Card'
+import Services from '../../containers/ServicesContainer/Services'
 
 const FullScreenModal = styled.div`
   height: 100vh;
@@ -58,15 +59,7 @@ const Modal = props => {
         <Title text={title} />
       </ModalHeader>
       <ModalBody>
-        <DateTimePicker />
-        <Card
-          primaryAction={() => console.log('next')}
-          secondaryAction={() => onsole.log('view')}
-          secondaryBtnText="View"
-          title="Example Service"
-          primaryBtnText="Select"
-          description="This is an amazing service!"
-        />
+        <Services />
       </ModalBody>
     </FullScreenModal>
   )
