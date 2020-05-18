@@ -20,7 +20,7 @@ const FullScreenModal = styled.div`
 const ModalHeader = styled.div`
   height: 70px;
   width: 100%;
-  color: blue;
+  color: rgba(24, 33, 82, 1);
   box-shadow: 2px 3px rgba(0, 0, 0, 0.3);
 `
 

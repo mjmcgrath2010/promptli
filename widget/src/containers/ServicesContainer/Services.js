@@ -11,6 +11,12 @@ const HeaderContainer = styled.div`
   justify-content: space-evenly;
 `
 
+const ServicesContainer = styled.div`
+  width: 90%;
+  position: relative;
+  margin: 0 auto;
+`
+
 const SearchBarContainer = styled.div`
   display: inline-flex;
   align-items: center;
@@ -28,7 +34,7 @@ const CardsContainer = styled.div`
 const Services = props => {
   const { services, loading } = props
   return (
-    <div>
+    <ServicesContainer>
       <HeaderContainer>
         <SearchBarContainer>
           <DateTimePicker />
@@ -49,7 +55,7 @@ const Services = props => {
           />
         ))}
       </CardsContainer>
-    </div>
+    </ServicesContainer>
   )
 }
 
