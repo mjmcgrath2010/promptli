@@ -1,19 +1,85 @@
 import { h } from 'preact'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import Button from './Button'
 
-const CardContainer = styled.div``
+const StyledCard = styled.div`
+  width: 300px;
+  height: 420px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background: #f9f9f9;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 2px 3px 4px #00000057;
+`
+
+const Header = styled.div`
+  background: #fff;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  padding: 1em;
+`
+const Title = styled.div``
+
+const Image = styled.image`
+  display: flex;
+  width: 100%;
+  height: 150px;
+`
+
+const Body = styled.div``
+
+const Footer = styled.div`
+  position: absolute;
+  bottom: 0;
+  height: 100px;
+  width: 100%;
+  background: #fff;
+`
+
+const FloatLeft = styled.div`
+  display: inline-flex;
+  float: left;
+  padding: 2em;
+`
+const FloatRight = styled.div`
+  display: inline-flex;
+  float: right;
+  padding: 2em;
+`
 
 const Card = props => {
-  const { title, primaryBtnText, secondaryBtnText, image, primaryAction, secondaryAction } = props
+  const { title, primaryBtnText, secondaryBtnText, imageUrl, primaryAction, secondaryAction, description } = props
 
-  return <CardContainer></CardContainer>
+  return (
+    <StyledCard>
+      <Header>
+        <Title>{title}</Title>
+      </Header>
+      <Image src={imageUrl} alt={title} />
+      <Body>{description}</Body>
+      <Footer>
+        {secondaryAction && (
+          <FloatLeft>
+            <Button onClick={secondaryAction} text={secondaryBtnText} />
+          </FloatLeft>
+        )}
+        <FloatRight>
+          <Button onClick={primaryAction} text={primaryBtnText} />
+        </FloatRight>
+      </Footer>
+    </StyledCard>
+  )
 }
 
 Card.defaultProps = {
   secondaryBtnText: undefined,
-  image: '',
-  secondaryAction: () => {},
+  imageUrl: '//i.picsum.photos/id/810/300/150.jpg',
+  secondaryAction: undefined,
 }
 
 Card.propTypes = {

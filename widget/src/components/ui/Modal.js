@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import Title from '../Title'
 import DateTimePicker from './DateTImeSelector'
+import Card from './Card'
 
 const FullScreenModal = styled.div`
   height: 100vh;
@@ -58,6 +59,7 @@ const Modal = props => {
       </ModalHeader>
       <ModalBody>
         <DateTimePicker />
+        <Card primaryAction={() => console.log('next')} title="Example Service" primaryBtnText="Select" />
       </ModalBody>
     </FullScreenModal>
   )
