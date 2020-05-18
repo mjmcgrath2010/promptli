@@ -1,8 +1,8 @@
 import { h } from 'preact'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import Title from './Title'
-import DateSelector from './DateSelector'
+import Title from '../Title'
+import DateTimePicker from './DateTImeSelector'
 
 const FullScreenModal = styled.div`
   height: 100vh;
@@ -57,7 +57,7 @@ const Modal = props => {
         <Title text={title} />
       </ModalHeader>
       <ModalBody>
-        <DateSelector />
+        <DateTimePicker />
       </ModalBody>
     </FullScreenModal>
   )
