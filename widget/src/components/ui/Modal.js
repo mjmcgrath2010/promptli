@@ -1,12 +1,34 @@
 import { h } from 'preact'
-import styled from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
 import PropTypes from 'prop-types'
 import Title from '../Title'
 import DateTimePicker from './DateTImeSelector'
 import Card from './Card'
 import Services from '../../containers/ServicesContainer/Services'
 
+const slideUp = keyframes`
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+`
+
+const slideDown = keyframes`
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+`
+
 const FullScreenModal = styled.div`
+  animation: ${({ open }) =>
+    css`
+      ${open ? slideUp : slideDown} 0.2s linear forwards;
+    `}
   height: 100vh;
   z-index: 100000;
   width: 100vw;
@@ -51,9 +73,9 @@ const CloseButton = styled.div`
   }
 `
 const Modal = props => {
-  const { title, onClose } = props
+  const { title, onClose, open } = props
   return (
-    <FullScreenModal>
+    <FullScreenModal open={open}>
       <CloseButton onClick={onClose} />
       <ModalHeader>
         <Title text={title} />
@@ -68,6 +90,7 @@ const Modal = props => {
 Modal.propTypes = {
   title: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired,
 }
 
 export default Modal

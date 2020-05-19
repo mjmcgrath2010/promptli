@@ -15,7 +15,7 @@ const Widget = props => {
   return (
     <div>
       <Button onClick={openDialog} text={ctaText || 'Click here!'} />
-      {dialogOpen && <Modal title={title} onClose={closeDialog} />}
+      <Modal open={dialogOpen} title={title} onClose={closeDialog} />
     </div>
   )
 }

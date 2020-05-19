@@ -25,6 +25,11 @@ const SearchBarContainer = styled.div`
   min-width: 45%;
 `
 
+const ButtonContainer = styled.div`
+  display: inline-block;
+  margin-top: 22px;
+`
+
 const CardsContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -33,23 +38,25 @@ const CardsContainer = styled.div`
 `
 
 const Services = props => {
-  const { services, loading } = props
+  const { services, loading, emptyMessage } = props
   return (
     <ServicesContainer>
       <HeaderContainer>
         <SearchBarContainer>
           <DateTimePicker />
-          <Button onClick={() => console.log('searching')} text="GO" />
+          <ButtonContainer>
+            <Button onClick={() => console.log('searching')} text="Search" />
+          </ButtonContainer>
         </SearchBarContainer>
       </HeaderContainer>
       <CardsContainer>
         {services.length ? (
-          services.map(({ title, description, id }) => (
+          services.map(({ name, description, id }) => (
             <Card
               primaryAction={() => console.log('next')}
               secondaryAction={() => onsole.log('view')}
               secondaryBtnText="View"
-              title={title}
+              title={name}
               primaryBtnText="Select"
               description={description}
               id={id}
@@ -59,7 +66,7 @@ const Services = props => {
         ) : loading ? (
           <LoadingSpinner />
         ) : (
-          <div> Select a date and press go!</div>
+          <div>{emptyMessage}</div>
         )}
       </CardsContainer>
     </ServicesContainer>
@@ -69,11 +76,13 @@ const Services = props => {
 Services.defaultProps = {
   services: [],
   loading: false,
+  emptyMessage: 'Select a date and time and press search to see available services.',
 }
 
 Services.propTypes = {
   services: PropTypes.array,
   loading: PropTypes.bool,
+  emptyMessage: PropTypes.string,
 }
 
 export default Services

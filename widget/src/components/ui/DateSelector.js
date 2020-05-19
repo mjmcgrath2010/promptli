@@ -15,7 +15,7 @@ const DateSelectorContainer = styled.div`
 
 const Title = styled.div`
   padding: 0.25em;
-  font-size: 16px;
+  font-size: 12px;
 `
 
 const DateSelector = props => {

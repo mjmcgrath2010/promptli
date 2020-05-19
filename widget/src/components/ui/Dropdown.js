@@ -6,7 +6,7 @@ import Container from './Container'
 
 const DropdownInput = styled.select`
   display: inline-block;
-  width: 8em;
+  width: 9em;
   position: relative;
   border: 2px solid rgba(24, 33, 82, 1);
   height: 2.5em;
@@ -26,7 +26,7 @@ const SelectedOption = styled.option`
 `
 
 const Label = styled.label`
-  font-size: 16px;
+  font-size: 12px;
   padding: 0.25em;
 `
 
@@ -43,7 +43,7 @@ const ListContainer = styled.ul`
   outline: none;
   box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.3);
   border: 2px solid rgba(24, 33, 82, 1);
-  margin-top: 4.4em;
+  margin-top: 3.9em;
   position: absolute;
   z-index: 10000;
 `

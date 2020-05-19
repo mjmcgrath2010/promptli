@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const ServiceContainer = styled.div``
 
 const Service = props => {
-  const { title } = props
+  const { name, description, pricingUnits, packages } = props
   return <ServiceContainer>{title}</ServiceContainer>
 }
 
