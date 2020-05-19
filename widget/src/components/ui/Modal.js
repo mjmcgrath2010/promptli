@@ -72,13 +72,6 @@ const ModalFooter = styled.div`
   margin-right: 2em;
 `
 
-const ModalFooterButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 0 2em;
-  flex-direction: ${({ screen }) => (screen === 1 ? 'row-reverse' : 'row')};
-`
-
 const CloseButton = styled.div`
   padding: 8px 16px;
   border-radius: 4em;
@@ -100,8 +93,16 @@ const CloseButton = styled.div`
   }
 `
 const Modal = props => {
-  const FadeIn = styled.div`
+  const FadeIn = styled.span`
     animation: ${fade} 0.5s linear forwards;
+  `
+
+  const ModalFooterButtonContainer = styled.div`
+    animation: ${fade} 0.5s linear forwards;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 2em;
+    flex-direction: ${({ screen }) => (screen === 1 ? 'row-reverse' : 'row')};
   `
   const { title, onClose, open, children, onClickNext, onClickBack, screen } = props
   return (
@@ -115,7 +116,7 @@ const Modal = props => {
       </ModalBody>
       <ModalFooter>
         <ModalFooterButtonContainer screen={screen}>
-          {screen && screen > 1 && onClickBack && <Button onClick={onClickBack} text="Back" />}
+          {screen && screen > 1 && onClickBack && <Button onClick={onClickBack} type="secondary" text="Back" />}
           {onClickNext && <Button onClick={onClickNext} text="Next" />}
         </ModalFooterButtonContainer>
       </ModalFooter>

@@ -4,23 +4,45 @@ import styled from 'styled-components'
 
 const StyledButton = styled.button`
   padding: 0.5em 2em;
-  font-size: 16px;
-  font-family: 'Open Sans', 'sans-serif';
-  background: ${({ type }) => (type === 'secondary' ? 'rgb(36, 158, 58)' : 'rgba(24, 33, 82, 1)')};
+  font-size: ${({ theme }) => theme.mdFont};
+  font-family: ${({ theme }) => theme.primaryFont};
+  background: ${({ type, theme }) => theme[type] || theme['primary']};
   color: #fff;
-  border-radius: 5px;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.42);
+  border: none;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  box-shadow: ${({ theme }) => theme.boxShadow};
   max-height: 60px;
+  outline: none;
+  cursor: pointer;
+  &.primary {
+    &:hover {
+      background: ${({ theme }) => theme.primaryHover};
+    }
+  }
+  &.secondary {
+    &:hover {
+      background: ${({ theme }) => theme.secondaryHover};
+    }
+  }
+  &:disabled {
+    background: ${({ theme }) => theme.disabled};
+    cursor: not-allowed;
+    &:hover {
+      background: ${({ theme }) => theme.disabled};
+      cursor: not-allowed;
+    }
+  }
 `
 
-const Button = ({ text, onClick, variant, type }) => (
-  <StyledButton type={type} onClick={onClick} variant={variant}>
+const Button = ({ text, onClick, variant, type, disabled }) => (
+  <StyledButton className={type} disabled={disabled} type={type} onClick={onClick} variant={variant}>
     {text}
   </StyledButton>
 )
 
 Button.defaultProps = {
   variant: 'default',
+  disabled: false,
   type: 'primary',
 }
 
