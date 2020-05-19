@@ -8,7 +8,7 @@ const DropdownInput = styled.select`
   display: inline-block;
   width: 9em;
   position: relative;
-  border: ${({ theme }) => `2px soild ${theme.primary}`};
+  border: ${({ theme }) => `1px solid ${theme.primary}`};
   height: 2.5em;
   margin-bottom: 0;
   background: transparent;

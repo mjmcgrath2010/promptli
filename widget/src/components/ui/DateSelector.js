@@ -8,6 +8,7 @@ import 'datepickerdate/lib/index.css'
 import { Datepicker } from 'datepickerdate'
 
 import '../../assests/datepicker.css'
+import DateTimePicker from './DateTImeSelector'
 
 const DateSelectorContainer = styled.div`
   max-width: 300px;
