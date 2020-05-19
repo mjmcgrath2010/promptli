@@ -4,9 +4,9 @@ import styled from 'styled-components'
 
 const getSize = size => {
   const sizing = {
-    small: '1.5em',
-    medium: '30px',
-    large: '2.5em',
+    small: 'smFont',
+    medium: 'mdFont',
+    large: 'lgFont',
   }
 
   return sizing[size] || sizing.medium
@@ -16,8 +16,9 @@ const TitleContainer = styled.div`
   width: 100%;
   height: 75px;
   padding: 15px 0 0;
+  color: ${({ theme }) => theme.primary};
   text-align: ${({ alignment }) => alignment};
-  font-size: ${({ size }) => getSize(size)};
+  font-size: ${({ size, theme }) => theme[getSize(size)]};
 `
 
 const Title = ({ text, alignment, size }) => {
@@ -30,7 +31,7 @@ const Title = ({ text, alignment, size }) => {
 
 Title.defaultProps = {
   alignment: 'center',
-  size: 'medium',
+  size: 'large',
 }
 
 Title.propTypes = {

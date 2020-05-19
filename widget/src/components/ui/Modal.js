@@ -73,23 +73,22 @@ const ModalFooter = styled.div`
 `
 
 const CloseButton = styled.div`
-  padding: 8px 16px;
-  border-radius: 4em;
-  border: 2px solid rgba(24, 33, 82, 1);
+  padding: 6px 12px;
+  border: ${({ theme }) => `2px solid ${theme.primary}`};
   color: #000;
   background: transparent;
   position: absolute;
-  top: 16px;
+  top: 18px;
   font-weight: 600;
-  font-size: 18px;
+  font-size: ${({ theme }) => theme.smFont};
   right: 24px;
+  border-radius: 50%;
   &:before {
     content: 'X';
   }
   &:hover {
-    background: rgba(24, 33, 82, 1);
-    color: #fff;
-    border: 2px solid #fff;
+    background: ${({ theme }) => theme.primaryHover};
+    color: ${({ theme }) => theme.white};
   }
 `
 const Modal = props => {
