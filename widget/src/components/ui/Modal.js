@@ -96,7 +96,7 @@ const CloseButton = styled.div`
   }
 `
 const Modal = props => {
-  const FadeIn = styled.span`
+  const FadeIn = styled.div`
     animation: ${fade} 0.5s linear forwards;
   `
 
