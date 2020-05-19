@@ -8,11 +8,11 @@ const DropdownInput = styled.select`
   display: inline-block;
   width: 9em;
   position: relative;
-  border: 2px solid rgba(24, 33, 82, 1);
+  border: ${({ theme }) => `2px soild ${theme.primary}`};
   height: 2.5em;
   margin-bottom: 0;
   background: transparent;
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.mdFont};
   &:focus {
     outline: none;
   }
@@ -26,7 +26,7 @@ const SelectedOption = styled.option`
 `
 
 const Label = styled.label`
-  font-size: 12px;
+  font-size: ${({ theme }) => theme.smFont};
   padding: 0.25em;
 `
 
@@ -34,15 +34,14 @@ const ListContainer = styled.ul`
   width: 7em;
   height: 10em;
   overflow-y: scroll;
-  background: #fff;
-  margin: 0;
+  background: ${({ theme }) => theme.white};
   display: ${({ open }) => (open ? 'block' : 'none')};
   list-style: none;
   padding: inherit;
   border-radius: 0 5px;
   outline: none;
-  box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.3);
-  border: 2px solid rgba(24, 33, 82, 1);
+  box-shadow: ${({ theme }) => theme.boxShadow};
+  border: ${({ theme }) => `2px soild ${theme.primary}`};
   margin-top: 3.9em;
   position: absolute;
   z-index: 10000;
@@ -56,8 +55,8 @@ const ListItem = styled.li`
   border-bottom: 2px solid #dbdbdb;
   cursor: pointer;
   &:hover {
-    background: rgba(24, 33, 82, 1);
-    color: white;
+    background: ${({ theme }) => theme.primaryHover};
+    color: ${({ theme }) => theme.white};
   }
 `
 

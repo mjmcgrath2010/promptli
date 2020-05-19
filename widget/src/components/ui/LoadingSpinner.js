@@ -15,10 +15,10 @@ const rotate360 = keyframes`
 const LoadingSpinner = styled.div`
   animation: ${rotate360} 0.6s linear infinite;
   transform: translateZ(0);
-  border-top: 3px solid grey;
-  border-right: 3px solid grey;
-  border-bottom: 3px solid grey;
-  border-left: 3px solid black;
+  border-top: ${({ theme }) => `3px solid ${theme.primary}`};
+  border-right: ${({ theme }) => `3px solid ${theme.primary}`};
+  border-bottom: ${({ theme }) => `3px solid ${theme.primary}`};
+  border-left: ${({ theme }) => `3px solid ${theme.secondary}`};
   background: transparent;
   width: 48px;
   height: 48px;

@@ -74,7 +74,23 @@ const Services = props => {
 }
 
 Services.defaultProps = {
-  services: [],
+  services: [
+    {
+      name: "Mike's Special Stuff",
+      description: 'The possibilities are endless',
+      id: 1,
+    },
+    {
+      name: "Lesley's Special Stuff",
+      description: 'Anything can happen',
+      id: 2,
+    },
+    {
+      name: "Mimi's Special Stuff",
+      description: 'Who the fuck knows',
+      id: 3,
+    },
+  ],
   loading: false,
   emptyMessage: 'Select a date and time and press search to see available services.',
 }
