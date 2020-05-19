@@ -83,12 +83,16 @@ const CloseButton = styled.div`
   font-size: ${({ theme }) => theme.smFont};
   right: 24px;
   border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in;
   &:before {
     content: 'X';
   }
   &:hover {
-    background: ${({ theme }) => theme.primaryHover};
+    background: ${({ theme }) => theme.secondaryHover};
+    border: ${({ theme }) => `2px solid ${theme.secondary}`};
     color: ${({ theme }) => theme.white};
+    transition: background-color 0.2s ease-in;
   }
 `
 const Modal = props => {
