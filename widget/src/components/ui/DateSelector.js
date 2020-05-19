@@ -8,6 +8,7 @@ import 'datepickerdate/lib/index.css'
 import { Datepicker } from 'datepickerdate'
 
 import '../../assests/datepicker.css'
+import DateTimePicker from './DateTImeSelector'
 
 const DateSelectorContainer = styled.div`
   max-width: 300px;
@@ -15,7 +16,7 @@ const DateSelectorContainer = styled.div`
 
 const Title = styled.div`
   padding: 0.25em;
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.smFont};
 `
 
 const DateSelector = props => {

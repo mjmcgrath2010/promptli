@@ -6,10 +6,16 @@ const StyledAddonsContainer = styled.div``
 
 const AddonsContainer = props => {
   const { title } = props
-  return <StyledAddonsContainer>{title}</StyledAddonsContainer>
+  return (
+    <StyledAddonsContainer>
+      <h1>{title}</h1>
+    </StyledAddonsContainer>
+  )
 }
 
-AddonsContainer.defaultProps = {}
+AddonsContainer.defaultProps = {
+  title: 'Addons Container',
+}
 
 AddonsContainer.propTypes = {}
 

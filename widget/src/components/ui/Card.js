@@ -10,14 +10,14 @@ const StyledCard = styled.div`
   position: relative;
   flex-direction: column;
   justify-content: space-evenly;
-  background: #f9f9f9;
+  background: ${({ theme }) => theme.offWhite};
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 2px 3px 4px #00000057;
 `
 
 const Header = styled.div`
-  background: #fff;
+  background: ${({ theme }) => theme.white};
   width: 100%;
   position: absolute;
   top: 0;
@@ -36,7 +36,7 @@ const Image = styled.div`
 `
 
 const Body = styled.div`
-  background: #fff;
+  background: ${({ theme }) => theme.white};
   position: absolute;
   bottom: 70px;
   width: 100%;
@@ -49,7 +49,7 @@ const Footer = styled.div`
   bottom: 0;
   height: 70px;
   width: 100%;
-  background: #fff;
+  background: ${({ theme }) => theme.white};
   border-top: 2px solid #dbdbdb;
 `
 
