@@ -27,7 +27,7 @@ const ModalHeader = styled.div`
 const ModalBody = styled.div`
   position: relative;
   width: 100vw;
-  padding: 24px;
+  padding: 0 24px;
 `
 
 const CloseButton = styled.div`

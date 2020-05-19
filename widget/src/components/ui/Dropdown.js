@@ -5,7 +5,7 @@ import { useState } from 'preact/hooks'
 import Container from './Container'
 
 const DropdownInput = styled.select`
-  display: flex;
+  display: inline-block;
   width: 8em;
   position: relative;
   border: 2px solid rgba(24, 33, 82, 1);
@@ -34,7 +34,7 @@ const ListContainer = styled.ul`
   width: 7em;
   height: 10em;
   overflow-y: scroll;
-  background: transparent;
+  background: #fff;
   margin: 0;
   display: ${({ open }) => (open ? 'block' : 'none')};
   list-style: none;
@@ -43,8 +43,9 @@ const ListContainer = styled.ul`
   outline: none;
   box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.3);
   border: 2px solid rgba(24, 33, 82, 1);
+  margin-top: 4.4em;
   position: absolute;
-  bottom: calc(0px - 6.1em);
+  z-index: 10000;
 `
 
 const ListItem = styled.li`

@@ -4,11 +4,12 @@ import styled from 'styled-components'
 import DateTimePicker from '../../components/ui/DateTImeSelector'
 import Card from '../../components/ui/Card'
 import Button from '../../components/ui/Button'
+import LoadingSpinner from '../../components/ui/LoadingSpinner'
 
 const HeaderContainer = styled.div`
   display: flex;
   align-content: center;
-  justify-content: space-evenly;
+  justify-content: end;
 `
 
 const ServicesContainer = styled.div`
@@ -42,45 +43,37 @@ const Services = props => {
         </SearchBarContainer>
       </HeaderContainer>
       <CardsContainer>
-        {services.map(({ title, description, id }) => (
-          <Card
-            primaryAction={() => console.log('next')}
-            secondaryAction={() => onsole.log('view')}
-            secondaryBtnText="View"
-            title={title}
-            primaryBtnText="Select"
-            description={description}
-            id={id}
-            key={id}
-          />
-        ))}
+        {services.length ? (
+          services.map(({ title, description, id }) => (
+            <Card
+              primaryAction={() => console.log('next')}
+              secondaryAction={() => onsole.log('view')}
+              secondaryBtnText="View"
+              title={title}
+              primaryBtnText="Select"
+              description={description}
+              id={id}
+              key={id}
+            />
+          ))
+        ) : loading ? (
+          <LoadingSpinner />
+        ) : (
+          <div> Select a date and press go!</div>
+        )}
       </CardsContainer>
     </ServicesContainer>
   )
 }
 
 Services.defaultProps = {
-  services: [
-    {
-      id: 1,
-      title: 'Example Service 1',
-      description: 'This is a great service',
-    },
-    {
-      id: 2,
-      title: 'Example Service 2',
-      description: 'This is a great service',
-    },
-    {
-      id: 3,
-      title: 'Example Service 3',
-      description: 'This is a great service',
-    },
-  ],
+  services: [],
+  loading: false,
 }
 
 Services.propTypes = {
   services: PropTypes.array,
+  loading: PropTypes.bool,
 }
 
 export default Services
