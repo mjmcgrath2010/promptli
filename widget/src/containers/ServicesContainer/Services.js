@@ -38,7 +38,7 @@ const CardsContainer = styled.div`
 `
 
 const Services = props => {
-  const { services, loading, emptyMessage } = props
+  const { services, loading, emptyMessage, showViewMode } = props
   return (
     <ServicesContainer>
       <HeaderContainer>
@@ -51,18 +51,24 @@ const Services = props => {
       </HeaderContainer>
       <CardsContainer>
         {services.length ? (
-          services.map(({ name, description, id }) => (
-            <Card
-              primaryAction={() => console.log('next')}
-              secondaryAction={() => onsole.log('view')}
-              secondaryBtnText="View"
-              title={name}
-              primaryBtnText="Select"
-              description={description}
-              id={id}
-              key={id}
-            />
-          ))
+          services.map(service => {
+            const { name, description, id } = service
+            return (
+              <Card
+                primaryAction={() => console.log('next')}
+                secondaryAction={() => {
+                  console.log(service)
+                  showViewMode('show', service)
+                }}
+                secondaryBtnText="View"
+                title={name}
+                primaryBtnText="Select"
+                description={description}
+                id={id}
+                key={id}
+              />
+            )
+          })
         ) : loading ? (
           <LoadingSpinner />
         ) : (
