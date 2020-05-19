@@ -1,12 +1,13 @@
 import { h } from 'preact'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import Services from './Services'
 
 const StyledServicesContainer = styled.div``
 
 const ServicesContainer = props => {
   const { title } = props
-  return <StyledServicesContainer>{title}</StyledServicesContainer>
+  return <Services />
 }
 
 ServicesContainer.defaultProps = {}

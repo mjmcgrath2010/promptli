@@ -2,9 +2,8 @@ import { h } from 'preact'
 import styled, { keyframes, css } from 'styled-components'
 import PropTypes from 'prop-types'
 import Title from '../Title'
-import DateTimePicker from './DateTImeSelector'
-import Card from './Card'
 import Services from '../../containers/ServicesContainer/Services'
+import Button from './Button'
 
 const slideUp = keyframes`
   from {
@@ -52,6 +51,25 @@ const ModalBody = styled.div`
   padding: 0 24px;
 `
 
+const ModalFooter = styled.div`
+  display: block;
+  padding: 0.75em 0 0;
+  position: absolute;
+  height: 50px;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 2px -3px 4px #00000052;
+  text-align: right;
+  margin-right: 2em;
+`
+
+const ModalFooterButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 0 2em;
+  flex-direction: ${({ screen }) => (screen === 1 ? 'row-reverse' : 'row')};
+`
+
 const CloseButton = styled.div`
   padding: 8px 16px;
   border-radius: 4em;
@@ -73,16 +91,20 @@ const CloseButton = styled.div`
   }
 `
 const Modal = props => {
-  const { title, onClose, open } = props
+  const { title, onClose, open, children, onClickNext, onClickBack, screen } = props
   return (
     <FullScreenModal open={open}>
       <CloseButton onClick={onClose} />
       <ModalHeader>
         <Title text={title} />
       </ModalHeader>
-      <ModalBody>
-        <Services />
-      </ModalBody>
+      <ModalBody>{children}</ModalBody>
+      <ModalFooter>
+        <ModalFooterButtonContainer screen={screen}>
+          {screen && screen > 1 && onClickBack && <Button onClick={onClickBack} text="Back" />}
+          {onClickNext && <Button onClick={onClickNext} text="Next" />}
+        </ModalFooterButtonContainer>
+      </ModalFooter>
     </FullScreenModal>
   )
 }
@@ -91,6 +113,9 @@ Modal.propTypes = {
   title: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
+  children: PropTypes.node.isRequired,
+  onClickBack: PropTypes.func,
+  onClickNext: PropTypes.func,
 }
 
 export default Modal

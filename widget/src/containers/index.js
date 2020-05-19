@@ -1,21 +1,11 @@
-import { render, h } from 'preact'
-import { useState, useEffect } from 'preact/hooks'
-import Button from '../components/ui/Button'
-import Modal from '../components/ui/Modal'
+import { h } from 'preact'
+import FullScreenModal from '../displays/FullScreenModal'
 
 const Widget = props => {
-  const [state, setState] = useState({ dialogOpen: false })
-
-  const openDialog = () => setState({ ...state, dialogOpen: true })
-
-  const closeDialog = () => setState({ ...state, dialogOpen: false })
-
-  const { dialogOpen } = state
   const { ctaText, title } = props
   return (
     <div>
-      <Button onClick={openDialog} text={ctaText || 'Click here!'} />
-      <Modal open={dialogOpen} title={title} onClose={closeDialog} />
+      <FullScreenModal ctaText={ctaText} title={title} />
     </div>
   )
 }
