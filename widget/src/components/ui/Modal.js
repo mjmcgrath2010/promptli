@@ -2,8 +2,17 @@ import { h } from 'preact'
 import styled, { keyframes, css } from 'styled-components'
 import PropTypes from 'prop-types'
 import Title from '../Title'
-import Services from '../../containers/ServicesContainer/Services'
 import Button from './Button'
+
+const fade = keyframes`
+from {
+  opacity: 0;
+}
+
+to {
+  opacity: 1;
+}
+`
 
 const slideUp = keyframes`
   from {
@@ -91,6 +100,9 @@ const CloseButton = styled.div`
   }
 `
 const Modal = props => {
+  const FadeIn = styled.div`
+    animation: ${fade} 0.5s linear forwards;
+  `
   const { title, onClose, open, children, onClickNext, onClickBack, screen } = props
   return (
     <FullScreenModal open={open}>
@@ -98,7 +110,9 @@ const Modal = props => {
       <ModalHeader>
         <Title text={title} />
       </ModalHeader>
-      <ModalBody>{children}</ModalBody>
+      <ModalBody>
+        <FadeIn>{children}</FadeIn>
+      </ModalBody>
       <ModalFooter>
         <ModalFooterButtonContainer screen={screen}>
           {screen && screen > 1 && onClickBack && <Button onClick={onClickBack} text="Back" />}

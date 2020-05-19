@@ -6,10 +6,16 @@ const StyledContainerContainer = styled.div``
 
 const ConfirmationContainer = props => {
   const { title } = props
-  return <StyledContainerContainer>{title}</StyledContainerContainer>
+  return (
+    <StyledContainerContainer>
+      <h1>{title}</h1>
+    </StyledContainerContainer>
+  )
 }
 
-ConfirmationContainer.defaultProps = {}
+ConfirmationContainer.defaultProps = {
+  title: 'Confirmation Container',
+}
 
 ConfirmationContainer.propTypes = {}
 
