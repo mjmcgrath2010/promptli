@@ -6,7 +6,7 @@ import Button from './Button'
 const StyledCard = styled.div`
   width: 300px;
   height: 420px;
-  display: flex;
+  display: inline-flex;
   position: relative;
   flex-direction: column;
   justify-content: space-evenly;

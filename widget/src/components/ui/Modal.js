@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import Title from '../Title'
 import DateTimePicker from './DateTImeSelector'
 import Card from './Card'
+import Services from '../../containers/ServicesContainer/Services'
 
 const FullScreenModal = styled.div`
   height: 100vh;
@@ -19,14 +20,14 @@ const FullScreenModal = styled.div`
 const ModalHeader = styled.div`
   height: 70px;
   width: 100%;
-  color: blue;
+  color: rgba(24, 33, 82, 1);
   box-shadow: 2px 3px rgba(0, 0, 0, 0.3);
 `
 
 const ModalBody = styled.div`
   position: relative;
   width: 100vw;
-  padding: 24px;
+  padding: 0 24px;
 `
 
 const CloseButton = styled.div`
@@ -58,15 +59,7 @@ const Modal = props => {
         <Title text={title} />
       </ModalHeader>
       <ModalBody>
-        <DateTimePicker />
-        <Card
-          primaryAction={() => console.log('next')}
-          secondaryAction={() => onsole.log('view')}
-          secondaryBtnText="View"
-          title="Example Service"
-          primaryBtnText="Select"
-          description="This is an amazing service!"
-        />
+        <Services />
       </ModalBody>
     </FullScreenModal>
   )
