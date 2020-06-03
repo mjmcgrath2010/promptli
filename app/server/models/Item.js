@@ -10,26 +10,46 @@ const ItemsModel = new schema({
     type: String,
     required: true,
   },
-  pricingUnits: [
-    {
-      fixed: {
-        type: Number,
-        default: null,
-      },
-      hourly: {
-        type: Number,
-        default: null,
-      },
-      minimum: {
-        type: Number,
-        default: null,
-      },
-      deposit: {
-        type: Number,
-        default: null,
-      },
+  pricingUnits: {
+    fixedAmount: Number,
+    hourlyRate: Number,
+    minimumSpend: Number,
+    depositAmount: Number,
+  },
+  quantity: {
+    type: Number,
+    default: 1,
+  },
+  availability: {
+    monday: {
+      start: String,
+      end: String,
     },
-  ],
+    tuesday: {
+      start: String,
+      end: String,
+    },
+    wednesday: {
+      start: String,
+      end: String,
+    },
+    thursday: {
+      start: String,
+      end: String,
+    },
+    friday: {
+      start: String,
+      end: String,
+    },
+    saturday: {
+      start: String,
+      end: String,
+    },
+    sunday: {
+      start: String,
+      end: String,
+    },
+  },
   account: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'account',

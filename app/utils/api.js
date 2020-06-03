@@ -110,15 +110,6 @@ const API = {
   updateItems(id, payload) {
     return this.update('items', payload, id)
   },
-  createService(payload) {
-    return this.post('services', payload)
-  },
-  fetchServices() {
-    return this.get('services')
-  },
-  updateService(id, payload) {
-    return this.update('services', payload, id)
-  },
   fetchReservations() {
     return this.get('reservations')
   },

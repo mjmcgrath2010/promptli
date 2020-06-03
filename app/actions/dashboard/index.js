@@ -42,23 +42,6 @@ const dashboardActions = {
         .catch(e => this.handleError(dashboardActionTypes.CONNECT_GOOGLE_ACCOUNT_FAILURE))
     }
   },
-  createServiceRequest(payload) {
-    return dispatch => {
-      dispatch(this.createService())
-      return API.createService(payload).then(({ data }) => this.createServiceSucces(data))
-    }
-  },
-  createService() {
-    return {
-      type: dashboardActionTypes.CREATE_SERVICE_REQUEST,
-    }
-  },
-  createServiceSucces(payload) {
-    return {
-      type: dashboardActionTypes.CREATE_SERVICE_SUCCESS,
-      payload,
-    }
-  },
   createItem() {
     return {
       type: dashboardActionTypes.CREATE_ITEM_REQUEST,

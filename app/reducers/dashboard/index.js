@@ -3,7 +3,6 @@ import { dashboardActionTypes, loginActionTypes } from '../../constants/index'
 const initialState = {
   profile: {},
   account: {},
-  services: [],
   items: [],
   reservations: [],
   displays: [],
