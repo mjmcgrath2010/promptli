@@ -67,7 +67,7 @@ const dashboardActions = {
   createItemRequest(payload) {
     return dispatch => {
       dispatch(this.createItem())
-      return API.itemsRoutes(payload)
+      return API.createItem(payload)
         .then(({ data }) => {
           return dispatch(this.createItemSuccess(data))
         })
