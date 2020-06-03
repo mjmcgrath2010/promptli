@@ -4,29 +4,24 @@ import Head from 'next/head'
 
 import withAuth from '../../lib/withAuth'
 import DashboardLayout from '../../components/dashboard/layouts'
-import createItem from '../../components/dashboard/createItem'
+import CreateItem from '../../components/dashboard/CreateItem'
 import DataTable from '../../components/common/DataTable'
 import FullScreenModal from '../../components/common/FullScreenModal'
 
-class Packages extends Component {
+class Items extends Component {
   static defaultProps = {}
   static propTypes = {}
-  static async getInitialProps() {
-    return {
-      packages: '',
-    }
-  }
 
   render() {
     return (
       <DashboardLayout>
         <Head>
-          <title>My Packages | Promptli</title>
+          <title>My Items | Promptli</title>
         </Head>
-        <FullScreenModal title="Add a new Package" btnText="Add Package">
-          <createItem onSubmit={() => {}} />
+        <FullScreenModal title="Add a new Item" btnText="Add Item">
+          <CreateItem onSubmit={() => {}} />
         </FullScreenModal>
-        <DataTable resource="packages" columnsHeaders={['name', 'description']} />
+        <DataTable resource="items" columnsHeaders={['name', 'description']} />
       </DashboardLayout>
     )
   }
@@ -35,7 +30,7 @@ class Packages extends Component {
 const mapStateToProps = state => {
   return {
     dashboard: state.dashboard,
-    services: state.dashboard.services,
+    items: state.dashboard.items,
   }
 }
 
@@ -45,4 +40,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withAuth(Packages))
+export default connect(mapStateToProps, mapDispatchToProps)(withAuth(Items))

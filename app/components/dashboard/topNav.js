@@ -102,8 +102,8 @@ class TopNav extends Component {
             icon: 'schedule',
           },
           {
-            text: 'Packages',
-            path: '/dashboard/packages',
+            text: 'Items',
+            path: '/dashboard/items',
             icon: 'local_offer',
           },
           {

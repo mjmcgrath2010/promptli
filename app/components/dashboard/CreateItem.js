@@ -59,7 +59,7 @@ class CreateItem extends Component {
       <Fragment>
         <Form
           onSubmit={this.onSubmit}
-          submitBtnText="Create Package"
+          submitBtnText="Create Item"
           fields={this.getFormFields()}
           onChange={this.onChange}
         />
