@@ -22,32 +22,32 @@ const ItemsModel = new schema({
   },
   availability: {
     monday: {
-      start: String,
-      end: String,
+      start: Date,
+      end: Date,
     },
     tuesday: {
-      start: String,
-      end: String,
+      start: Date,
+      end: Date,
     },
     wednesday: {
-      start: String,
-      end: String,
+      start: Date,
+      end: Date,
     },
     thursday: {
-      start: String,
-      end: String,
+      start: Date,
+      end: Date,
     },
     friday: {
-      start: String,
-      end: String,
+      start: Date,
+      end: Date,
     },
     saturday: {
-      start: String,
-      end: String,
+      start: Date,
+      end: Date,
     },
     sunday: {
-      start: String,
-      end: String,
+      start: Date,
+      end: Date,
     },
   },
   account: {
