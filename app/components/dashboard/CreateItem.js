@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Form from '../common/Form'
 import { dashboardActions } from '../../actions'
 
-class CreateService extends Component {
+class CreateItem extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -16,7 +16,7 @@ class CreateService extends Component {
         deposit: undefined,
         minimum: undefined,
       },
-      packages: [],
+      services: [],
     }
   }
   getFormFields = () => {
@@ -34,9 +34,9 @@ class CreateService extends Component {
         type: 'text',
       },
       {
-        name: 'packages',
-        label: 'Available Packages',
-        value: this.state.packages,
+        name: 'services',
+        label: 'Applicable Services',
+        value: this.state.services,
         type: 'select',
         values: [], // TODO: Hook up to services
         onChange: this.onSelectChange,
@@ -44,8 +44,8 @@ class CreateService extends Component {
     ]
   }
   onSubmit = () => {
-    const { accountId, createService } = this.props
-    createService({ ...this.state, accountId })
+    const { accountId, createItem } = this.props
+    createItem({ ...this.state, accountId })
   }
   onChange = ({ target: { value, name } }) => {
     this.setState({ [name]: value })
@@ -59,7 +59,7 @@ class CreateService extends Component {
       <Fragment>
         <Form
           onSubmit={this.onSubmit}
-          submitBtnText="Create Service"
+          submitBtnText="Create Item"
           fields={this.getFormFields()}
           onChange={this.onChange}
         />
@@ -68,10 +68,10 @@ class CreateService extends Component {
   }
 }
 
-CreateService.defaultProps = {
+CreateItem.defaultProps = {
   onSubmit: () => {},
 }
-CreateService.propTypes = {
+CreateItem.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 }
 
@@ -85,8 +85,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     dispatch: action => dispatch(action),
-    createService: payload => dispatch(dashboardActions.createServiceRequest(payload)),
+    createItem: payload => dispatch(dashboardActions.createItemRequest(payload)),
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateService)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateItem)

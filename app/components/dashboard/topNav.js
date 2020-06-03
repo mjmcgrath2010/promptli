@@ -97,13 +97,8 @@ class TopNav extends Component {
             icon: 'insert_invitation',
           },
           {
-            text: 'Services',
-            path: '/dashboard/services',
-            icon: 'schedule',
-          },
-          {
-            text: 'Packages',
-            path: '/dashboard/packages',
+            text: 'Items',
+            path: '/dashboard/items',
             icon: 'local_offer',
           },
           {

@@ -42,47 +42,30 @@ const dashboardActions = {
         .catch(e => this.handleError(dashboardActionTypes.CONNECT_GOOGLE_ACCOUNT_FAILURE))
     }
   },
-  createServiceRequest(payload) {
+  createItem() {
+    return {
+      type: dashboardActionTypes.CREATE_ITEM_REQUEST,
+    }
+  },
+  createItemRequest(payload) {
     return dispatch => {
-      dispatch(this.createService())
-      return API.createService(payload).then(({ data }) => this.createServiceSucces(data))
-    }
-  },
-  createService() {
-    return {
-      type: dashboardActionTypes.CREATE_SERVICE_REQUEST,
-    }
-  },
-  createServiceSucces(payload) {
-    return {
-      type: dashboardActionTypes.CREATE_SERVICE_SUCCESS,
-      payload,
-    }
-  },
-  createPackage() {
-    return {
-      type: dashboardActionTypes.CREATE_PACKAGE_REQUEST,
-    }
-  },
-  createPackageRequest(payload) {
-    return dispatch => {
-      dispatch(this.createPackage())
-      return API.createPackage(payload)
+      dispatch(this.createItem())
+      return API.createItem(payload)
         .then(({ data }) => {
-          return dispatch(this.createPackageSuccess(data))
+          return dispatch(this.createItemSuccess(data))
         })
-        .catch(e => this.createPackageError(e))
+        .catch(e => this.createItemError(e))
     }
   },
-  createPackageSuccess(payload) {
+  createItemSuccess(payload) {
     return {
-      type: dashboardActionTypes.CREATE_PACKAGE_SUCCESS,
+      type: dashboardActionTypes.CREATE_ITEM_SUCCESS,
       payload,
     }
   },
-  createPackageError(error) {
+  createItemError(error) {
     return {
-      type: dashboardActionTypes.CREATE_PACKAGE_FAILURE,
+      type: dashboardActionTypes.CREATE_ITEM_FAILURE,
       error,
     }
   },

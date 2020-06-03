@@ -29,10 +29,10 @@ const ReservationsModel = new schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'service',
   },
-  packages: [
+  items: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'package',
+      ref: 'item',
     },
   ],
   totalCost: {
@@ -49,9 +49,7 @@ const ReservationsModel = new schema({
 })
 
 ReservationsModel.methods = {
-  title() {
-
-  },
+  title() {},
 }
 
 module.exports = mongoose.model('reservation', ReservationsModel)

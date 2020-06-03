@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const controller = require('../controllers/Packages')
+const controller = require('../controllers/Item')
 // Use to ensure user is logged in
 // const auth = require('../services/auth')
 
