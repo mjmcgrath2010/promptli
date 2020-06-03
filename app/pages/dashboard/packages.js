@@ -4,7 +4,7 @@ import Head from 'next/head'
 
 import withAuth from '../../lib/withAuth'
 import DashboardLayout from '../../components/dashboard/layouts'
-import CreatePackage from '../../components/dashboard/CreatePackage'
+import createItem from '../../components/dashboard/createItem'
 import DataTable from '../../components/common/DataTable'
 import FullScreenModal from '../../components/common/FullScreenModal'
 
@@ -24,7 +24,7 @@ class Packages extends Component {
           <title>My Packages | Promptli</title>
         </Head>
         <FullScreenModal title="Add a new Package" btnText="Add Package">
-          <CreatePackage onSubmit={() => {}} />
+          <createItem onSubmit={() => {}} />
         </FullScreenModal>
         <DataTable resource="packages" columnsHeaders={['name', 'description']} />
       </DashboardLayout>

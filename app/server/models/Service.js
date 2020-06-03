@@ -22,12 +22,6 @@ const ServiceModel = new schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'account',
   },
-  packages: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'package',
-    },
-  ],
 })
 
 module.exports = mongoose.model('service', ServiceModel)

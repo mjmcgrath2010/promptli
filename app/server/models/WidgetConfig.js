@@ -32,10 +32,10 @@ const WidgetConfigModel = new schema({
       required: true,
     },
   ],
-  packages: [
+  items: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'package',
+      ref: 'item',
       required: true,
     },
   ],

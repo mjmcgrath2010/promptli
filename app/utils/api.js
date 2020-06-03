@@ -101,14 +101,14 @@ const API = {
   updateAccount(id, payload) {
     return this.update('account', payload, id)
   },
-  createPackage(payload) {
-    return this.post('packages', payload)
+  createItem(payload) {
+    return this.post('items', payload)
   },
-  fetchPackages() {
-    return this.get('packages')
+  fetchItems() {
+    return this.get('items')
   },
-  updatePackage(id, payload) {
-    return this.update('packages', payload, id)
+  updateItems(id, payload) {
+    return this.update('items', payload, id)
   },
   createService(payload) {
     return this.post('services', payload)

@@ -59,30 +59,30 @@ const dashboardActions = {
       payload,
     }
   },
-  createPackage() {
+  createItem() {
     return {
-      type: dashboardActionTypes.CREATE_PACKAGE_REQUEST,
+      type: dashboardActionTypes.CREATE_ITEM_REQUEST,
     }
   },
-  createPackageRequest(payload) {
+  createItemRequest(payload) {
     return dispatch => {
-      dispatch(this.createPackage())
-      return API.createPackage(payload)
+      dispatch(this.createItem())
+      return API.itemsRoutes(payload)
         .then(({ data }) => {
-          return dispatch(this.createPackageSuccess(data))
+          return dispatch(this.createItemSuccess(data))
         })
-        .catch(e => this.createPackageError(e))
+        .catch(e => this.createItemError(e))
     }
   },
-  createPackageSuccess(payload) {
+  createItemSuccess(payload) {
     return {
-      type: dashboardActionTypes.CREATE_PACKAGE_SUCCESS,
+      type: dashboardActionTypes.CREATE_ITEM_SUCCESS,
       payload,
     }
   },
-  createPackageError(error) {
+  createItemError(error) {
     return {
-      type: dashboardActionTypes.CREATE_PACKAGE_FAILURE,
+      type: dashboardActionTypes.CREATE_ITEM_FAILURE,
       error,
     }
   },

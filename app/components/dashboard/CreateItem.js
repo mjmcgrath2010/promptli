@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Form from '../common/Form'
 import { dashboardActions } from '../../actions'
 
-class CreatePackage extends Component {
+class CreateItem extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -44,8 +44,8 @@ class CreatePackage extends Component {
     ]
   }
   onSubmit = () => {
-    const { accountId, createPackage } = this.props
-    createPackage({ ...this.state, accountId })
+    const { accountId, createItem } = this.props
+    createItem({ ...this.state, accountId })
   }
   onChange = ({ target: { value, name } }) => {
     this.setState({ [name]: value })
@@ -68,10 +68,10 @@ class CreatePackage extends Component {
   }
 }
 
-CreatePackage.defaultProps = {
+CreateItem.defaultProps = {
   onSubmit: () => {},
 }
-CreatePackage.propTypes = {
+CreateItem.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 }
 
@@ -85,8 +85,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     dispatch: action => dispatch(action),
-    createPackage: payload => dispatch(dashboardActions.createPackageRequest(payload)),
+    createItem: payload => dispatch(dashboardActions.createItemRequest(payload)),
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreatePackage)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateItem)

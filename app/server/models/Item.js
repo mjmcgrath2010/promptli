@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const schema = mongoose.Schema
 
-const PackagesModel = new schema({
+const ItemsModel = new schema({
   name: {
     type: String,
     required: true,
@@ -10,12 +10,6 @@ const PackagesModel = new schema({
     type: String,
     required: true,
   },
-  services: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'service',
-    },
-  ],
   pricingUnits: [
     {
       fixed: {
@@ -42,4 +36,4 @@ const PackagesModel = new schema({
   },
 })
 
-module.exports = mongoose.model('package', PackagesModel)
+module.exports = mongoose.model('item', ItemsModel)

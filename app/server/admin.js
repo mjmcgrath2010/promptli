@@ -4,7 +4,7 @@ const AdminBroMongoose = require('admin-bro-mongoose')
 
 const User = require('./models/User')
 const Account = require('./models/Account')
-const Packages = require('./models/Packages')
+const Items = require('./models/Item')
 const Service = require('./models/Service')
 const Reservations = require('./models/Reservations')
 const WidgetConfig = require('./models/WidgetConfig')
@@ -22,7 +22,7 @@ const adminBro = new AdminBro({
       options: {},
     },
     {
-      resource: Packages,
+      resource: Items,
       options: {},
     },
     {
