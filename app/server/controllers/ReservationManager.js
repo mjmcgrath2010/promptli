@@ -4,7 +4,7 @@ const Item = require('../models/Item')
 
 exports.create = (req, res) => {
   const { startDate, endDate, customer, items, totalCost } = req.body
-  const _id = req.params.id
+  const account = req.params.id
 
   const reservationParams = {
     startDate,
@@ -12,7 +12,7 @@ exports.create = (req, res) => {
     customer,
     items,
     totalCost,
-    account: _id,
+    account,
   }
   /*
    *  TODO:
@@ -29,13 +29,13 @@ exports.create = (req, res) => {
         items.map(item => item.quantity)
       )
 
-      Account.findById(_id, err => {
+      Account.findById(account, err => {
         if (err) {
           return res.sendStatus(404)
         }
 
         Reservation.find({
-          account: _id,
+          account,
         })
           .where('startDate')
           .gte(startDate)
