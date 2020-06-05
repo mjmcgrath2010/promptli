@@ -25,10 +25,6 @@ const ReservationsModel = new schema({
   endDate: {
     type: mongoose.Schema.Types.Date,
   },
-  service: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'service',
-  },
   items: [
     {
       type: mongoose.Schema.Types.ObjectId,
