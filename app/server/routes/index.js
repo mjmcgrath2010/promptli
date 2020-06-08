@@ -17,7 +17,7 @@ router.use('/account', passport.authenticate('jwt'), accountRoutes)
 router.use('/dashboard', passport.authenticate('jwt'), dashboardRoutes)
 router.use('/items', passport.authenticate('jwt'), itemsRoutes)
 router.use('/widget-config', passport.authenticate('jwt'), widgetConfigRoutes)
-router.use('/create-booking', reservationManagerRoutes)
+router.use('/bookings', reservationManagerRoutes)
 router.use('/oauth', oauthRoutes)
 router.use('/public/v1', publicApiRoutes)
 
