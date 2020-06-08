@@ -37,7 +37,7 @@ const CardsContainer = styled.div`
   padding-bottom: 2em;
 `
 
-const Services = props => {
+const Items = props => {
   const { services, loading, emptyMessage, showViewMode } = props
   return (
     <ServicesContainer>
@@ -79,7 +79,7 @@ const Services = props => {
   )
 }
 
-Services.defaultProps = {
+Items.defaultProps = {
   services: [
     {
       name: "Mike's Special Stuff",
@@ -101,10 +101,10 @@ Services.defaultProps = {
   emptyMessage: 'Select a date and time and press search to see available services.',
 }
 
-Services.propTypes = {
+Items.propTypes = {
   services: PropTypes.array,
   loading: PropTypes.bool,
   emptyMessage: PropTypes.string,
 }
 
-export default Services
+export default Items

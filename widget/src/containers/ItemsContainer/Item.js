@@ -5,7 +5,7 @@ import Column from '../../components/ui/Column'
 
 const ServiceContainer = styled.div``
 
-const Service = props => {
+const Item = props => {
   const { name, description, pricingUnits, packages, id } = props
   return (
     <ServiceContainer>
@@ -22,8 +22,8 @@ const Service = props => {
   )
 }
 
-Service.defaultProps = {}
+Item.defaultProps = {}
 
-Service.propTypes = {}
+Item.propTypes = {}
 
-export default Service
+export default Item
