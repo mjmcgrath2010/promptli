@@ -38,7 +38,7 @@ const CardsContainer = styled.div`
 `
 
 const Items = props => {
-  const { services, loading, emptyMessage, showViewMode } = props
+  const { items, loading, emptyMessage, showViewMode } = props
   return (
     <ServicesContainer>
       <HeaderContainer>
@@ -50,15 +50,15 @@ const Items = props => {
         </SearchBarContainer>
       </HeaderContainer>
       <CardsContainer>
-        {services.length ? (
-          services.map(service => {
-            const { name, description, id } = service
+        {items.length ? (
+          items.map(item => {
+            const { name, description, id } = item
             return (
               <Card
                 primaryAction={() => console.log('next')}
                 secondaryAction={() => {
-                  console.log(service)
-                  showViewMode('show', service)
+                  console.log(item)
+                  showViewMode('show', item)
                 }}
                 secondaryBtnText="View"
                 title={name}
@@ -80,7 +80,7 @@ const Items = props => {
 }
 
 Items.defaultProps = {
-  services: [
+  items: [
     {
       name: "Mike's Special Stuff",
       description: 'The possibilities are endless',
@@ -102,7 +102,7 @@ Items.defaultProps = {
 }
 
 Items.propTypes = {
-  services: PropTypes.array,
+  items: PropTypes.array.isRequired,
   loading: PropTypes.bool,
   emptyMessage: PropTypes.string,
 }

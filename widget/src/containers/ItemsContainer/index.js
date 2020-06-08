@@ -6,27 +6,25 @@ import Item from './Item'
 import { useState } from 'preact/hooks'
 import Column from '../../components/ui/Column'
 
-const StyledServicesContainer = styled.div``
-
-const ItemsContainer = props => {
-  const { title } = props
+const ItemsContainer = ({ items }) => {
   const [view, setView] = useState('index')
-  const [service, setService] = useState({})
+  const [item, setItem] = useState({})
+
   const showView = (view, opts) => {
     switch (view) {
       case 'show':
         setView('show')
-        setService(opts)
+        setItem(opts)
         return <Item showViewMode={showView} {...opts} />
 
       case 'index':
       default:
         setView('index')
-        return <Items showViewMode={showView} />
+        return <Items items={items} showViewMode={showView} />
     }
   }
 
-  return <div>{showView(view, service)}</div>
+  return <div>{showView(view, item)}</div>
 }
 
 ItemsContainer.defaultProps = {}

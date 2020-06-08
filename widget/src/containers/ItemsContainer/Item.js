@@ -6,17 +6,12 @@ import Column from '../../components/ui/Column'
 const ServiceContainer = styled.div``
 
 const Item = props => {
-  const { name, description, pricingUnits, packages, id } = props
+  const { name, description, pricingUnits } = props
   return (
     <ServiceContainer>
       <Column>
-        <h1>
-          {' '}
-          {name}
-          {description}
-          {pricingUnits}
-          {packages}
-        </h1>
+        <h1>{name}</h1>
+        <h2> {description}</h2>
       </Column>
     </ServiceContainer>
   )
