@@ -2,10 +2,68 @@ const Reservation = require('../models/Reservations')
 const Account = require('../models/Account')
 const Item = require('../models/Item')
 
+exports.params = (req, res, next, id) => {
+  const { items, startDate, endDate } = req.body.items ? req.body : req.query
+  const itemArray =
+    typeof items !== 'string'
+      ? items
+      : items
+          .split(',')
+          .map(entry => !!entry && entry)
+          .filter(Boolean)
+
+  Account.findById(id, (err, account) => {
+    if (err) {
+      return res.send(err)
+    }
+
+    req.account = account._id
+
+    Item.find()
+      .where('_id')
+      .in(itemArray)
+      .then(itemsDocs => {
+        req.items = itemsDocs
+        req.quantity = Math.min.apply(
+          Math,
+          itemsDocs.map(item => item.quantity)
+        )
+
+        getReservations({ account, items: itemArray, startDate, endDate })
+          .then(reservations => {
+            req.reservations = reservations
+            next()
+          })
+          .catch(e => res.send(e))
+      })
+      .catch(e => res.send(e))
+  })
+}
+
+const getReservations = ({ items, startDate, endDate, account }) => {
+  return new Promise((resolve, reject) => {
+    Reservation.find({
+      account,
+      status: 'active',
+    })
+      .where('startDate')
+      .gte(startDate)
+      .where('startDate')
+      .lte(endDate)
+      .where('endDate')
+      .lte(endDate)
+      .where('endDate')
+      .gte(startDate)
+      .where('items')
+      .in(items)
+      .then(reservations => resolve(reservations))
+      .catch(e => reject(e))
+  })
+}
+
 exports.create = (req, res) => {
   const { startDate, endDate, customer, items, totalCost } = req.body
-  const account = req.params.id
-
+  const { account, quantity, reservations } = req
   const reservationParams = {
     startDate,
     endDate,
@@ -19,66 +77,25 @@ exports.create = (req, res) => {
    *   = Process stripe charges
    *   = Send Confirmation Emails
    */
+  let appointment
+  if (reservations.length >= quantity) {
+    return res.json({ error: 'reservation cannot be booked' })
+  }
 
-  Item.find()
-    .where('_id')
-    .in(items)
-    .then(items => {
-      const minQuantity = Math.min.apply(
-        Math,
-        items.map(item => item.quantity)
-      )
-
-      Account.findById(account, err => {
-        if (err) {
-          return res.sendStatus(404)
-        }
-
-        Reservation.find({
-          account,
-        })
-          .where('startDate')
-          .gte(startDate)
-          .where('startDate')
-          .lte(endDate)
-          .where('endDate')
-          .lte(endDate)
-          .where('endDate')
-          .gte(startDate)
-          .where('items')
-          .in(items)
-          .then(reservations => {
-            let appointment
-            if (reservations.length >= minQuantity) {
-              return res.json({ error: 'reservation cannot be booked' })
-            }
-
-            appointment = new Reservation(reservationParams)
-            appointment
-              .save()
-              .then(result => {
-                result.populate('items', (err, doc) => res.json(doc))
-              })
-              .catch(e => res.send(e))
-          })
-          .catch(e => res.send(e))
-      })
+  appointment = new Reservation(reservationParams)
+  appointment
+    .save()
+    .then(result => {
+      result.populate('items', (err, doc) => res.json(doc))
     })
     .catch(e => res.send(e))
 }
 
-exports.getReservationsByDate = (req, res, next) => {
-  /* TODO:
-   *   - Query Reservation by day
-   *
-   */
-  next()
-}
+// @return
+// { items: [<Item>,...] }
 
-exports.getReservationsByDateRange = (req, res, next) => {
-  /* TODO:
-   *   - Query Reservation by date range
-   *
-   */
-  next()
+exports.getAvailableItems = (req, res) => {
+  const items = req.items.map(item => req.reservations.length < item.quantity && item).filter(Boolean)
+
+  res.send({ items })
 }
