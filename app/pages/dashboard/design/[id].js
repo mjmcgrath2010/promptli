@@ -8,15 +8,14 @@ import withAuth from '../../../lib/withAuth'
 const DesignEdit = ({displays = [], identifier}) => {
   const router = useRouter()
   const { id } = router.query
-  let display
-  display = displays.find(d => d._id === id)
+  const display = displays.find(d => d._id === id)
 
   console.log(identifier)
   return (
     <DashboardLayout>
       <div>
       {display && (
-        <WidgetEditor {...display} identifier={identifier} widgetId={id}/>
+        <WidgetEditor identifier={identifier} widgetId={id}/>
       )}
       </div>
     </DashboardLayout>

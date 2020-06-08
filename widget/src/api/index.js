@@ -33,9 +33,9 @@ class PromptliAPI {
   }
   init() {
     return new Promise(resolve => {
-      this.get(`widget-config/${this.widgetId}`).then(({ items }) => {
-        this.items.push(...items)
-        resolve({ items })
+      this.get(`widget-config/${this.widgetId}`).then(payload => {
+        this.items.push(...payload.items)
+        resolve(payload)
       })
     })
   }

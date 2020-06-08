@@ -4,20 +4,22 @@ import { useEffect, useState } from 'preact/hooks'
 import PromptliAPI from '../api'
 
 const Widget = props => {
-  const { ctaText, title } = props
   const { identifier, widgetId } = props
-  const [items, setItems] = useState([])
+  const [state, setState] = useState({ items: [] })
   const api = new PromptliAPI(identifier, widgetId)
+  const { items, ...rest } = state
 
   useEffect(() => {
-    api.init().then(({ items }) => {
-      setItems(items)
-    })
+    if (identifier) {
+      api.init().then(state => {
+        setState(state)
+      })
+    }
   }, [identifier])
 
   return (
     <div>
-      <FullScreenModal api={api} itemIds={items} ctaText={ctaText} title={title} />
+      <FullScreenModal api={api} itemIds={items} {...rest} />
     </div>
   )
 }
