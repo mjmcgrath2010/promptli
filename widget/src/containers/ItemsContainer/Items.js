@@ -38,7 +38,7 @@ const CardsContainer = styled.div`
 `
 
 const Items = props => {
-  const { items, loading, emptyMessage, showViewMode } = props
+  const { items, loading, emptyMessage, showViewMode, setItems } = props
   return (
     <ServicesContainer>
       <HeaderContainer>
