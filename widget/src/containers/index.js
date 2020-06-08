@@ -1,15 +1,23 @@
 import { h } from 'preact'
 import FullScreenModal from '../displays/FullScreenModal'
-import { useMemo, useState } from 'preact/hooks'
+import { useEffect, useState } from 'preact/hooks'
 import PromptliAPI from '../api'
 
 const Widget = props => {
-  const { ctaText, title, identifier, widgetId } = props
-  const api = useMemo(() => new PromptliAPI(identifier, widgetId), [identifier, widgetId])
+  const { ctaText, title } = props
+  const { identifier, widgetId } = props
+  const [items, setItems] = useState([])
+  const api = new PromptliAPI(identifier, widgetId)
+
+  useEffect(() => {
+    api.init().then(({ items }) => {
+      setItems(items)
+    })
+  }, [identifier])
 
   return (
     <div>
-      <FullScreenModal api={api} ctaText={ctaText} title={title} />
+      <FullScreenModal api={api} itemIds={items} ctaText={ctaText} title={title} />
     </div>
   )
 }

@@ -3,12 +3,21 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Items from './Items'
 import Item from './Item'
-import { useState } from 'preact/hooks'
-import Column from '../../components/ui/Column'
+import { useEffect, useState } from 'preact/hooks'
+import dayjs from 'dayjs'
 
-const ItemsContainer = ({ items }) => {
+const ItemsContainer = ({ api, itemIds }) => {
   const [view, setView] = useState('index')
   const [item, setItem] = useState({})
+  const [items, setItems] = useState([])
+  useEffect(() => {
+    itemIds.length &&
+      api
+        .fetchItems({ startDate: dayjs().format(), endDate: dayjs().format(), items: itemIds.join(',') })
+        .then(({ items }) => {
+          setItems(items)
+        })
+  }, [itemIds])
 
   const showView = (view, opts) => {
     switch (view) {
@@ -20,7 +29,7 @@ const ItemsContainer = ({ items }) => {
       case 'index':
       default:
         setView('index')
-        return <Items items={items} showViewMode={showView} />
+        return <Items setItems={setItems} items={items} showViewMode={showView} />
     }
   }
 

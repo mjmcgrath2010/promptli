@@ -3,7 +3,7 @@ import axios from 'axios'
 class PromptliAPI {
   constructor(businessIdentifier, widgetId) {
     this.api = axios.create({
-      baseURL: `${process.env.API_BASE_URL}/api`,
+      baseURL: `${process.env.API_BASE_URL}`,
       timeout: 1000,
       headers: { 'content-type': 'application/x-www-form-urlencoded' },
     })
@@ -32,19 +32,25 @@ class PromptliAPI {
     console.log(e)
   }
   init() {
-    return this.get(`/widget-config/${this.businessIdentifier}/${this.widgetId}`).then(
-      ({ items }) => (this.items = items)
-    )
+    return new Promise(resolve => {
+      this.get(`widget-config/${this.widgetId}`).then(({ items }) => {
+        this.items.push(...items)
+        resolve({ items })
+      })
+    })
   }
   fetchItems(payload) {
     const queryString = Object.keys(payload)
       .map(key => key + '=' + payload[key])
       .join('&')
 
-    return this.get(`/bookings/${this.businessIdentifier}?${queryString}&items=${this.items.join(',')}`)
+    return this.get(`bookings/${this.businessIdentifier}?${queryString}`)
   }
   createBooking(payload) {
-    return this.post(`/bookings/${this.businessIdentifier}`, payload)
+    return this.post(`bookings/${this.businessIdentifier}`, payload)
+  }
+  getItems() {
+    return this.items
   }
 }
 
