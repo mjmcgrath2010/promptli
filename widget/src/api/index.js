@@ -1,9 +1,11 @@
 import axios from 'axios'
+
 const API = axios.create({
   baseURL: `${process.env.API_BASE_URL}`,
-  timeout: 5000,
+  timeout: 3000,
   headers: { 'content-type': 'application/x-www-form-urlencoded' },
 })
+
 class PromptliAPI {
   constructor(businessIdentifier, widgetId) {
     this.api = API
