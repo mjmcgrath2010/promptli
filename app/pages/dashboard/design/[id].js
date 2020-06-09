@@ -10,7 +10,6 @@ const DesignEdit = ({displays = [], identifier}) => {
   const { id } = router.query
   const display = displays.find(d => d._id === id)
 
-  console.log(identifier)
   return (
     <DashboardLayout>
       <div>

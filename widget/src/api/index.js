@@ -1,14 +1,12 @@
 import axios from 'axios'
 
-const API = axios.create({
-  baseURL: `${process.env.API_BASE_URL}`,
-  timeout: 3000,
-  headers: { 'content-type': 'application/x-www-form-urlencoded' },
-})
-
 class PromptliAPI {
   constructor(businessIdentifier, widgetId) {
-    this.api = API
+    this.api = axios.create({
+      baseURL: `${process.env.API_BASE_URL}`,
+      timeout: 1000,
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    })
     this.items = []
     this.businessIdentifier = businessIdentifier
     this.widgetId = widgetId
