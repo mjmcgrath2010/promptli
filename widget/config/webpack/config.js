@@ -1,7 +1,6 @@
 const webpack = require('webpack')
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const { NODE_ENV } = process.env
 
 const APP_DIR = path.join(__dirname, '/../../src')
 const BUILD_DIR = path.join(__dirname, '/../../build')
@@ -9,8 +8,8 @@ const BUILD_DIR = path.join(__dirname, '/../../build')
 let envConfig
 
 try {
-  if (NODE_ENV) {
-    envConfig = require(`./${NODE_ENV}`)
+  if (process.env.NODE_ENV) {
+    envConfig = require(`./${process.env.NODE_ENV}`)
   } else {
     envConfig = require('./production')
   }
