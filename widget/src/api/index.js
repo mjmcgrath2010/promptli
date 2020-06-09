@@ -33,7 +33,7 @@ class PromptliAPI {
   }
   init() {
     return new Promise(resolve => {
-      this.get(`widget-config/${this.widgetId}`).then(payload => {
+      this.get(`/widget-config/${this.widgetId}`).then(payload => {
         this.items.push(...payload.items)
         resolve(payload)
       })
@@ -44,10 +44,10 @@ class PromptliAPI {
       .map(key => key + '=' + payload[key])
       .join('&')
 
-    return this.get(`bookings/${this.businessIdentifier}?${queryString}`)
+    return this.get(`/bookings/${this.businessIdentifier}?${queryString}`)
   }
   createBooking(payload) {
-    return this.post(`bookings/${this.businessIdentifier}`, payload)
+    return this.post(`/bookings/${this.businessIdentifier}`, payload)
   }
   getItems() {
     return this.items
