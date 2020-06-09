@@ -4,7 +4,7 @@ class PromptliAPI {
   constructor(businessIdentifier, widgetId) {
     this.api = axios.create({
       baseURL: `${process.env.API_BASE_URL}`,
-      timeout: 1000,
+      timeout: 10000,
       headers: { 'content-type': 'application/x-www-form-urlencoded' },
     })
     this.items = []
