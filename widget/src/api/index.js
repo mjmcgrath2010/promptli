@@ -1,11 +1,12 @@
 import axios from 'axios'
-
+const API = axios.create({
+  baseURL: `${process.env.API_BASE_URL}`,
+  timeout: 5000,
+  headers: { 'content-type': 'application/x-www-form-urlencoded' },
+})
 class PromptliAPI {
   constructor(businessIdentifier, widgetId) {
-    this.api = axios.create({
-      timeout: 1000,
-      headers: { 'content-type': 'application/x-www-form-urlencoded' },
-    })
+    this.api = API
     this.items = []
     this.businessIdentifier = businessIdentifier
     this.widgetId = widgetId
@@ -14,7 +15,7 @@ class PromptliAPI {
   get(url) {
     return new Promise(resolve => {
       this.api
-        .get(`${process.env.API_BASE_URL}/${url}`)
+        .get(url)
         .then(response => resolve(response.data))
         .catch(e => this.handleError(e))
     })
@@ -22,7 +23,7 @@ class PromptliAPI {
   post(url, payload) {
     return new Promise(resolve => {
       this.api
-        .post(`${process.env.API_BASE_URL}/${url}`, payload)
+        .post(url, payload)
         .then(response => resolve(response.data))
         .catch(e => this.handleError(e))
     })
@@ -32,7 +33,7 @@ class PromptliAPI {
   }
   init() {
     return new Promise(resolve => {
-      this.get(`widget-config/${this.widgetId}`).then(payload => {
+      this.get(`/widget-config/${this.widgetId}`).then(payload => {
         this.items.push(...payload.items)
         resolve(payload)
       })
@@ -43,10 +44,10 @@ class PromptliAPI {
       .map(key => key + '=' + payload[key])
       .join('&')
 
-    return this.get(`bookings/${this.businessIdentifier}?${queryString}`)
+    return this.get(`/bookings/${this.businessIdentifier}?${queryString}`)
   }
   createBooking(payload) {
-    return this.post(`bookings/${this.businessIdentifier}`, payload)
+    return this.post(`/bookings/${this.businessIdentifier}`, payload)
   }
   getItems() {
     return this.items
