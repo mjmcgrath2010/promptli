@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const BUILD_DIR = path.join(__dirname, '/../../build')
 const SRC_DIR = path.join(__dirname, '/../../src')
-const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   devServer: {
@@ -20,7 +19,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Promptli Widget',
       template: `${SRC_DIR}/index.html`,
-    }),
-    new Dotenv(),
+    })
   ],
 }

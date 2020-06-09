@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const APP_DIR = path.join(__dirname, '/../../src')
 const BUILD_DIR = path.join(__dirname, '/../../build')
+const Dotenv = require('dotenv-webpack')
 
 let envConfig
 
@@ -59,13 +60,7 @@ const sharedConfig = {
       },
     ],
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        API_BASE_URL: JSON.stringify(process.env.API_BASE_URL),
-      },
-    }),
-  ],
+  plugins: [new Dotenv()],
 }
 
 const webpackConfig = { ...sharedConfig, ...envConfig }
