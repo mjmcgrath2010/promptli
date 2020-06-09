@@ -42,7 +42,7 @@ exports.create = (req, res, next) => {
   const reservations = new Reservations(req.body)
   reservations
     .save()
-    .then(() => res.json(account))
+    .then(reservation => res.json(reservation))
     .catch(err => next(err))
 }
 

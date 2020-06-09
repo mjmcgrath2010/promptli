@@ -37,8 +37,8 @@ const CardsContainer = styled.div`
   padding-bottom: 2em;
 `
 
-const Services = props => {
-  const { services, loading, emptyMessage, showViewMode } = props
+const Items = props => {
+  const { items, loading, emptyMessage, showViewMode, setItems } = props
   return (
     <ServicesContainer>
       <HeaderContainer>
@@ -50,15 +50,15 @@ const Services = props => {
         </SearchBarContainer>
       </HeaderContainer>
       <CardsContainer>
-        {services.length ? (
-          services.map(service => {
-            const { name, description, id } = service
+        {items.length ? (
+          items.map(item => {
+            const { name, description, id } = item
             return (
               <Card
                 primaryAction={() => console.log('next')}
                 secondaryAction={() => {
-                  console.log(service)
-                  showViewMode('show', service)
+                  console.log(item)
+                  showViewMode('show', item)
                 }}
                 secondaryBtnText="View"
                 title={name}
@@ -79,32 +79,16 @@ const Services = props => {
   )
 }
 
-Services.defaultProps = {
-  services: [
-    {
-      name: "Mike's Special Stuff",
-      description: 'The possibilities are endless',
-      id: 1,
-    },
-    {
-      name: "Lesley's Special Stuff",
-      description: 'Anything can happen',
-      id: 2,
-    },
-    {
-      name: "Mimi's Special Stuff",
-      description: 'Who the fuck knows',
-      id: 3,
-    },
-  ],
+Items.defaultProps = {
+  items: [],
   loading: false,
   emptyMessage: 'Select a date and time and press search to see available services.',
 }
 
-Services.propTypes = {
-  services: PropTypes.array,
+Items.propTypes = {
+  items: PropTypes.array.isRequired,
   loading: PropTypes.bool,
   emptyMessage: PropTypes.string,
 }
 
-export default Services
+export default Items

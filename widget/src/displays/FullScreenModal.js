@@ -3,18 +3,18 @@ import PropTypes from 'prop-types'
 import Modal from '../components/ui/Modal'
 import { useState } from 'preact/hooks'
 import Button from '../components/ui/Button'
-import AddonsContainer from '../containers/AddonsContainer'
 import ConfirmationContainer from '../containers/ConfirmationContainer'
-import ServicesContainer from '../containers/ServicesContainer'
+import ItemsContainer from '../containers/ItemsContainer'
 
 const FullScreenModal = props => {
   const [state, setState] = useState({ dialogOpen: false })
   const [screen, setScreen] = useState(1)
+  const { api, ctaText, title, itemIds } = props
+  const { dialogOpen } = state
 
   const views = {
-    1: <ServicesContainer />,
-    2: <AddonsContainer />,
-    3: <ConfirmationContainer />,
+    1: <ItemsContainer itemIds={itemIds} api={api} />,
+    2: <ConfirmationContainer api={api} />,
   }
 
   const getScreen = (screen = 1) => {
@@ -34,8 +34,7 @@ const FullScreenModal = props => {
   }
 
   const closeDialog = () => setState({ ...state, dialogOpen: false })
-  const { dialogOpen } = state
-  const { ctaText, title } = props
+
   return (
     <div>
       <Button onClick={openDialog} text={ctaText || 'Click here!'} />

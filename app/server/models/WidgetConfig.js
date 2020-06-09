@@ -27,13 +27,6 @@ const WidgetConfigModel = new schema({
     ref: 'account',
     required: true,
   },
-  services: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'service',
-      required: true,
-    },
-  ],
   items: [
     {
       type: mongoose.Schema.Types.ObjectId,

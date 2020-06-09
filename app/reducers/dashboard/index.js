@@ -14,6 +14,7 @@ const dashboard = (state = initialState, action) => {
       const activeAccount = action.payload.profile.accounts[0]
       return { ...state, account: activeAccount, ...action.payload }
     case loginActionTypes.LOGOUT_SUCCESS:
+      return initialState
     case dashboardActionTypes.CREATE_ITEM_SUCCESS:
       return { ...state, ...action.payload }
     default:

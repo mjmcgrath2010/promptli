@@ -1,5 +1,5 @@
 import { render, h } from 'preact'
-import { useState, useEffect } from 'preact/hooks'
+import { useState, useEffect, useMemo } from 'preact/hooks'
 import Widget from './containers/index'
 import { ThemeProvider } from 'styled-components'
 import theme from './theme'

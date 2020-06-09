@@ -5,16 +5,16 @@ import WidgetEditor from '../../../components/dashboard/WidgetEditor'
 import DashboardLayout from '../../../components/dashboard/layouts'
 import withAuth from '../../../lib/withAuth'
 
-const DesignEdit = ({displays = []}) => {
+const DesignEdit = ({displays = [], identifier}) => {
   const router = useRouter()
   const { id } = router.query
-  let display
-  display = displays.find(d => d._id === id)
+  const display = displays.find(d => d._id === id)
+
   return (
     <DashboardLayout>
       <div>
       {display && (
-        <WidgetEditor {...display}/>
+        <WidgetEditor identifier={identifier} widgetId={id}/>
       )}
       </div>
     </DashboardLayout>
@@ -24,6 +24,7 @@ const DesignEdit = ({displays = []}) => {
 const mapStateToProps = ({ dashboard }) => {
   return {
     displays: dashboard.displays,
+    identifier: dashboard.account
   }
 }
 
