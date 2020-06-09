@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { NODE_ENV } = process.env
@@ -59,7 +60,13 @@ const sharedConfig = {
       },
     ],
   },
-  plugins: [],
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        API_BASE_URL: JSON.stringify(process.env.API_BASE_URL),
+      },
+    }),
+  ],
 }
 
 const webpackConfig = { ...sharedConfig, ...envConfig }
