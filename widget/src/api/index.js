@@ -20,6 +20,7 @@ class PromptliAPI {
         .catch(e => this.handleError(e))
     })
   }
+
   post(url, payload) {
     return new Promise(resolve => {
       this.api
@@ -39,6 +40,7 @@ class PromptliAPI {
       })
     })
   }
+
   fetchItems(payload) {
     const queryString = Object.keys(payload)
       .map(key => key + '=' + payload[key])
@@ -46,9 +48,11 @@ class PromptliAPI {
 
     return this.get(`/bookings/${this.businessIdentifier}?${queryString}`)
   }
+
   createBooking(payload) {
     return this.post(`/bookings/${this.businessIdentifier}`, payload)
   }
+
   getItems() {
     return this.items
   }
