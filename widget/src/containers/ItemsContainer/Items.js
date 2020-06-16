@@ -5,6 +5,7 @@ import DateTimePicker from '../../components/ui/DateTImeSelector'
 import Card from '../../components/ui/Card'
 import Button from '../../components/ui/Button'
 import LoadingSpinner from '../../components/ui/LoadingSpinner'
+import { useEffect, useState } from 'preact/hooks'
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -38,14 +39,30 @@ const CardsContainer = styled.div`
 `
 
 const Items = props => {
-  const { items, loading, emptyMessage, showViewMode, setItems } = props
+  const [dateRange, setDateRange] = useState({
+    startDate: '',
+    endDate: '',
+    startTime: '',
+    endTime: '',
+  })
+  const { items, loading, emptyMessage, showViewMode, api, setItems } = props
+
+  const fetchItems = () => {
+    console.log(items)
+    const itemList = items.map(item => item._id).join(',')
+    console.log(itemList)
+    api.fetchItems({ ...dateRange, items: itemList }).then(({ items }) => {
+      setItems(items)
+    })
+  }
+
   return (
     <ServicesContainer>
       <HeaderContainer>
         <SearchBarContainer>
-          <DateTimePicker />
+          <DateTimePicker onChange={setDateRange} />
           <ButtonContainer>
-            <Button onClick={() => console.log('searching')} text="Search" />
+            <Button onClick={fetchItems} text="Search" />
           </ButtonContainer>
         </SearchBarContainer>
       </HeaderContainer>

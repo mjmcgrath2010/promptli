@@ -1,6 +1,5 @@
 import { h } from 'preact'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import Items from './Items'
 import Item from './Item'
 import { useEffect, useState } from 'preact/hooks'
@@ -29,7 +28,7 @@ const ItemsContainer = ({ api, itemIds }) => {
       case 'index':
       default:
         setView('index')
-        return <Items setItems={setItems} items={items} showViewMode={showView} />
+        return <Items api={api} setItems={setItems} items={items} showViewMode={showView} />
     }
   }
 

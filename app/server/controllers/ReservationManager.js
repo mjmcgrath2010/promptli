@@ -95,7 +95,11 @@ exports.create = (req, res) => {
 // { items: [<Item>,...] }
 
 exports.getAvailableItems = (req, res) => {
-  const items = req.items.map(item => req.reservations.length < item.quantity && item).filter(Boolean)
+  const items = req.items
+    .map(item => {
+      return item.quantity > req.reservations.length && item
+    })
+    .filter(Boolean)
 
   res.send({ items })
 }

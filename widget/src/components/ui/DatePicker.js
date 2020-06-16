@@ -16,11 +16,11 @@ const DatesContainer = styled.div`
 `
 
 const DatePicker = ({ onChange }) => {
-  const [startDate, setStartDate] = useState(date().format('MM/DD/YYYY'))
-  const [endDate, setEndDate] = useState(date().format('MM/DD/YYYY'))
+  const [startDate, setStartDate] = useState(date().format('YYYY-MM-DD'))
+  const [endDate, setEndDate] = useState(date().format('YYYY-MM-DD'))
 
   const onDateChange = cb => {
-    return date => cb(date)
+    return d => cb(date(d).format('YYYY-MM-DD'))
   }
 
   useEffect(() => {
