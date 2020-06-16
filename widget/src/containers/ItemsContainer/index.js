@@ -28,7 +28,7 @@ const ItemsContainer = ({ api, itemIds }) => {
       case 'index':
       default:
         setView('index')
-        return <Items api={api} setItems={setItems} items={items} showViewMode={showView} />
+        return <Items api={api} itemIds={itemIds} setItems={setItems} items={items} showViewMode={showView} />
     }
   }
 

@@ -45,12 +45,10 @@ const Items = props => {
     startTime: '',
     endTime: '',
   })
-  const { items, loading, emptyMessage, showViewMode, api, setItems } = props
+  const { items, loading, emptyMessage, showViewMode, api, setItems, itemIds } = props
 
   const fetchItems = () => {
-    console.log(items)
-    const itemList = items.map(item => item._id).join(',')
-    console.log(itemList)
+    const itemList = itemIds.join(',')
     api.fetchItems({ ...dateRange, items: itemList }).then(({ items }) => {
       setItems(items)
     })
