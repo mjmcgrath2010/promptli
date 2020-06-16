@@ -97,7 +97,8 @@ exports.create = (req, res) => {
 exports.getAvailableItems = (req, res) => {
   const items = req.items
     .map(item => {
-      return item.quantity > req.reservations.length && item
+      let itemReservations = req.reservations.map(res => res.items.includes(item._id)).filter(Boolean)
+      return item.quantity > itemReservations.length && item
     })
     .filter(Boolean)
 
