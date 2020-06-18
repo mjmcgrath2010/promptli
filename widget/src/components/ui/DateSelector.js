@@ -4,7 +4,11 @@ import styled from 'styled-components'
 
 import DatePicker from 'react-date-picker'
 
-const DateSelectorContainer = styled.div``
+const DateSelectorContainer = styled.div`
+  width: 150px;
+`
+
+const DateSelectorComponent = styled(DatePicker)``
 
 const Title = styled.div`
   padding: 0.25em;
@@ -18,7 +22,15 @@ const DateSelector = props => {
     <DateSelectorContainer>
       <div className="promptli">
         <Title>{title}</Title>
-        <DatePicker onChange={onChange} value={value} name={name} />
+        <DateSelectorComponent
+          monthPlaceholder={value.format('YYYY')}
+          dayPlaceholder={value.format('DD')}
+          monthPlaceholder={value.format('MM')}
+          clearIcon={null}
+          onChange={onChange}
+          value={value.toDate()}
+          name={name}
+        />
       </div>
     </DateSelectorContainer>
   )

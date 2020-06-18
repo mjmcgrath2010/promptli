@@ -16,23 +16,31 @@ const DatesContainer = styled.div`
 `
 
 const DatePicker = ({ onChange }) => {
-  const [startDate, setStartDate] = useState(new Date())
-  const [endDate, setEndDate] = useState(new Date())
+  const [startDate, setStartDate] = useState(date())
+  const [endDate, setEndDate] = useState(
+    date()
+      .add(1, 'day')
+  )
 
   useEffect(() => {
     onChange({
-      startDate: date(startDate).format('YYYY-MM-DD'),
-      endDate: date(endDate).format('YYYY-MM-DD'),
+      startDate: date(startDate).format('MM-DD-YYYY'),
+      endDate: date(endDate).format('MM-DD-YYYY'),
     })
   }, [startDate, endDate])
 
   return (
     <DatesContainer>
       <Column>
-        <DateSelector value={startDate} name="startDate" onChange={setStartDate} title="Start Date" />
+        <DateSelector
+          value={startDate}
+          name="startDate"
+          onChange={setStartDate}
+          title="Start Date"
+        />
       </Column>
       <Column>
-        <DateSelector value={endDate} name="endDate" onChange={setEndDate} title="End Date" />
+        <DateSelector value={endDate} name="endDate" dayPlaceholder={endDate} onChange={setEndDate} title="End Date" />
       </Column>
     </DatesContainer>
   )
