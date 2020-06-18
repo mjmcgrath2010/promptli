@@ -1,12 +1,11 @@
 import { h } from 'preact'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import date from 'dayjs'
 
 import DatePicker from 'react-date-picker'
 
-const DateSelectorContainer = styled.div`
-  width: 150px;
-`
+const DateSelectorContainer = styled.div``
 
 const DateSelectorComponent = styled(DatePicker)``
 
@@ -16,20 +15,23 @@ const Title = styled.div`
 `
 
 const DateSelector = props => {
-  const { title, onChange, value, name } = props
+  const { title, onChange, value, name, minDate, maxDate, ...rest } = props
 
   return (
     <DateSelectorContainer>
       <div className="promptli">
         <Title>{title}</Title>
         <DateSelectorComponent
-          monthPlaceholder={value.format('YYYY')}
+          yearPlaceholder={value.format('YYYY')}
           dayPlaceholder={value.format('DD')}
           monthPlaceholder={value.format('MM')}
           clearIcon={null}
-          onChange={onChange}
+          onChange={val => onChange(date(val))}
           value={value.toDate()}
           name={name}
+          minDate={minDate}
+          maxDate={maxDate}
+          {...rest}
         />
       </div>
     </DateSelectorContainer>
