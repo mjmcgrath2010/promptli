@@ -20,6 +20,7 @@ const slideUp = keyframes`
   }
   to {
     transform: translateY(0%);
+    opacity: 100%;
   }
 `
 
@@ -29,6 +30,7 @@ const slideDown = keyframes`
   }
   to {
     transform: translateY(100%);
+     opacity: 0%;
   }
 `
 
@@ -45,6 +47,8 @@ const FullScreenModal = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  opacity: 0;
+  transform: translateY(100%);
 `
 
 const ModalHeader = styled.div`

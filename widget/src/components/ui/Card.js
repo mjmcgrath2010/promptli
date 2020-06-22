@@ -2,6 +2,7 @@ import { h } from 'preact'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Button from './Button'
+import { useEffect } from 'preact/hooks'
 
 const StyledCard = styled.div`
   width: 300px;
@@ -65,10 +66,19 @@ const FloatRight = styled.div`
 `
 
 const Card = props => {
-  const { title, primaryBtnText, secondaryBtnText, imageUrl, primaryAction, secondaryAction, description } = props
+  const {
+    title,
+    primaryBtnText,
+    secondaryBtnText,
+    imageUrl,
+    primaryAction,
+    secondaryAction,
+    description,
+    ...rest
+  } = props
 
   return (
-    <StyledCard>
+    <StyledCard {...rest}>
       <Header>
         <Title>{title}</Title>
       </Header>

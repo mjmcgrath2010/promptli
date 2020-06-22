@@ -29,9 +29,11 @@ class PromptliAPI {
         .catch(e => this.handleError(e))
     })
   }
+
   handleError(e) {
     console.log(e)
   }
+
   init() {
     return new Promise(resolve => {
       this.get(`/widget-config/${this.widgetId}`).then(payload => {
