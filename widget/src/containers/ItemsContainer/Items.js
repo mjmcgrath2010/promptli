@@ -5,6 +5,7 @@ import DateTimePicker from '../../components/ui/DateTImeSelector'
 import Card from '../../components/ui/Card'
 import Button from '../../components/ui/Button'
 import LoadingSpinner from '../../components/ui/LoadingSpinner'
+import { useState } from 'preact/hooks'
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -38,39 +39,70 @@ const CardsContainer = styled.div`
 `
 
 const Items = props => {
-  const { items, loading, emptyMessage, showViewMode, setItems } = props
+  const [dateRange, setDateRange] = useState({
+    startDate: '',
+    endDate: '',
+    startTime: '',
+    endTime: '',
+  })
+
+  const {
+    items,
+    loading,
+    emptyMessage,
+    showViewMode,
+    api,
+    setItems,
+    itemIds,
+    selectItem,
+    removeItem,
+    selectedItems,
+  } = props
+
+  const fetchItems = () => {
+    const itemList = itemIds.join(',')
+    api.fetchItems({ ...dateRange, items: itemList }).then(({ items }) => {
+      setItems(items)
+    })
+  }
+
+  const handleSelect = (id, isSelected) => e => {
+    if (e) {
+      e.preventDefault()
+    }
+    return isSelected ? removeItem(id) : selectItem(id)
+  }
+
   return (
     <ServicesContainer>
       <HeaderContainer>
         <SearchBarContainer>
-          <DateTimePicker />
+          <DateTimePicker onChange={setDateRange} />
           <ButtonContainer>
-            <Button onClick={() => console.log('searching')} text="Search" />
+            <Button onClick={fetchItems} text="Search" />
           </ButtonContainer>
         </SearchBarContainer>
       </HeaderContainer>
       <CardsContainer>
-        {items.length ? (
+        {loading && <LoadingSpinner />}
+        {!loading && items.length ? (
           items.map(item => {
-            const { name, description, id } = item
+            const { name, description, _id } = item
+            let isSelected = selectedItems.includes(_id)
             return (
               <Card
-                primaryAction={() => console.log('next')}
+                primaryAction={handleSelect(_id, isSelected)}
                 secondaryAction={() => {
-                  console.log(item)
                   showViewMode('show', item)
                 }}
                 secondaryBtnText="View"
                 title={name}
-                primaryBtnText="Select"
+                primaryBtnText={isSelected ? 'Remove' : 'Select'}
                 description={description}
-                id={id}
-                key={id}
+                key={_id}
               />
             )
           })
-        ) : loading ? (
-          <LoadingSpinner />
         ) : (
           <div>{emptyMessage}</div>
         )}

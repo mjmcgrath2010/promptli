@@ -14,7 +14,6 @@ const DateTimePicker = props => {
   })
 
   const handleChange = (updatedState = {}) => {
-    console.log(state)
     setState({
       ...state,
       ...updatedState,

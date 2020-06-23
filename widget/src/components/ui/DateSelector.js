@@ -3,16 +3,11 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import date from 'dayjs'
 
-//https://www.npmjs.com/package/datepickerdate
-import 'datepickerdate/lib/index.css'
-import { Datepicker } from 'datepickerdate'
+import DatePicker from 'react-date-picker'
 
-import '../../assests/datepicker.css'
-import DateTimePicker from './DateTImeSelector'
+const DateSelectorContainer = styled.div``
 
-const DateSelectorContainer = styled.div`
-  max-width: 300px;
-`
+const DateSelectorComponent = styled(DatePicker)``
 
 const Title = styled.div`
   padding: 0.25em;
@@ -20,20 +15,23 @@ const Title = styled.div`
 `
 
 const DateSelector = props => {
-  const { title, onChange, value, name } = props
-
-  const handleChange = (name, value) => onChange(value)
+  const { title, onChange, value, name, minDate, maxDate, ...rest } = props
 
   return (
     <DateSelectorContainer>
       <div className="promptli">
         <Title>{title}</Title>
-        <Datepicker
-          className="promptli"
+        <DateSelectorComponent
+          yearPlaceholder={value.format('YYYY')}
+          dayPlaceholder={value.format('DD')}
+          monthPlaceholder={value.format('MM')}
+          clearIcon={null}
+          onChange={val => onChange(date(val))}
+          value={value.toDate()}
           name={name}
-          value={value}
-          placeholder="Your custom placeholder"
-          onDateChanged={handleChange}
+          minDate={minDate}
+          maxDate={maxDate}
+          {...rest}
         />
       </div>
     </DateSelectorContainer>
@@ -42,13 +40,12 @@ const DateSelector = props => {
 
 DateSelector.defaultProps = {
   onChange: () => {},
-  value: date().format('MM/DD/YYYY'),
 }
 
 DateSelector.propTypes = {
   title: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.string.isRequired,
 }
 
 export default DateSelector
