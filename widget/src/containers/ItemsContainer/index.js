@@ -1,18 +1,18 @@
 import { h } from 'preact'
 import PropTypes from 'prop-types'
 import { useSelector, useDispatch } from 'react-redux'
-import { useEffect, useState } from 'preact/hooks'
+import { useEffect } from 'preact/hooks'
 import dayjs from 'dayjs'
 
 import Items from './Items'
 import Item from './Item'
-import { setItems } from '../../actions/items/actionCreators'
+import { setItems, setItemsView, setItem } from '../../actions/items/actionCreators'
 
 const ItemsContainer = ({ api, itemIds, selectedItems, selectItem, removeItem }) => {
-  const [view, setView] = useState('index')
-  const [item, setItem] = useState({})
-  const items = useSelector(({ items }) => items.items)
   const dispatch = useDispatch()
+  const view = useSelector(({ items }) => items.view)
+  const items = useSelector(({ items }) => items.items)
+  const item = useSelector(({ items }) => items.item)
 
   useEffect(() => {
     itemIds.length &&
@@ -24,17 +24,19 @@ const ItemsContainer = ({ api, itemIds, selectedItems, selectItem, removeItem })
   }, [])
 
   const dispatchSetItems = items + dispatch(setItems(items))
+  const dispatchItemsView = view => dispatch(setItemsView(view))
+  const dispatchSetItem = item => dispatch(setItem(item))
 
   const showView = (view, opts) => {
     switch (view) {
       case 'show':
-        setView('show')
-        setItem(opts)
+        dispatchItemsView('show')
+        dispatchSetItem(opts)
         return <Item selectItem={selectItem} removeItem={removeItem} showViewMode={showView} {...opts} />
 
       case 'index':
       default:
-        setView('index')
+        dispatchItemsView('index')
         return (
           <Items
             api={api}
