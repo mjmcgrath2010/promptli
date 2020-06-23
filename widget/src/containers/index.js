@@ -1,4 +1,4 @@
-import { h } from 'preact'
+import { h, Fragment } from 'preact'
 import FullScreenModal from '../displays/FullScreenModal'
 import { useEffect, useState } from 'preact/hooks'
 import PromptliAPI from '../api'
@@ -38,14 +38,18 @@ const Widget = props => {
 
   return (
     <div>
-      <FullScreenModal
-        api={api}
-        itemIds={items}
-        selectedItems={selectedItems}
-        removeItem={removeItem}
-        selectItem={selectItem}
-        {...rest}
-      />
+      {initialized ? (
+        <FullScreenModal
+          api={api}
+          itemIds={items}
+          selectedItems={selectedItems}
+          removeItem={removeItem}
+          selectItem={selectItem}
+          {...rest}
+        />
+      ) : (
+        <Fragment />
+      )}
     </div>
   )
 }
