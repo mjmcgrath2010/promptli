@@ -5,7 +5,7 @@ import DateTimePicker from '../../components/ui/DateTImeSelector'
 import Card from '../../components/ui/Card'
 import Button from '../../components/ui/Button'
 import LoadingSpinner from '../../components/ui/LoadingSpinner'
-import { useEffect, useState } from 'preact/hooks'
+import { useState } from 'preact/hooks'
 
 const HeaderContainer = styled.div`
   display: flex;

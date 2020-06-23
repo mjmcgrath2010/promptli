@@ -9,6 +9,7 @@ const ItemsContainer = ({ api, itemIds, selectedItems, selectItem, removeItem })
   const [view, setView] = useState('index')
   const [item, setItem] = useState({})
   const [items, setItems] = useState([])
+
   useEffect(() => {
     itemIds.length &&
       api
