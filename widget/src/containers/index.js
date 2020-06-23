@@ -15,9 +15,6 @@ const Widget = props => {
   const widgetState = useSelector(({ widget }) => widget)
   const { items, initialized, ...rest } = widgetState
 
-  // TODO: Remove once children are off this
-  const api = new PromptliAPI(identifier, widgetId)
-
   if (identifier && widgetId && !apiReady) {
     dispatch(initPromptliApi({ identifier, widgetId }))
   }
@@ -40,7 +37,6 @@ const Widget = props => {
     <div>
       {initialized ? (
         <FullScreenModal
-          api={api}
           itemIds={items}
           selectedItems={selectedItems}
           removeItem={removeItem}

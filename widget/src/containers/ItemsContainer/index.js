@@ -8,10 +8,9 @@ import Items from './Items'
 import Item from './Item'
 import { setItems, setItemsView, setItem, fetchItems } from '../../actions/items/actionCreators'
 
-const ItemsContainer = ({ api, itemIds, selectedItems, selectItem, removeItem }) => {
+const ItemsContainer = ({ itemIds, selectedItems, selectItem, removeItem }) => {
   const dispatch = useDispatch()
   const view = useSelector(({ items }) => items.view)
-  const items = useSelector(({ items }) => items.items)
   const item = useSelector(({ items }) => items.item)
 
   useEffect(() => {
@@ -42,7 +41,6 @@ const ItemsContainer = ({ api, itemIds, selectedItems, selectItem, removeItem })
         dispatchItemsView('index')
         return (
           <Items
-            api={api}
             selectedItems={selectedItems}
             selectItem={selectItem}
             removeItem={removeItem}
