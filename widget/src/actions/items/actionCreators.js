@@ -1,4 +1,4 @@
-import { SET_ITEMS, SET_ITEMS_VIEW, SET_ITEM } from './actionsTypes'
+import { SET_ITEMS, SET_ITEMS_VIEW, SET_ITEM, SELECT_ITEM, REMOVE_ITEM } from './actionsTypes'
 
 export const setItems = payload => {
   return {
@@ -17,6 +17,20 @@ export const setItemsView = (payload = 'index') => {
 export const setItem = payload => {
   return {
     type: SET_ITEM,
+    payload,
+  }
+}
+
+export const selectItem = payload => {
+  return {
+    type: SELECT_ITEM,
+    payload,
+  }
+}
+
+export const removeItem = payload => {
+  return {
+    type: REMOVE_ITEM,
     payload,
   }
 }
