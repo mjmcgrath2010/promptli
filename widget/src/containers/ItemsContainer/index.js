@@ -1,23 +1,29 @@
 import { h } from 'preact'
 import PropTypes from 'prop-types'
-import Items from './Items'
-import Item from './Item'
+import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'preact/hooks'
 import dayjs from 'dayjs'
+
+import Items from './Items'
+import Item from './Item'
+import { setItems } from '../../actions/items/actionCreators'
 
 const ItemsContainer = ({ api, itemIds, selectedItems, selectItem, removeItem }) => {
   const [view, setView] = useState('index')
   const [item, setItem] = useState({})
-  const [items, setItems] = useState([])
+  const items = useSelector(({ items }) => items.items)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     itemIds.length &&
       api
         .fetchItems({ startDate: dayjs().format(), endDate: dayjs().format(), items: itemIds.join(',') })
         .then(({ items }) => {
-          setItems(items)
+          dispatch(setItems(items))
         })
   }, [])
+
+  const dispatchSetItems = items + dispatch(setItems(items))
 
   const showView = (view, opts) => {
     switch (view) {
@@ -36,7 +42,7 @@ const ItemsContainer = ({ api, itemIds, selectedItems, selectItem, removeItem })
             selectItem={selectItem}
             removeItem={removeItem}
             itemIds={itemIds}
-            setItems={setItems}
+            setItems={dispatchSetItems}
             items={items}
             showViewMode={showView}
           />
