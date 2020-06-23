@@ -6,7 +6,7 @@ import dayjs from 'dayjs'
 
 import Items from './Items'
 import Item from './Item'
-import { setItems, setItemsView, setItem } from '../../actions/items/actionCreators'
+import { setItems, setItemsView, setItem, fetchItems } from '../../actions/items/actionCreators'
 
 const ItemsContainer = ({ api, itemIds, selectedItems, selectItem, removeItem }) => {
   const dispatch = useDispatch()
@@ -15,14 +15,10 @@ const ItemsContainer = ({ api, itemIds, selectedItems, selectItem, removeItem })
   const item = useSelector(({ items }) => items.item)
 
   useEffect(() => {
-    api
-      .fetchItems({ startDate: dayjs().format(), endDate: dayjs().format(), items: itemIds.join(',') })
-      .then(({ items }) => {
-        dispatch(setItems(items))
-      })
+    dispatch(fetchItems({ startDate: dayjs().format(), endDate: dayjs().format(), items: itemIds.join(',') }))
   }, [])
 
-  const dispatchSetItems = items + dispatch(setItems(items))
+  const dispatchSetItems = items => dispatch(setItems(items))
   const dispatchItemsView = (view = 'index') => dispatch(setItemsView(view))
   const dispatchSetItem = item => dispatch(setItem(item))
 
@@ -52,7 +48,6 @@ const ItemsContainer = ({ api, itemIds, selectedItems, selectItem, removeItem })
             removeItem={removeItem}
             itemIds={itemIds}
             setItems={dispatchSetItems}
-            items={items}
             showViewMode={showView}
           />
         )

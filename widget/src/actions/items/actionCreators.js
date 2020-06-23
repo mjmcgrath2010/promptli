@@ -1,4 +1,42 @@
-import { SET_ITEMS, SET_ITEMS_VIEW, SET_ITEM, SELECT_ITEM, REMOVE_ITEM } from './actionsTypes'
+import {
+  SET_ITEMS,
+  SET_ITEMS_VIEW,
+  SET_ITEM,
+  SELECT_ITEM,
+  REMOVE_ITEM,
+  FETCH_ITEMS_REQUEST,
+  FETCH_ITEMS_FAILURE,
+  FETCH_ITEMS_SUCCESS,
+} from './actionsTypes'
+import { makeApiRequest } from '../api/actionCreators'
+
+export const fetchItems = data => dispatch => {
+  dispatch(fetchItemsRequest())
+
+  return dispatch(
+    makeApiRequest({ data, method: 'fetchItems', onSuccess: fetchItemsSuccess, onError: fetchItemsFailure })
+  )
+}
+
+export const fetchItemsRequest = () => {
+  return {
+    type: FETCH_ITEMS_REQUEST,
+  }
+}
+
+export const fetchItemsSuccess = payload => {
+  return {
+    type: FETCH_ITEMS_SUCCESS,
+    payload,
+  }
+}
+
+export const fetchItemsFailure = payload => {
+  return {
+    type: FETCH_ITEMS_FAILURE,
+    payload,
+  }
+}
 
 export const setItems = payload => {
   return {

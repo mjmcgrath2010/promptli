@@ -1,5 +1,4 @@
-import { SET_ITEMS, SET_ITEMS_VIEW, SET_ITEM } from '../actions/items/actionsTypes'
-import { act } from 'preact/test-utils'
+import { SET_ITEMS, SET_ITEMS_VIEW, SET_ITEM, FETCH_ITEMS_SUCCESS } from '../actions/items/actionsTypes'
 
 const initialState = {
   items: [],
@@ -11,6 +10,8 @@ const itemsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_ITEMS:
       return { ...state, items: action.payload }
+    case FETCH_ITEMS_SUCCESS:
+      return { ...state, ...action.payload }
     case SET_ITEMS_VIEW:
       return { ...state, view: action.payload }
     case SET_ITEM:
