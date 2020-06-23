@@ -15,16 +15,15 @@ const ItemsContainer = ({ api, itemIds, selectedItems, selectItem, removeItem })
   const item = useSelector(({ items }) => items.item)
 
   useEffect(() => {
-    itemIds.length &&
-      api
-        .fetchItems({ startDate: dayjs().format(), endDate: dayjs().format(), items: itemIds.join(',') })
-        .then(({ items }) => {
-          dispatch(setItems(items))
-        })
+    api
+      .fetchItems({ startDate: dayjs().format(), endDate: dayjs().format(), items: itemIds.join(',') })
+      .then(({ items }) => {
+        dispatch(setItems(items))
+      })
   }, [])
 
   const dispatchSetItems = items + dispatch(setItems(items))
-  const dispatchItemsView = view => dispatch(setItemsView(view))
+  const dispatchItemsView = (view = 'index') => dispatch(setItemsView(view))
   const dispatchSetItem = item => dispatch(setItem(item))
 
   const showView = (view, opts) => {
@@ -32,7 +31,15 @@ const ItemsContainer = ({ api, itemIds, selectedItems, selectItem, removeItem })
       case 'show':
         dispatchItemsView('show')
         dispatchSetItem(opts)
-        return <Item selectItem={selectItem} removeItem={removeItem} showViewMode={showView} {...opts} />
+        return (
+          <Item
+            onClickBack={dispatchItemsView}
+            selectItem={selectItem}
+            removeItem={removeItem}
+            showViewMode={showView}
+            {...opts}
+          />
+        )
 
       case 'index':
       default:

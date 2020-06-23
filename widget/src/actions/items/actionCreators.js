@@ -14,9 +14,9 @@ export const setItemsView = (payload = 'index') => {
   }
 }
 
-export const setItem = (payload) => {
+export const setItem = payload => {
   return {
-    type: SET_ITEM
-    payload
+    type: SET_ITEM,
+    payload,
   }
 }
