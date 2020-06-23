@@ -1,24 +1,27 @@
-import { API_ERROR_RESPONSE, INIT_API_INTERFACE } from './actionTypes'
+import { API_ERROR_RESPONSE, INIT_API_INTERFACE, MAKE_API_REQUEST } from './actionTypes'
+import PromptliAPI from '../../api'
 
 export const makeApiRequest = ({ method, data, onSuccess, onError = handleApiErrors }) => (dispatch, getState) => {
   const {
     api: { API, ready },
   } = getState()
-  const request = API[method]
-  if (request && ready) {
-    return request(data)
-      .then(payload => onSuccess(payload))
-      .catch(e => onError(e))
+
+  if (API[method] && ready) {
+    return API[method](data)
+      .then(payload => {
+        dispatch(onSuccess(payload))
+      })
+      .catch(e => dispatch(onError(e)))
   }
+
   return onError({ message: 'Something went wrong' })
 }
 
-export const initPromptliApi = ({ api, identifier, widgetId }) => {
-  const PromptliAPI = new api(identifier, widgetId)
+export const initPromptliApi = ({ identifier, widgetId }) => {
   return {
     type: INIT_API_INTERFACE,
     payload: {
-      api: PromptliAPI,
+      API: new PromptliAPI(identifier, widgetId),
       identifier,
       widgetId,
       ready: true,

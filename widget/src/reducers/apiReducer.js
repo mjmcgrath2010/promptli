@@ -8,7 +8,7 @@ const initialState = {
   ready: false,
 }
 
-const WidgetReducer = (state = initialState, action) => {
+const APIReducer = (state = initialState, action) => {
   switch (action.type) {
     case INIT_API_INTERFACE:
       return { ...state, ...action.payload }
@@ -19,4 +19,4 @@ const WidgetReducer = (state = initialState, action) => {
   }
 }
 
-export default WidgetReducer
+export default APIReducer
