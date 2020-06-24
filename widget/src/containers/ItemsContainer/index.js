@@ -1,43 +1,51 @@
 import { h } from 'preact'
 import PropTypes from 'prop-types'
-import Items from './Items'
-import Item from './Item'
-import { useEffect, useState } from 'preact/hooks'
+import { useSelector, useDispatch } from 'react-redux'
+import { useEffect } from 'preact/hooks'
 import dayjs from 'dayjs'
 
-const ItemsContainer = ({ api, itemIds, selectedItems, selectItem, removeItem }) => {
-  const [view, setView] = useState('index')
-  const [item, setItem] = useState({})
-  const [items, setItems] = useState([])
+import Items from './Items'
+import Item from './Item'
+import { setItems, setItemsView, setItem, fetchItems } from '../../actions/items/actionCreators'
+
+const ItemsContainer = ({ itemIds, selectedItems, selectItem, removeItem }) => {
+  const dispatch = useDispatch()
+  const view = useSelector(({ items }) => items.view)
+  const item = useSelector(({ items }) => items.item)
 
   useEffect(() => {
-    itemIds.length &&
-      api
-        .fetchItems({ startDate: dayjs().format(), endDate: dayjs().format(), items: itemIds.join(',') })
-        .then(({ items }) => {
-          setItems(items)
-        })
+    dispatch(fetchItems({ startDate: dayjs().format(), endDate: dayjs().format(), items: itemIds.join(',') }))
   }, [])
+
+  const dispatchSetItems = items => dispatch(setItems(items))
+  const dispatchItemsView = (view = 'index') => dispatch(setItemsView(view))
+  const dispatchSetItem = item => dispatch(setItem(item))
 
   const showView = (view, opts) => {
     switch (view) {
       case 'show':
-        setView('show')
-        setItem(opts)
-        return <Item selectItem={selectItem} removeItem={removeItem} showViewMode={showView} {...opts} />
+        dispatchItemsView('show')
+        dispatchSetItem(opts)
+        return (
+          <Item
+            onClickBack={dispatchItemsView}
+            selectItem={selectItem}
+            removeItem={removeItem}
+            showViewMode={showView}
+            {...opts}
+          />
+        )
 
       case 'index':
       default:
-        setView('index')
+        dispatchItemsView('index')
         return (
           <Items
-            api={api}
             selectedItems={selectedItems}
             selectItem={selectItem}
             removeItem={removeItem}
             itemIds={itemIds}
-            setItems={setItems}
-            items={items}
+            setItems={dispatchSetItems}
             showViewMode={showView}
           />
         )

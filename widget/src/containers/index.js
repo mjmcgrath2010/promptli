@@ -1,22 +1,27 @@
-import { h } from 'preact'
+import { h, Fragment } from 'preact'
 import FullScreenModal from '../displays/FullScreenModal'
-import { useEffect, useState } from 'preact/hooks'
+import { useState } from 'preact/hooks'
 import PromptliAPI from '../api'
+import { useDispatch, useSelector } from 'react-redux'
+import { initPromptliApi } from '../actions/api/actionCreators'
+import { initWidget } from '../actions/widget/actionCreators'
 
 const Widget = props => {
   const { identifier, widgetId } = props
-  const [state, setState] = useState({ items: [] })
   const [selectedItems, setSelectedItems] = useState([])
-  const api = new PromptliAPI(identifier, widgetId)
-  const { items, ...rest } = state
 
-  useEffect(() => {
-    if (identifier) {
-      api.init().then(state => {
-        setState(state)
-      })
-    }
-  }, [identifier])
+  const dispatch = useDispatch()
+  const apiReady = useSelector(({ api: { ready } }) => ready)
+  const widgetState = useSelector(({ widget }) => widget)
+  const { items, initialized, ...rest } = widgetState
+
+  if (identifier && widgetId && !apiReady) {
+    dispatch(initPromptliApi({ identifier, widgetId }))
+  }
+
+  if (apiReady && !initialized) {
+    dispatch(initWidget())
+  }
 
   const selectItem = itemId => {
     const newItems = Array.from(new Set([...selectedItems, itemId]))
@@ -30,14 +35,17 @@ const Widget = props => {
 
   return (
     <div>
-      <FullScreenModal
-        api={api}
-        itemIds={items}
-        selectedItems={selectedItems}
-        removeItem={removeItem}
-        selectItem={selectItem}
-        {...rest}
-      />
+      {initialized ? (
+        <FullScreenModal
+          itemIds={items}
+          selectedItems={selectedItems}
+          removeItem={removeItem}
+          selectItem={selectItem}
+          {...rest}
+        />
+      ) : (
+        <Fragment />
+      )}
     </div>
   )
 }

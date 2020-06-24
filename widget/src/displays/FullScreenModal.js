@@ -9,21 +9,15 @@ import ItemsContainer from '../containers/ItemsContainer'
 const FullScreenModal = props => {
   const [state, setState] = useState({ dialogOpen: false })
   const [screen, setScreen] = useState(1)
-  const { api, ctaText, title, itemIds, selectedItems, selectItem, removeItem } = props
+  const { ctaText, title, itemIds, selectedItems, selectItem, removeItem } = props
   const { dialogOpen } = state
 
   const views = {
     1: (
-      <ItemsContainer
-        itemIds={itemIds}
-        selectedItems={selectedItems}
-        selectItem={selectItem}
-        removeItem={removeItem}
-        api={api}
-      />
+      <ItemsContainer itemIds={itemIds} selectedItems={selectedItems} selectItem={selectItem} removeItem={removeItem} />
     ),
     2: (
-      <ConfirmationContainer selectedItems={selectedItems} selectItem={selectItem} removeItem={removeItem} api={api} />
+      <ConfirmationContainer />
     ),
   }
 

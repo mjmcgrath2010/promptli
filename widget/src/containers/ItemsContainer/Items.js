@@ -6,6 +6,8 @@ import Card from '../../components/ui/Card'
 import Button from '../../components/ui/Button'
 import LoadingSpinner from '../../components/ui/LoadingSpinner'
 import { useState } from 'preact/hooks'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchItems } from '../../actions/items/actionCreators'
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -39,6 +41,7 @@ const CardsContainer = styled.div`
 `
 
 const Items = props => {
+  const { loading, emptyMessage, showViewMode, itemIds, selectItem, removeItem, selectedItems } = props
   const [dateRange, setDateRange] = useState({
     startDate: '',
     endDate: '',
@@ -46,24 +49,12 @@ const Items = props => {
     endTime: '',
   })
 
-  const {
-    items,
-    loading,
-    emptyMessage,
-    showViewMode,
-    api,
-    setItems,
-    itemIds,
-    selectItem,
-    removeItem,
-    selectedItems,
-  } = props
+  const dispatch = useDispatch()
+  const items = useSelector(({ items }) => items.items)
 
-  const fetchItems = () => {
+  const getItems = () => {
     const itemList = itemIds.join(',')
-    api.fetchItems({ ...dateRange, items: itemList }).then(({ items }) => {
-      setItems(items)
-    })
+    return dispatch(fetchItems({ ...dateRange, items: itemList }))
   }
 
   const handleSelect = (id, isSelected) => e => {
@@ -79,7 +70,7 @@ const Items = props => {
         <SearchBarContainer>
           <DateTimePicker onChange={setDateRange} />
           <ButtonContainer>
-            <Button onClick={fetchItems} text="Search" />
+            <Button onClick={getItems} text="Search" />
           </ButtonContainer>
         </SearchBarContainer>
       </HeaderContainer>

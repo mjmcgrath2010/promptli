@@ -1,12 +1,20 @@
-import { INIT_WIDGET } from './actionTypes'
+import { INIT_WIDGET_SUCCESS, INIT_WIDGET_ERROR } from './actionTypes'
+import { makeApiRequest } from '../api/actionCreators'
 
-const initWidget = payload => {
+export const initWidget = () => dispatch => {
+  return dispatch(makeApiRequest({ method: 'init', onSuccess: initWidgetSuccess, onError: handleWidgetInitError }))
+}
+
+const initWidgetSuccess = payload => {
   return {
-    type: INIT_WIDGET,
+    type: INIT_WIDGET_SUCCESS,
     payload,
   }
 }
 
-export default {
-  initWidget,
+const handleWidgetInitError = payload => {
+  return {
+    type: INIT_WIDGET_ERROR,
+    payload,
+  }
 }
