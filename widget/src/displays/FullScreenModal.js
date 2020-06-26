@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Modal from '../components/ui/Modal'
 import { useState } from 'preact/hooks'
 import Button from '../components/ui/Button'
-import ConfirmationContainer from '../containers/ConfirmationContainer'
+import CheckoutContainer from '../containers/CheckoutContainer'
 import ItemsContainer from '../containers/ItemsContainer'
 
 const FullScreenModal = props => {
@@ -16,9 +16,7 @@ const FullScreenModal = props => {
     1: (
       <ItemsContainer itemIds={itemIds} selectedItems={selectedItems} selectItem={selectItem} removeItem={removeItem} />
     ),
-    2: (
-      <ConfirmationContainer />
-    ),
+    2: <CheckoutContainer />,
   }
 
   const getScreen = (screen = 1) => {
