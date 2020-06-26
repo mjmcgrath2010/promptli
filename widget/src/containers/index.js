@@ -1,7 +1,6 @@
 import { h, Fragment } from 'preact'
 import FullScreenModal from '../displays/FullScreenModal'
 import { useState } from 'preact/hooks'
-import PromptliAPI from '../api'
 import { useDispatch, useSelector } from 'react-redux'
 import { initPromptliApi } from '../actions/api/actionCreators'
 import { initWidget } from '../actions/widget/actionCreators'

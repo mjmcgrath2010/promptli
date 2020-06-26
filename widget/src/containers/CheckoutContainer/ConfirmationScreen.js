@@ -5,8 +5,7 @@ import styled from 'styled-components'
 const ConfirmationScreenContainer = styled.div``
 
 const ConfirmationScreen = props => {
-  const { title } = props
-  return <ConfirmationScreenContainer>{title}</ConfirmationScreenContainer>
+  return <ConfirmationScreenContainer>Confirm Screen</ConfirmationScreenContainer>
 }
 
 ConfirmationScreen.defaultProps = {}
