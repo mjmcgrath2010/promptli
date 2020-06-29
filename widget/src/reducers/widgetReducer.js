@@ -2,10 +2,11 @@ import { INIT_WIDGET_SUCCESS } from '../actions/widget/actionTypes'
 
 const initialState = {
   items: [],
+  categories: [],
   title: '',
   ctaText: '',
   account: '',
-  styles: [],
+  styles: {},
   initialized: false,
 }
 
