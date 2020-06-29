@@ -1,6 +1,7 @@
 const User = require('../models/User')
 const Reservations = require('../models/Reservations')
 const Items = require('../models/Item')
+const Categories = require('../models/Category')
 const WidgetConfig = require('../models/WidgetConfig')
 
 exports.initDashboard = (req, res, next) => {
@@ -9,10 +10,10 @@ exports.initDashboard = (req, res, next) => {
   const items = fetchItems(req, res, next)
   const widgetConfig = widgetConfigs(req, res, next)
   const profile = fetchProfile(req, res, next)
+  const categories = fetchCategories(req, res, next)
 
-  Promise.all([reservations, items, widgetConfig, profile])
-    .then(values => {
-      console.log('complete', values)
+  Promise.all([reservations, items, widgetConfig, profile, categories])
+    .then(() => {
       res.json(req.dashboardInit)
     })
     .catch(e => res.send('error'))
@@ -41,13 +42,13 @@ const fetchItems = (req, res, next) => {
   })
 }
 
-const fetchProfile = (req, res) => {
+const fetchProfile = (req, res, next) => {
   return new Promise((resolve, reject) => {
     User.findById(req.user._id)
       .populate('account')
       .exec((err, user) => {
         if (err) {
-          return reject(res.sendStatus(401))
+          return reject(next(err))
         }
         req.dashboardInit.profile = user
         resolve(user)
@@ -55,14 +56,26 @@ const fetchProfile = (req, res) => {
   })
 }
 
-const widgetConfigs = (req, res) => {
+const fetchCategories = (req, res, next) => {
+  return new Promise((resolve, reject) => {
+    Categories.find({ accountId: req.user.account() }).exec((err, categories) => {
+      if (err) {
+        return next(err)
+      }
+      req.dashboardInit.categories = categories
+      resolve(categories)
+    })
+  })
+}
+
+const widgetConfigs = (req, res, next) => {
   return new Promise((resolve, reject) => {
     WidgetConfig.find({ account: req.user.account() })
       .populate('service')
       .populate('item')
       .exec((err, configs) => {
         if (err) {
-          return reject(res.sendStatus(401))
+          return reject(next(err))
         }
         req.dashboardInit.displays = configs
         resolve(configs)

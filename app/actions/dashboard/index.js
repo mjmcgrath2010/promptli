@@ -69,6 +69,33 @@ const dashboardActions = {
       error,
     }
   },
+  createCategoryRequest(payload) {
+    return dispatch => {
+      dispatch(this.createCategory())
+      return API.createCategory(payload)
+        .then(({ data }) => {
+          return dispatch(this.createCategorySuccess(data))
+        })
+        .catch(e => this.createCategoryError(e))
+    }
+  },
+  createCategory() {
+    return {
+      type: dashboardActionTypes.CREATE_CATEGORY_REQUEST,
+    }
+  },
+  createCategorySuccess(payload) {
+    return {
+      type: dashboardActionTypes.CREATE_CATEGORY_SUCCESS,
+      payload,
+    }
+  },
+  createCategoryError(error) {
+    return {
+      type: dashboardActionTypes.CREATE_CATEGORY_FAILURE,
+      error,
+    }
+  },
 }
 
 export default dashboardActions

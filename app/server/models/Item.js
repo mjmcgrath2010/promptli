@@ -54,6 +54,12 @@ const ItemsModel = new schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'account',
   },
+  categories: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'category',
+    },
+  ],
 })
 
 module.exports = mongoose.model('item', ItemsModel)
