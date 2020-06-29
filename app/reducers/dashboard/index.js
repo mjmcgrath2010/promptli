@@ -4,6 +4,7 @@ const initialState = {
   profile: {},
   account: {},
   items: [],
+  categories: [],
   reservations: [],
   displays: [],
 }
@@ -16,6 +17,7 @@ const dashboard = (state = initialState, action) => {
     case loginActionTypes.LOGOUT_SUCCESS:
       return initialState
     case dashboardActionTypes.CREATE_ITEM_SUCCESS:
+    case dashboardActionTypes.CREATE_CATEGORY_SUCCESS:
       return { ...state, ...action.payload }
     default:
       return state

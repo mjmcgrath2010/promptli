@@ -131,6 +131,12 @@ const API = {
   },
   handleError({ error }) {},
   handleSuccess({ success }) {},
+  fetchCategories() {
+    return this.get('categories')
+  },
+  createCategory(payload) {
+    return this.post('categories', payload)
+  },
 }
 
 export default API
