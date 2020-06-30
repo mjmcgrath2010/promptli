@@ -38,9 +38,9 @@ const Location = styled.div`
 `
 
 const CategoryCard = props => {
-  const { title, city, state, url } = props
+  const { title, city, state, url, onClick } = props
   return (
-    <Container url={url}>
+    <Container url={url} onClick={onClick}>
       <Body>
         <Title>{title}</Title>
         <Location>

@@ -11,6 +11,7 @@ const SearchBarContainer = styled.div`
   box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.5);
   padding: 0.75em 4px 0.75em 1em;
   border: none;
+  background: #fff;
 `
 
 const Icon = styled.span`

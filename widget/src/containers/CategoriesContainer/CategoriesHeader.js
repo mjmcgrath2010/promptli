@@ -5,7 +5,8 @@ import styled from 'styled-components'
 const HeaderContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  margin: 0.5em 2em;
+  margin: 2em 2.2em 0.5em;
+  color: #fff;
 `
 
 const TitleContainer = styled.div`
@@ -21,15 +22,19 @@ const Service = styled.div`
 
 const LogoContainer = styled.div`
   grid-column: span 4;
-  text-align: right;
   font-size: 10px;
   color: #4a4a4a;
   line-height: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
 `
 
 const LogoImage = styled.img`
   width: 90px;
   height: auto;
+  justify-content: flex-end;
 `
 
 const CategoriesHeader = ({ title, service }) => {
