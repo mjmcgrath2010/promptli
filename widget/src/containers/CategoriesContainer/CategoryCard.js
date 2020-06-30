@@ -9,7 +9,7 @@ const Container = styled.div`
   color: #fff;
   grid-gap: 20px;
   min-height: 100px;
-  margin: auto 1em;
+  margin: 0.5em 1em;
   border-radius: 10px;
   box-shadow: 4px 3px 4px rgba(0, 0, 0, 0.3);
   cursor: pointer;
