@@ -38,7 +38,8 @@ const Location = styled.div`
   align-content: space-between;
 `
 
-const CategoryCard = ({ title, city, state, url }) => {
+const CategoryCard = props => {
+  const { title, city, state, url } = props
   return (
     <Container url={url}>
       <Body>
@@ -60,6 +61,7 @@ CategoryCard.propTypes = {
   city: PropTypes.string.isRequired,
   state: PropTypes.string.isRequired,
   url: PropTypes.string,
+  onClick: PropTypes.func,
 }
 
 export default CategoryCard

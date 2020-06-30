@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import CategoryCard from './CategoryCard'
+import CategorySearch from './CategorySearch'
 
 const Container = styled.div`
   display: grid;
@@ -12,12 +13,13 @@ const Container = styled.div`
   }
 `
 
-const CategoriesContainer = props => {
+const CategoriesContainer = () => {
   const { categories } = useSelector(({ widget }) => widget)
   return (
     <Container>
-      {categories.map(({ title, url, location: { city, state } }) => (
-        <CategoryCard city={city} title={title} state={state} />
+      <CategorySearch />
+      {categories.map(({ title, url, location: { city, state }, _id }) => (
+        <CategoryCard city={city} title={title} state={state} url={url} id={_id} key={_id} />
       ))}
     </Container>
   )
