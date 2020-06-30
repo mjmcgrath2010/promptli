@@ -14,11 +14,11 @@ const Container = styled.div`
 `
 
 const CategoriesContainer = () => {
-  const { categories } = useSelector(({ widget }) => widget)
+  const { filteredCategories } = useSelector(({ categories }) => categories)
   return (
     <Container>
       <CategorySearch />
-      {categories.map(({ title, url, location: { city, state }, _id }) => (
+      {filteredCategories.map(({ title, url, location: { city, state }, _id }) => (
         <CategoryCard city={city} title={title} state={state} url={url} id={_id} key={_id} />
       ))}
     </Container>
