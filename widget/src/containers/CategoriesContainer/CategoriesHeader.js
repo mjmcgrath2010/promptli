@@ -9,21 +9,51 @@ const HeaderContainer = styled.div`
 `
 
 const TitleContainer = styled.div`
-  grid-column: span 6;
+  grid-column: span 8;
+  font-size: 20px;
 `
 
-const CategoriesHeader = ({ title }) => {
+const Service = styled.div`
+  font-size: 26px;
+  font-weight: bold;
+  margin: 0.25em 0 0;
+`
+
+const LogoContainer = styled.div`
+  grid-column: span 4;
+  text-align: right;
+  font-size: 10px;
+  color: #4a4a4a;
+  line-height: 2;
+`
+
+const LogoImage = styled.img`
+  width: 90px;
+  height: auto;
+`
+
+const CategoriesHeader = ({ title, service }) => {
   return (
     <HeaderContainer>
-      <TitleContainer>{title}</TitleContainer>
+      <TitleContainer>
+        {title}
+        <Service>{service}</Service>
+      </TitleContainer>
+      <LogoContainer>
+        powered by
+        <LogoImage src="https://promptli-assets.s3.amazonaws.com/branding/logo.svg" />
+      </LogoContainer>
     </HeaderContainer>
   )
 }
 
-CategoriesHeader.defaulProps = {}
+CategoriesHeader.defaulProps = {
+  service: 'Parking',
+}
 
 CategoriesHeader.propTypes = {
   title: PropTypes.string.isRequired,
+  service: PropTypes.string,
 }
 
 export default CategoriesHeader

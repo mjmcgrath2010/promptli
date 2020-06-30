@@ -18,7 +18,7 @@ const CategoriesContainer = () => {
   const { filteredCategories } = useSelector(({ categories }) => categories)
   return (
     <Container>
-      <CategoriesHeader title="Promptli" />
+      <CategoriesHeader title="Department of Conservation & Recreation (DCR)" service={'Parking'} />
       <CategorySearch />
       {filteredCategories.map(({ title, url, location: { city, state }, _id }) => (
         <CategoryCard city={city} title={title} state={state} url={url} id={_id} key={_id} />
