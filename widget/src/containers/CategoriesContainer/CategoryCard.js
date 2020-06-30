@@ -7,9 +7,8 @@ const Container = styled.div`
   background: ${({ url }) => `url(${url}) center`};
   background-size: cover;
   color: #fff;
-  grid-gap: 20px;
   min-height: 100px;
-  margin: 0.5em 1em;
+  margin: 0.5em 2em;
   border-radius: 12px;
   box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.5);
   cursor: pointer;

@@ -7,6 +7,7 @@ import CheckoutContainer from '../containers/CheckoutContainer'
 import ItemsContainer from '../containers/ItemsContainer'
 import CategoriesContainer from '../containers/CategoriesContainer'
 
+
 const FullScreenModal = props => {
   const [state, setState] = useState({ dialogOpen: false })
   const [screen, setScreen] = useState(1)

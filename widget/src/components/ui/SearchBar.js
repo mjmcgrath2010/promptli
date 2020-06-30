@@ -6,7 +6,7 @@ const SearchBarContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   font-size: 18px;
-  margin: 0.5em 1em;
+  margin: 0.5em 2em;
   border-radius: 8px;
   box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.5);
   padding: 0.75em 4px 0.75em 1em;
@@ -17,31 +17,6 @@ const Icon = styled.span`
   grid-column: span 1;
   opacity: 0.4;
   color: #000000;
-
-  &.material-icons {
-    font-family: 'Material Icons';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px; /* Preferred icon size */
-    display: inline-block;
-    line-height: 1;
-    text-transform: none;
-    letter-spacing: normal;
-    word-wrap: normal;
-    white-space: nowrap;
-    direction: ltr;
-
-    /* Support for all WebKit browsers. */
-    -webkit-font-smoothing: antialiased;
-    /* Support for Safari and Chrome. */
-    text-rendering: optimizeLegibility;
-
-    /* Support for Firefox. */
-    -moz-osx-font-smoothing: grayscale;
-
-    /* Support for IE. */
-    font-feature-settings: 'liga';
-  }
 `
 
 const StyledSearchBar = styled.input`
