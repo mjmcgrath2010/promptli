@@ -21,7 +21,6 @@ const Icon = styled.span`
 
 const StyledSearchBar = styled.input`
   grid-column: span 11;
-  font-family: 'Montserrat';
   font-size: inherit;
   outline: none;
   border: none;
