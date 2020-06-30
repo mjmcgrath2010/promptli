@@ -24,5 +24,12 @@ const App = props => {
 
 export const init = (config, selector) => render(<App {...config} />, document.getElementById(selector))
 
+const link = document.createElement('link')
+const root = document.head
+link.href = 'https://fonts.googleapis.com/icon?family=Material+Icons'
+link.rel = 'stylesheet'
+
+root.appendChild(link)
+
 const wrapper = document.getElementById('promptli-widget-preview-container')
 wrapper ? init({ title: 'hello world!' }, 'promptli-widget-preview-container') : false
