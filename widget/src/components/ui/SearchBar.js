@@ -7,14 +7,16 @@ const SearchBarContainer = styled.div`
   grid-template-columns: repeat(12, 1fr);
   font-size: 18px;
   margin: 0.5em 1em;
-  border-radius: 10px;
-  box-shadow: 4px 3px 4px rgba(0, 0, 0, 0.3);
-  padding: 0.5em 0 0.5em 1em;
-  border: 2px solid #dbdbdb;
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.5);
+  padding: 0.75em 4px 0.75em 1em;
+  border: none;
 `
 
 const Icon = styled.span`
   grid-column: span 1;
+  opacity: 0.4;
+  color: #000000;
 
   &.material-icons {
     font-family: 'Material Icons';
@@ -44,9 +46,13 @@ const Icon = styled.span`
 
 const StyledSearchBar = styled.input`
   grid-column: span 11;
+  font-family: 'Montserrat';
   font-size: inherit;
   outline: none;
   border: none;
+  &::placeholder {
+    font-size: 12px;
+  }
 `
 
 const SearchBar = props => {

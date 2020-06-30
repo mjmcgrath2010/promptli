@@ -10,8 +10,8 @@ const Container = styled.div`
   grid-gap: 20px;
   min-height: 100px;
   margin: 0.5em 1em;
-  border-radius: 10px;
-  box-shadow: 4px 3px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.5);
   cursor: pointer;
   // Desktop Styles
   @media all and (min-width: 575px) {
@@ -24,8 +24,8 @@ const Body = styled.div`
   justify-content: space-around;
   padding: 1em;
   height: 100px;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
 `
 
 const Title = styled.div`
