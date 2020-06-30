@@ -58,11 +58,7 @@ const ModalHeader = styled.div`
   box-shadow: 2px 3px rgba(0, 0, 0, 0.3);
 `
 
-const ModalBody = styled.div`
-  position: relative;
-  width: 100vw;
-  padding: 0 24px;
-`
+const ModalBody = styled.div``
 
 const ModalFooter = styled.div`
   display: block;

@@ -5,6 +5,7 @@ import { useState } from 'preact/hooks'
 import Button from '../components/ui/Button'
 import CheckoutContainer from '../containers/CheckoutContainer'
 import ItemsContainer from '../containers/ItemsContainer'
+import CategoriesContainer from '../containers/CategoriesContainer'
 
 const FullScreenModal = props => {
   const [state, setState] = useState({ dialogOpen: false })
@@ -13,10 +14,11 @@ const FullScreenModal = props => {
   const { dialogOpen } = state
 
   const views = {
-    1: (
+    1: <CategoriesContainer />,
+    2: (
       <ItemsContainer itemIds={itemIds} selectedItems={selectedItems} selectItem={selectItem} removeItem={removeItem} />
     ),
-    2: <CheckoutContainer />,
+    3: <CheckoutContainer />,
   }
 
   const getScreen = (screen = 1) => {

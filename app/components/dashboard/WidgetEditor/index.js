@@ -5,12 +5,12 @@ import styled from 'styled-components'
 import Sidebar from './Sidebar'
 
 const IFrameEditor = styled.iframe`
-  width: 75vw;
-  height: calc(90vh - 70px);
+  width: 414px;
+  height: 896px;
   border: 3px solid gray;
   border-radius: 5px;
   position: absolute;
-  right: 2em;
+  right: calc(50% - 414px);
   top: 100px;
 `
 let iframeRef
