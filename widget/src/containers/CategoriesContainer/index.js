@@ -6,6 +6,7 @@ import CategoryCard from './CategoryCard'
 import CategorySearch from './CategorySearch'
 import CategoriesHeader from './CategoriesHeader'
 import { setActiveCategory } from '../../actions/categories/actionCreators'
+import { setActiveContainer } from '../../actions/widget/actionCreators'
 
 const Container = styled.div`
   display: grid;
@@ -28,6 +29,7 @@ const CategoriesContainer = () => {
   const dispatch = useDispatch()
   const selectCategory = category => {
     dispatch(setActiveCategory(category))
+    dispatch(setActiveContainer('items'))
   }
   return (
     <Container>

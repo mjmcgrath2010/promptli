@@ -33,7 +33,6 @@ const categoriesReducer = (state = initialState, action) => {
       })
       return { ...state, filteredCategories: results }
     case SELECT_ACTIVE_CATEGORY:
-      alert(JSON.stringify(action.activeCategory, null, 2))
       return { ...state, ...action.activeCategory }
     default:
       return state

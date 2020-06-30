@@ -6,20 +6,20 @@ import Button from '../components/ui/Button'
 import CheckoutContainer from '../containers/CheckoutContainer'
 import ItemsContainer from '../containers/ItemsContainer'
 import CategoriesContainer from '../containers/CategoriesContainer'
-
+import { useSelector } from 'react-redux'
 
 const FullScreenModal = props => {
   const [state, setState] = useState({ dialogOpen: false })
   const [screen, setScreen] = useState(1)
   const { ctaText, title, itemIds, selectedItems, selectItem, removeItem } = props
   const { dialogOpen } = state
-
+  const { activeContainer } = useSelector(({ widget }) => widget)
   const views = {
-    1: <CategoriesContainer />,
-    2: (
+    categories: <CategoriesContainer />,
+    items: (
       <ItemsContainer itemIds={itemIds} selectedItems={selectedItems} selectItem={selectItem} removeItem={removeItem} />
     ),
-    3: <CheckoutContainer />,
+    checkout: <CheckoutContainer />,
   }
 
   const getScreen = (screen = 1) => {
@@ -51,7 +51,7 @@ const FullScreenModal = props => {
         onClickBack={handleBack}
         onClose={closeDialog}
       >
-        {getScreen(screen)}
+        {getScreen(activeContainer)}
       </Modal>
     </div>
   )
