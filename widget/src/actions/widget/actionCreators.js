@@ -1,4 +1,4 @@
-import { INIT_WIDGET_SUCCESS, INIT_WIDGET_ERROR } from './actionTypes'
+import { INIT_WIDGET_SUCCESS, INIT_WIDGET_ERROR, SET_ACTIVE_CONTAINER } from './actionTypes'
 import { makeApiRequest } from '../api/actionCreators'
 
 export const initWidget = () => dispatch => {
@@ -16,5 +16,12 @@ const handleWidgetInitError = payload => {
   return {
     type: INIT_WIDGET_ERROR,
     payload,
+  }
+}
+
+export const setActiveContainer = activeContainer => {
+  return {
+    type: SET_ACTIVE_CONTAINER,
+    payload: { activeContainer },
   }
 }

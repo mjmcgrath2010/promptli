@@ -10,18 +10,16 @@ const WidgetConfigModel = new schema({
     type: String,
     required: true,
   },
-  styles: [
-    {
-      primaryColor: {
-        type: String,
-        default: 'blue',
-      },
-      secondaryColor: {
-        type: String,
-        default: 'green',
-      },
+  styles: {
+    primaryColor: {
+      type: String,
+      default: 'blue',
     },
-  ],
+    secondaryColor: {
+      type: String,
+      default: 'green',
+    },
+  },
   account: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'account',
@@ -32,6 +30,12 @@ const WidgetConfigModel = new schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'item',
       required: true,
+    },
+  ],
+  categories: [
+    {
+      type: mongoose.Schema.Types.ObjectID,
+      ref: 'category',
     },
   ],
 })

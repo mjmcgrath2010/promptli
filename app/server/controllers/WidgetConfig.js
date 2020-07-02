@@ -1,17 +1,19 @@
 const WidgetConfig = require('../models/WidgetConfig')
 
 exports.params = (req, res, next, id) => {
-  WidgetConfig.findById(id, (err, widgetConfig) => {
-    if (err) {
-      next(err)
-    } else if (widgetConfig) {
-      req.widgetConfig = widgetConfig
-      req.id = id
-      next()
-    } else {
-      next(new Error('failed to load user'))
-    }
-  })
+  WidgetConfig.findById(id)
+    .populate('categories')
+    .exec((err, widgetConfig) => {
+      if (err) {
+        next(err)
+      } else if (widgetConfig) {
+        req.widgetConfig = widgetConfig
+        req.id = id
+        next()
+      } else {
+        next(new Error('failed to load user'))
+      }
+    })
 }
 
 exports.get = (req, res, next) => {
