@@ -24,12 +24,12 @@ const Container = styled.div`
   }
 `
 
-const CategoriesContainer = () => {
+const CategoriesContainer = ({ navigation }) => {
   const { filteredCategories } = useSelector(({ categories }) => categories)
   const dispatch = useDispatch()
   const selectCategory = category => {
     dispatch(setActiveCategory(category))
-    dispatch(setActiveContainer('items'))
+    navigation.next()
   }
   return (
     <Container>

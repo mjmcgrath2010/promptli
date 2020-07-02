@@ -9,7 +9,7 @@ import ReservationScreen from './ReservationScreen'
 const StyledContainerContainer = styled.div``
 
 const ConfirmationContainer = props => {
-  const { title } = props
+  const { title, navigation } = props
   const { view } = useSelector(({ checkout }) => checkout)
 
   switch (view) {

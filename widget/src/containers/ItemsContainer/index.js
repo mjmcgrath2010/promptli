@@ -8,7 +8,7 @@ import Items from './Items'
 import Item from './Item'
 import { setItems, setItemsView, setItem, fetchItems } from '../../actions/items/actionCreators'
 
-const ItemsContainer = ({ itemIds, selectedItems, selectItem, removeItem }) => {
+const ItemsContainer = ({ itemIds, selectedItems, selectItem, removeItem, navigation }) => {
   const dispatch = useDispatch()
   const view = useSelector(({ items }) => items.view)
   const item = useSelector(({ items }) => items.item)

@@ -6,52 +6,43 @@ import Button from '../components/ui/Button'
 import CheckoutContainer from '../containers/CheckoutContainer'
 import ItemsContainer from '../containers/ItemsContainer'
 import CategoriesContainer from '../containers/CategoriesContainer'
-import { useSelector } from 'react-redux'
+import useSteps from '../useSteps'
 
-const FullScreenModal = props => {
+const steps = [{ id: 'categories' }, { id: 'items' }, { id: 'checkout' }]
+
+const FullScreenModal = ({ ctaText, title, itemIds, selectedItems, selectItem, removeItem }) => {
   const [state, setState] = useState({ dialogOpen: false })
-  const [screen, setScreen] = useState(1)
-  const { ctaText, title, itemIds, selectedItems, selectItem, removeItem } = props
+  const { step, navigation } = useSteps({ steps })
+
   const { dialogOpen } = state
-  const { activeContainer } = useSelector(({ widget }) => widget)
+
   const views = {
-    categories: <CategoriesContainer />,
+    categories: <CategoriesContainer navigation={navigation} />,
     items: (
-      <ItemsContainer itemIds={itemIds} selectedItems={selectedItems} selectItem={selectItem} removeItem={removeItem} />
+      <ItemsContainer
+        itemIds={itemIds}
+        navigation={navigation}
+        selectedItems={selectedItems}
+        selectItem={selectItem}
+        removeItem={removeItem}
+      />
     ),
-    checkout: <CheckoutContainer />,
+    checkout: <CheckoutContainer navigation={navigation} />,
   }
 
-  const getScreen = (screen = 1) => {
-    return (views[screen] && views[screen]) || views[1]
+  const getScreen = ({ id }) => {
+    return (views[id] && views[id]) || views[1]
   }
 
   const openDialog = () => setState({ ...state, dialogOpen: true })
-
-  const handleNext = () => {
-    const nextScreen = screen + 1
-    views[nextScreen] && setScreen(nextScreen)
-  }
-
-  const handleBack = () => {
-    const nextScreen = screen - 1
-    views[nextScreen] && setScreen(nextScreen)
-  }
 
   const closeDialog = () => setState({ ...state, dialogOpen: false })
 
   return (
     <div>
       <Button onClick={openDialog} text={ctaText || 'Click here!'} />
-      <Modal
-        screen={screen}
-        open={dialogOpen}
-        title={title}
-        onClickNext={handleNext}
-        onClickBack={handleBack}
-        onClose={closeDialog}
-      >
-        {getScreen(activeContainer)}
+      <Modal open={dialogOpen} title={title} onClose={closeDialog}>
+        {getScreen(step)}
       </Modal>
     </div>
   )

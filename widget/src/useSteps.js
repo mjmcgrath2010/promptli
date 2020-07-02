@@ -23,19 +23,9 @@ const useSteps = ({ steps: stepsProp, initialStep = 0 }) => {
     previous: () => deltaSetStep(-1),
     go: newStep => {
       if (typeof newStep === 'number') {
-        if (process.env.NODE_ENV !== 'production') {
-          if (newStep < 0 || newStep > steps.length) {
-            error(`useStep: Index out of range in go(${newStep})`)
-          }
-        }
         setStep(newStep)
       } else {
         const newStepId = getIndexById(steps, newStep)
-        if (process.env.NODE_ENV !== 'production') {
-          if (newStepId === -1) {
-            error(`useStep: go("${newStep}") not found in steps`)
-          }
-        }
         setStep(newStepId)
       }
     },
