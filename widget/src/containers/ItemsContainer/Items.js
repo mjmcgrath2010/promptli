@@ -15,13 +15,12 @@ const ItemsContainer = styled.div`
   position: relative;
   grid-template-rows: repeat(12, 1fr);
   margin: 0 auto;
-  background-color: #f8f9fb;
+  background: ${({ image }) => `url(${image})`} center no-repeat;
+  background-size: cover;
 `
 const Hero = styled.div`
   grid-column: span 1;
-  grid-row: span 7;
-  background: ${({ image }) => `url(${image})`} center no-repeat;
-  background-size: cover;
+  grid-row: span 6;
 `
 
 const HeroBody = styled.div`
@@ -55,9 +54,12 @@ const HeaderContainer = styled.div`
   grid-column: span 1;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: 1fr;
-  width: 90%;
-  margin: 0 auto;
-  grid-row: span 5;
+  background-color: #f8f9fb;
+  width: 100%;
+  margin: -2em auto 0;
+  grid-row: span 6;
+  border-radius: 26px 26px 0 0;
+  padding: 1em 0;
 `
 
 const SearchBarContainer = styled.div`
@@ -69,6 +71,8 @@ const SearchBarContainer = styled.div`
   border-radius: 8px;
   box-shadow: 4px 4px 20px 0 rgba(0, 0, 0, 0.2);
   padding: 1em 0.5em;
+  width: 90%;
+  margin: 0 auto;
 `
 
 const ButtonContainer = styled.div`
@@ -118,8 +122,8 @@ const Items = props => {
   }
 
   return (
-    <ItemsContainer>
-      <Hero image={image}>
+    <ItemsContainer image={image}>
+      <Hero>
         <HeroBody>
           <BackIcon>
             <div onClick={() => containerNavigation.previous()}>
