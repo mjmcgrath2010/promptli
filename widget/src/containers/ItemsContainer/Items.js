@@ -50,7 +50,7 @@ const CategoryTitle = styled.div`
   font-size: 24px;
 `
 
-const HeaderContainer = styled.div`
+const SearchContainer = styled.div`
   grid-column: span 1;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: 1fr;
@@ -133,14 +133,14 @@ const Items = props => {
           <CategoryTitle>{title}</CategoryTitle>
         </HeroBody>
       </Hero>
-      <HeaderContainer>
+      <SearchContainer>
         <SearchBarContainer>
           <DateTimePicker onChange={setDateRange} />
           <ButtonContainer>
             <SearchButton onClick={getItems} text="Search For Parking" />
           </ButtonContainer>
         </SearchBarContainer>
-      </HeaderContainer>
+      </SearchContainer>
       {/*<CardsContainer>*/}
       {/*  {loading && <LoadingSpinner />}*/}
       {/*  {!loading && items.length ? (*/}
