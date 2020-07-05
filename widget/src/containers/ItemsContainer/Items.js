@@ -110,7 +110,7 @@ const Items = props => {
   const dispatch = useDispatch()
   const items = useSelector(({ items }) => items.items)
   const selectedItems = useSelector(({ items }) => items.selectedItems)
-  const { title, image } = useSelector(({ categories }) => categories.activeCategory)
+  const { title, image = '//picsum.photos/200' } = useSelector(({ categories }) => categories.activeCategory)
 
   const getItems = () => {}
 
