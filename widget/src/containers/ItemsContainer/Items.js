@@ -41,7 +41,7 @@ const CardsContainer = styled.div`
 `
 
 const Items = props => {
-  const { loading, emptyMessage, showViewMode, itemIds, selectItem, removeItem, selectedItems } = props
+  const { loading, emptyMessage, showItem, itemIds, selectItem, removeItem, selectedItems } = props
   const [dateRange, setDateRange] = useState({
     startDate: '',
     endDate: '',
@@ -84,7 +84,7 @@ const Items = props => {
               <Card
                 primaryAction={handleSelect(_id, isSelected)}
                 secondaryAction={() => {
-                  showViewMode('show', item)
+                  showItem(item)
                 }}
                 secondaryBtnText="View"
                 title={name}

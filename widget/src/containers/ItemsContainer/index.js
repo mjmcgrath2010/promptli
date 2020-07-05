@@ -6,39 +6,35 @@ import dayjs from 'dayjs'
 
 import Items from './Items'
 import Item from './Item'
-import { setItems, setItemsView, setItem, fetchItems } from '../../actions/items/actionCreators'
+import { setItems, setItem, fetchItems } from '../../actions/items/actionCreators'
+import useSteps from '../../useSteps'
 
-const ItemsContainer = ({ itemIds, selectedItems, selectItem, removeItem, navigation }) => {
+const steps = [{ id: 'index' }, { id: 'show' }]
+
+const ItemsContainer = ({ itemIds, selectedItems, selectItem, removeItem, navigation: containerNavigation }) => {
   const dispatch = useDispatch()
-  const view = useSelector(({ items }) => items.view)
   const item = useSelector(({ items }) => items.item)
+  const { step, navigation } = useSteps({ steps })
 
   useEffect(() => {
     dispatch(fetchItems({ startDate: dayjs().format(), endDate: dayjs().format(), items: itemIds.join(',') }))
   }, [])
 
   const dispatchSetItems = items => dispatch(setItems(items))
-  const dispatchItemsView = (view = 'index') => dispatch(setItemsView(view))
   const dispatchSetItem = item => dispatch(setItem(item))
 
-  const showView = (view, opts) => {
+  const next = item => {
+    dispatchSetItem(item)
+    navigation.next()
+  }
+  const showView = (view, opts = {}) => {
     switch (view) {
       case 'show':
-        dispatchItemsView('show')
         dispatchSetItem(opts)
-        return (
-          <Item
-            onClickBack={dispatchItemsView}
-            selectItem={selectItem}
-            removeItem={removeItem}
-            showViewMode={showView}
-            {...opts}
-          />
-        )
+        return <Item onClickBack={navigation.previous} selectItem={selectItem} removeItem={removeItem} {...opts} />
 
       case 'index':
       default:
-        dispatchItemsView('index')
         return (
           <Items
             selectedItems={selectedItems}
@@ -46,13 +42,14 @@ const ItemsContainer = ({ itemIds, selectedItems, selectItem, removeItem, naviga
             removeItem={removeItem}
             itemIds={itemIds}
             setItems={dispatchSetItems}
-            showViewMode={showView}
+            showItem={next}
           />
         )
     }
   }
+  const { id } = step
 
-  return <div>{showView(view, item)}</div>
+  return <div>{showView(id, item)}</div>
 }
 
 ItemsContainer.defaultProps = {}

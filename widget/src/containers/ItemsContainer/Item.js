@@ -8,7 +8,7 @@ const ServiceContainer = styled.div``
 const BackButton = styled.button``
 
 const Item = props => {
-  const { name, description, pricingUnits, onClickBack } = props
+  const { name, description, onClickBack } = props
   return (
     <ServiceContainer>
       <BackButton onClick={onClickBack}>GO BACK</BackButton>

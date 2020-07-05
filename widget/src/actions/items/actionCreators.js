@@ -1,6 +1,5 @@
 import {
   SET_ITEMS,
-  SET_ITEMS_VIEW,
   SET_ITEM,
   SELECT_ITEM,
   REMOVE_ITEM,
@@ -45,12 +44,6 @@ export const setItems = payload => {
   }
 }
 
-export const setItemsView = (payload = 'index') => {
-  return {
-    type: SET_ITEMS_VIEW,
-    payload,
-  }
-}
 
 export const setItem = payload => {
   return {
