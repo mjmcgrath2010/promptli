@@ -25,15 +25,7 @@ const DatePicker = ({ onChange }) => {
 
   return (
     <DatesContainer>
-      <Column>
-        <DateSelector
-          value={startDate}
-          name="startDate"
-          onChange={setStartDate}
-          title="Start Date"
-          minDate={date().toDate()}
-        />
-      </Column>
+      <DateSelector value={startDate} name="startDate" onChange={setStartDate} title="Date" minDate={date().toDate()} />
     </DatesContainer>
   )
 }

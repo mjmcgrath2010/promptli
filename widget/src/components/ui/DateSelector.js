@@ -7,7 +7,16 @@ import DatePicker from 'react-date-picker'
 
 const DateSelectorContainer = styled.div``
 
-const DateSelectorComponent = styled(DatePicker)``
+const DateSelectorComponent = styled(DatePicker)`
+  width: 100%;
+  background-color: #eaeaea;
+  border-radius: 6px;
+  padding: 0.5em;
+
+  .react-date-picker__wrapper {
+    border: none;
+  }
+`
 
 const Title = styled.div`
   padding: 0.25em;

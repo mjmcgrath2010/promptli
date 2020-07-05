@@ -13,6 +13,7 @@ const TimePicker = props => {
   const handleChange = val => {
     onChange(val)
   }
+
   return (
     <Column>
       <SelectorContainer>

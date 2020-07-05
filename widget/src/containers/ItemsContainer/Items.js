@@ -51,10 +51,7 @@ const Items = props => {
   const items = useSelector(({ items }) => items.items)
   const selectedItems = useSelector(({ items }) => items.selectedItems)
 
-  const getItems = () => {
-    const itemList = itemIds.join(',')
-    return dispatch(fetchItems({ ...dateRange, items: itemList }))
-  }
+  const getItems = () => {}
 
   const handleSelect = (id, isSelected) => e => {
     if (e) {
