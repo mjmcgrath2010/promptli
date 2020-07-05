@@ -22,10 +22,8 @@ const ServicesContainer = styled.div`
 `
 
 const SearchBarContainer = styled.div`
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-evenly;
-  min-width: 45%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
 `
 
 const ButtonContainer = styled.div`
@@ -52,8 +50,6 @@ const Items = props => {
   const dispatch = useDispatch()
   const items = useSelector(({ items }) => items.items)
   const selectedItems = useSelector(({ items }) => items.selectedItems)
-
-
 
   const getItems = () => {
     const itemList = itemIds.join(',')

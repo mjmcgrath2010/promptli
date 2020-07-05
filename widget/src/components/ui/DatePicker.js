@@ -8,27 +8,20 @@ import DateSelector from './DateSelector'
 import Column from './Column'
 
 const DatesContainer = styled.div`
-  display: flex;
   width: auto;
   padding: 0.5em 1em;
-  flex-direction: row;
-  justify-content: flex-start;
+  grid-column: span 12;
 `
 
 const DatePicker = ({ onChange }) => {
   const [startDate, setStartDate] = useState(date())
-  const [endDate, setEndDate] = useState(date().add(1, 'day'))
 
   useEffect(() => {
     onChange({
       startDate: startDate.format('MM-DD-YYYY'),
-      endDate: endDate.format('MM-DD-YYYY'),
+      endDate: startDate.format('MM-DD-YYYY'),
     })
-
-    if (startDate.diff(endDate) > 0) {
-      setEndDate(startDate)
-    }
-  }, [startDate, endDate])
+  }, [startDate])
 
   return (
     <DatesContainer>
@@ -39,15 +32,6 @@ const DatePicker = ({ onChange }) => {
           onChange={setStartDate}
           title="Start Date"
           minDate={date().toDate()}
-        />
-      </Column>
-      <Column>
-        <DateSelector
-          value={endDate}
-          name="endDate"
-          minDate={startDate.toDate()}
-          onChange={setEndDate}
-          title="End Date"
         />
       </Column>
     </DatesContainer>

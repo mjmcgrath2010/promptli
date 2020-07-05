@@ -1,9 +1,17 @@
-import { h } from 'preact'
-import Column from './Column'
+import { h, Fragment } from 'preact'
 import DatePicker from './DatePicker'
 import TimePicker from './TimesPicker'
 import { useState } from 'preact/hooks'
+import styled from 'styled-components'
 
+const DateSelectorContainer = styled.div`
+  grid-column: span 12;
+`
+
+const TimePickerContainer = styled.div`
+  grid-column: span 12;
+  grid-template-columns: repeat(2, 1fr);
+`
 const DateTimePicker = props => {
   const { onChange } = props
   const [state, setState] = useState({
@@ -26,10 +34,14 @@ const DateTimePicker = props => {
   }
 
   return (
-    <Column>
-      <DatePicker onChange={handleChange} />
-      <TimePicker onChange={handleChange} />
-    </Column>
+    <Fragment>
+      <DateSelectorContainer>
+        <DatePicker onChange={handleChange} />
+      </DateSelectorContainer>
+      <TimePickerContainer>
+        <TimePicker onChange={handleChange} />
+      </TimePickerContainer>
+    </Fragment>
   )
 }
 
