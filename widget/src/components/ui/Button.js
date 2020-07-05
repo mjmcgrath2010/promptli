@@ -34,8 +34,8 @@ const StyledButton = styled.button`
   }
 `
 
-const Button = ({ text, onClick, variant, type, disabled }) => (
-  <StyledButton className={type} disabled={disabled} type={type} onClick={onClick} variant={variant}>
+const Button = ({ text, onClick, variant, type, disabled, ...rest }) => (
+  <StyledButton className={type} disabled={disabled} type={type} onClick={onClick} variant={variant} {...rest}>
     {text}
   </StyledButton>
 )

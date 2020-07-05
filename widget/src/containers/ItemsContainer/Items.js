@@ -7,27 +7,35 @@ import Button from '../../components/ui/Button'
 import LoadingSpinner from '../../components/ui/LoadingSpinner'
 import { useState } from 'preact/hooks'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchItems, removeItem, selectItem } from '../../actions/items/actionCreators'
+import { removeItem, selectItem } from '../../actions/items/actionCreators'
 
 const HeaderContainer = styled.div`
-  display: flex;
-  align-content: center;
-  justify-content: end;
+  grid-column: span 1;
+  grid-template-columns: repeat(1, 1fr);
 `
 
 const ServicesContainer = styled.div`
+  display: grid;
   width: 90%;
   position: relative;
   margin: 0 auto;
+  background-color: #f8f9fb;
 `
 
 const SearchBarContainer = styled.div`
+  grid-column: span 1;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 4px 4px 20px 0 rgba(0, 0, 0, 0.2);
+  padding: 1em 0.5em;
+  grid-row-start: -1;
 `
 
 const ButtonContainer = styled.div`
-  display: inline-block;
+  grid-column: span 12;
+  text-align: center;
   margin-top: 22px;
 `
 
@@ -36,6 +44,16 @@ const CardsContainer = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   padding-bottom: 2em;
+`
+
+const SearchButton = styled(Button)`
+  width: 90%;
+  background-color: #388557;
+  border-radius: 22px;
+  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 0.75em;
 `
 
 const Items = props => {
@@ -66,34 +84,34 @@ const Items = props => {
         <SearchBarContainer>
           <DateTimePicker onChange={setDateRange} />
           <ButtonContainer>
-            <Button onClick={getItems} text="Search" />
+            <SearchButton onClick={getItems} text="Search For Parking" />
           </ButtonContainer>
         </SearchBarContainer>
       </HeaderContainer>
-      <CardsContainer>
-        {loading && <LoadingSpinner />}
-        {!loading && items.length ? (
-          items.map(item => {
-            const { name, description, _id } = item
-            let isSelected = selectedItems.includes(_id)
-            return (
-              <Card
-                primaryAction={handleSelect(_id, isSelected)}
-                secondaryAction={() => {
-                  showItem(item)
-                }}
-                secondaryBtnText="View"
-                title={name}
-                primaryBtnText={isSelected ? 'Remove' : 'Select'}
-                description={description}
-                key={_id}
-              />
-            )
-          })
-        ) : (
-          <div>{emptyMessage}</div>
-        )}
-      </CardsContainer>
+      {/*<CardsContainer>*/}
+      {/*  {loading && <LoadingSpinner />}*/}
+      {/*  {!loading && items.length ? (*/}
+      {/*    items.map(item => {*/}
+      {/*      const { name, description, _id } = item*/}
+      {/*      let isSelected = selectedItems.includes(_id)*/}
+      {/*      return (*/}
+      {/*        <Card*/}
+      {/*          primaryAction={handleSelect(_id, isSelected)}*/}
+      {/*          secondaryAction={() => {*/}
+      {/*            showItem(item)*/}
+      {/*          }}*/}
+      {/*          secondaryBtnText="View"*/}
+      {/*          title={name}*/}
+      {/*          primaryBtnText={isSelected ? 'Remove' : 'Select'}*/}
+      {/*          description={description}*/}
+      {/*          key={_id}*/}
+      {/*        />*/}
+      {/*      )*/}
+      {/*    })*/}
+      {/*  ) : (*/}
+      {/*    <div>{emptyMessage}</div>*/}
+      {/*  )}*/}
+      {/*</CardsContainer>*/}
     </ServicesContainer>
   )
 }
