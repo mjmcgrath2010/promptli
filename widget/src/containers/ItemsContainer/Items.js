@@ -62,6 +62,13 @@ const SearchContainer = styled.div`
   padding: 1em 0;
 `
 
+const Divider = styled.div`
+  width: 100px;
+  border-bottom: 4px solid #dbdbdb;
+  margin: 0 auto 2em;
+  border-radius: 2px;
+`
+
 const SearchBarContainer = styled.div`
   grid-column: span 1;
   grid-row: span 1;
@@ -110,7 +117,11 @@ const Items = props => {
   const dispatch = useDispatch()
   const items = useSelector(({ items }) => items.items)
   const selectedItems = useSelector(({ items }) => items.selectedItems)
-  const { title, image = '//picsum.photos/200' } = useSelector(({ categories }) => categories.activeCategory)
+  const {
+    title,
+    image = '//picsum.photos/200',
+    location: { city, state },
+  } = useSelector(({ categories }) => categories.activeCategory)
 
   const getItems = () => {}
 
@@ -131,9 +142,13 @@ const Items = props => {
             </div>
           </BackIcon>
           <CategoryTitle>{title}</CategoryTitle>
+          <CategoryTitle>
+            {city}, {state}
+          </CategoryTitle>
         </HeroBody>
       </Hero>
       <SearchContainer>
+        <Divider />
         <SearchBarContainer>
           <DateTimePicker onChange={setDateRange} />
           <ButtonContainer>
