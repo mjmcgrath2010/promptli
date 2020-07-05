@@ -9,28 +9,38 @@ import { useState } from 'preact/hooks'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeItem, selectItem } from '../../actions/items/actionCreators'
 
+const ItemsContainer = styled.div`
+  display: grid;
+  height: 100vh;
+  position: relative;
+  grid-template-rows: repeat(12, 1fr);
+  margin: 0 auto;
+  background-color: #f8f9fb;
+`
+const Hero = styled.div`
+  grid-column: span 1;
+  grid-row: span 7;
+  background: #000;
+`
+
 const HeaderContainer = styled.div`
   grid-column: span 1;
   grid-template-columns: repeat(1, 1fr);
-`
-
-const ServicesContainer = styled.div`
-  display: grid;
+  grid-template-rows: 1fr;
   width: 90%;
-  position: relative;
   margin: 0 auto;
-  background-color: #f8f9fb;
+  grid-row: span 5;
 `
 
 const SearchBarContainer = styled.div`
   grid-column: span 1;
+  grid-row: span 1;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 4px 4px 20px 0 rgba(0, 0, 0, 0.2);
   padding: 1em 0.5em;
-  grid-row-start: -1;
 `
 
 const ButtonContainer = styled.div`
@@ -79,7 +89,8 @@ const Items = props => {
   }
 
   return (
-    <ServicesContainer>
+    <ItemsContainer>
+      <Hero>Hello</Hero>
       <HeaderContainer>
         <SearchBarContainer>
           <DateTimePicker onChange={setDateRange} />
@@ -112,7 +123,7 @@ const Items = props => {
       {/*    <div>{emptyMessage}</div>*/}
       {/*  )}*/}
       {/*</CardsContainer>*/}
-    </ServicesContainer>
+    </ItemsContainer>
   )
 }
 
