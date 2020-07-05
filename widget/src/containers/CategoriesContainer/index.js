@@ -38,7 +38,7 @@ const CategoriesContainer = ({ navigation }) => {
       {filteredCategories.map(category => {
         const {
           title,
-          url,
+          image,
           location: { city, state },
           _id,
         } = category
@@ -47,7 +47,7 @@ const CategoriesContainer = ({ navigation }) => {
             city={city}
             title={title}
             state={state}
-            url={url}
+            image={image}
             id={_id}
             key={_id}
             onClick={() => selectCategory(category)}

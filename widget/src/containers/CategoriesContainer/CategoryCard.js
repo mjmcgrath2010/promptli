@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   grid-column: span 1;
-  background: ${({ url }) => `url(${url}) center`};
+  background: ${({ image }) => `url(${image}) center`};
   background-size: cover;
   color: #fff;
   min-height: 100px;
@@ -38,9 +38,9 @@ const Location = styled.div`
 `
 
 const CategoryCard = props => {
-  const { title, city, state, url, onClick } = props
+  const { title, city, state, image, onClick } = props
   return (
-    <Container url={url} onClick={onClick}>
+    <Container image={image} onClick={onClick}>
       <Body>
         <Title>{title}</Title>
         <Location>

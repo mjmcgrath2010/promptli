@@ -63,7 +63,7 @@ const SearchContainer = styled.div`
 `
 
 const Divider = styled.div`
-  width: 100px;
+  width: 80px;
   border-bottom: 4px solid #dbdbdb;
   margin: 0 auto 2em;
   border-radius: 2px;
