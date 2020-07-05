@@ -20,7 +20,35 @@ const ItemsContainer = styled.div`
 const Hero = styled.div`
   grid-column: span 1;
   grid-row: span 7;
-  background: #000;
+  background: ${({ image }) => `url(${image})`} center no-repeat;
+  background-size: cover;
+`
+
+const HeroBody = styled.div`
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+`
+
+const BackIcon = styled.div`
+  grid-column: span 12;
+  font-size: 24px;
+  color: #fff;
+  span {
+    padding: 1em;
+    cursor: pointer;
+  }
+`
+
+const CategoryTitle = styled.div`
+  grid-column: span 12;
+  padding: 1em;
+  text-align: left;
+  color: #ffffff;
+  font-size: 24px;
 `
 
 const HeaderContainer = styled.div`
@@ -67,7 +95,7 @@ const SearchButton = styled(Button)`
 `
 
 const Items = props => {
-  const { loading, emptyMessage, showItem, itemIds } = props
+  const { loading, emptyMessage, showItem, itemIds, containerNavigation } = props
   const [dateRange, setDateRange] = useState({
     startDate: '',
     endDate: '',
@@ -78,6 +106,7 @@ const Items = props => {
   const dispatch = useDispatch()
   const items = useSelector(({ items }) => items.items)
   const selectedItems = useSelector(({ items }) => items.selectedItems)
+  const { title, image } = useSelector(({ categories }) => categories.activeCategory)
 
   const getItems = () => {}
 
@@ -90,7 +119,16 @@ const Items = props => {
 
   return (
     <ItemsContainer>
-      <Hero>Hello</Hero>
+      <Hero image={image}>
+        <HeroBody>
+          <BackIcon>
+            <div onClick={() => containerNavigation.previous()}>
+              <span className="material-icons">arrow_back</span>
+            </div>
+          </BackIcon>
+          <CategoryTitle>{title}</CategoryTitle>
+        </HeroBody>
+      </Hero>
       <HeaderContainer>
         <SearchBarContainer>
           <DateTimePicker onChange={setDateRange} />

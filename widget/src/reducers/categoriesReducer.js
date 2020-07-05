@@ -33,7 +33,7 @@ const categoriesReducer = (state = initialState, action) => {
       })
       return { ...state, filteredCategories: results }
     case SELECT_ACTIVE_CATEGORY:
-      return { ...state, ...action.activeCategory }
+      return { ...state, ...action.payload }
     default:
       return state
   }

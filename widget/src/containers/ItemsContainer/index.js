@@ -43,6 +43,7 @@ const ItemsContainer = ({ itemIds, selectedItems, selectItem, removeItem, naviga
             itemIds={itemIds}
             setItems={dispatchSetItems}
             showItem={next}
+            containerNavigation={containerNavigation}
           />
         )
     }

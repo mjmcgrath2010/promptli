@@ -10,6 +10,6 @@ export const filterCategories = search => {
 export const setActiveCategory = activeCategory => {
   return {
     type: SELECT_ACTIVE_CATEGORY,
-    activeCategory,
+    payload: { activeCategory },
   }
 }
