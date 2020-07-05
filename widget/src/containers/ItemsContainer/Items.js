@@ -7,7 +7,7 @@ import Button from '../../components/ui/Button'
 import LoadingSpinner from '../../components/ui/LoadingSpinner'
 import { useState } from 'preact/hooks'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchItems } from '../../actions/items/actionCreators'
+import { fetchItems, removeItem, selectItem } from '../../actions/items/actionCreators'
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -41,7 +41,7 @@ const CardsContainer = styled.div`
 `
 
 const Items = props => {
-  const { loading, emptyMessage, showItem, itemIds, selectItem, removeItem, selectedItems } = props
+  const { loading, emptyMessage, showItem, itemIds } = props
   const [dateRange, setDateRange] = useState({
     startDate: '',
     endDate: '',
@@ -51,6 +51,9 @@ const Items = props => {
 
   const dispatch = useDispatch()
   const items = useSelector(({ items }) => items.items)
+  const selectedItems = useSelector(({ items }) => items.selectedItems)
+
+
 
   const getItems = () => {
     const itemList = itemIds.join(',')
@@ -61,7 +64,7 @@ const Items = props => {
     if (e) {
       e.preventDefault()
     }
-    return isSelected ? removeItem(id) : selectItem(id)
+    return isSelected ? dispatch(removeItem(id)) : dispatch(selectItem(id))
   }
 
   return (
