@@ -37,6 +37,7 @@
     "preact": "^10.3.4",
     "prop-types": "^15.7.2",
     "react-date-picker": "^8.0.1",
+    "react-dropdown": "^1.7.0",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",

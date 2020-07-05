@@ -10,6 +10,7 @@ const DateSelectorContainer = styled.div`
 
 const TimePickerContainer = styled.div`
   grid-column: span 12;
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
 `
 const DateTimePicker = props => {

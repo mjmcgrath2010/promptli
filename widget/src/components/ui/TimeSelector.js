@@ -1,12 +1,26 @@
 import { h } from 'preact'
 import PropTypes from 'prop-types'
 import Dropdown from './Dropdown'
+import styled from 'styled-components'
+
+const Container = styled.div`
+  margin: 0.25em 1em;
+`
+
+const StyledDropDown = styled(Dropdown)`
+  background-color: #eaeaea;
+  border-radius: 6px;
+
+  .Dropdown-control {
+    background-color: #eaeaea;
+  }
+`
 
 const TimeSelector = props => {
   const { label, onSelect, name } = props
   return (
-    <div>
-      <Dropdown
+    <Container>
+      <StyledDropDown
         label={label}
         initialValue={'12:00 PM'}
         name={name}
@@ -38,7 +52,7 @@ const TimeSelector = props => {
         ]}
         onSelect={onSelect}
       />
-    </div>
+    </Container>
   )
 }
 
