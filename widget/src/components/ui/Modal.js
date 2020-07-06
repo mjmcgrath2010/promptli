@@ -51,29 +51,6 @@ const FullScreenModal = styled.div`
 
 const ModalBody = styled.div``
 
-const CloseButton = styled.div`
-  padding: 6px 12px;
-  border: ${({ theme }) => `2px solid ${theme.primary}`};
-  color: #000;
-  background: transparent;
-  position: absolute;
-  top: 18px;
-  font-weight: 600;
-  font-size: ${({ theme }) => theme.smFont};
-  right: 24px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in;
-  &:before {
-    content: 'X';
-  }
-  &:hover {
-    background: ${({ theme }) => theme.secondaryHover};
-    border: ${({ theme }) => `2px solid ${theme.secondary}`};
-    color: ${({ theme }) => theme.white};
-    transition: background-color 0.2s ease-in;
-  }
-`
 const Modal = props => {
   const FadeIn = styled.div`
     animation: ${fade} 0.5s linear forwards;
@@ -82,7 +59,6 @@ const Modal = props => {
   const { onClose, open, children } = props
   return (
     <FullScreenModal open={open}>
-      <CloseButton onClick={onClose} />
       <ModalBody>
         <FadeIn>{children}</FadeIn>
       </ModalBody>
