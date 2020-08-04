@@ -6,8 +6,11 @@ import CategoryCard from './CategoryCard'
 import CategorySearch from './CategorySearch'
 import CategoriesHeader from './CategoriesHeader'
 import { setActiveCategory } from '../../actions/categories/actionCreators'
+import Container from '../../components/ui/Container'
+import Row from '../../components/ui/Row'
+import Column from '../../components/ui/Column'
 
-const ItemsContainerStyles = styled.div`
+const ItemsContainer = styled(Container)`
   background: rgb(74, 144, 226);
   min-height: 100vh;
   background: linear-gradient(
@@ -22,14 +25,6 @@ const ItemsContainerStyles = styled.div`
   }
 `
 
-const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  // Desktop Styles
-  @media all and (min-width: 575px) {
-  }
-`
-
 const CategoriesContainer = ({ navigation }) => {
   const { filteredCategories } = useSelector(({ categories }) => categories)
   const dispatch = useDispatch()
@@ -38,31 +33,37 @@ const CategoriesContainer = ({ navigation }) => {
     navigation.next()
   }
   return (
-    <ItemsContainerStyles>
-      <Container>
-        <CategoriesHeader title="Department of Conservation & Recreation (DCR)" service={'Parking'} />
-        <CategorySearch />
-        {filteredCategories.map(category => {
-          const {
-            title,
-            image,
-            location: { city, state },
-            _id,
-          } = category
-          return (
-            <CategoryCard
-              city={city}
-              title={title}
-              state={state}
-              image={image}
-              id={_id}
-              key={_id}
-              onClick={() => selectCategory(category)}
-            />
-          )
-        })}
-      </Container>
-    </ItemsContainerStyles>
+    <ItemsContainer>
+      <Row>
+        <Column>
+          <CategoriesHeader title="Department of Conservation & Recreation (DCR)" service={'Parking'} />
+          <CategorySearch />
+        </Column>
+      </Row>
+      <Row>
+        <Column>
+          {filteredCategories.map(category => {
+            const {
+              title,
+              image,
+              location: { city, state },
+              _id,
+            } = category
+            return (
+              <CategoryCard
+                city={city}
+                title={title}
+                state={state}
+                image={image}
+                id={_id}
+                key={_id}
+                onClick={() => selectCategory(category)}
+              />
+            )
+          })}
+        </Column>
+      </Row>
+    </ItemsContainer>
   )
 }
 
