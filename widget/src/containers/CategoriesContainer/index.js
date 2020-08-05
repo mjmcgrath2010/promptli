@@ -11,18 +11,29 @@ import Row from '../../components/ui/Row'
 import Column from '../../components/ui/Column'
 
 const ItemsContainer = styled(Container)`
-  background: rgb(74, 144, 226);
   min-height: 100vh;
-  background: linear-gradient(
-    125deg,
-    rgba(74, 144, 226, 1) 0%,
-    rgba(74, 144, 226, 1) 35%,
-    rgba(255, 255, 255, 1) 35%,
-    rgba(255, 255, 255, 1) 100%
-  );
   // Desktop Styles
   @media all and (min-width: 575px) {
   }
+`
+
+const SearchContainer = styled(Row)`
+  position: sticky;
+  background: rgb(74, 144, 226);
+  background: linear-gradient(
+    145deg,
+    rgba(74, 144, 226, 1) 0%,
+    rgba(74, 144, 226, 1) 25%,
+    rgba(255, 255, 255, 1) 75%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  top: 0;
+  padding: 0.5em;
+`
+
+const Categories = styled(Row)`
+  overflow: scroll;
+  padding-bottom: 400em;
 `
 
 const CategoriesContainer = ({ navigation }) => {
@@ -34,13 +45,13 @@ const CategoriesContainer = ({ navigation }) => {
   }
   return (
     <ItemsContainer>
-      <Row>
+      <SearchContainer>
         <Column>
           <CategoriesHeader title="Department of Conservation & Recreation (DCR)" service={'Parking'} />
           <CategorySearch />
         </Column>
-      </Row>
-      <Row>
+      </SearchContainer>
+      <Categories>
         <Column>
           {filteredCategories.map(category => {
             const {
@@ -62,7 +73,7 @@ const CategoriesContainer = ({ navigation }) => {
             )
           })}
         </Column>
-      </Row>
+      </Categories>
     </ItemsContainer>
   )
 }

@@ -5,7 +5,6 @@ import styled from 'styled-components'
 const StyledContainer = styled.div`
   grid-template-rows: ${({ rows }) => `repeat(${rows}, 1fr)`};
   grid-template-columns: ${({ columns }) => `repeat(${columns}, 1fr)`};
-  padding: 0.5em 0.5em;
 `
 
 const Container = ({ children, rows, columns, ...rest }) => (

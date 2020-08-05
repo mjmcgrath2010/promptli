@@ -4,7 +4,6 @@ import styled from 'styled-components'
 
 const StyledColumn = styled.div`
   grid-column: ${({ colWidth }) => `span ${colWidth}`};
-  margin: 0.5em 0.5em;
   align-items: center;
 `
 

@@ -42,7 +42,7 @@ const FullScreenModal = styled.div`
   width: 100vw;
   background: #fffdfd;
   font-family: 'Open Sans', 'sans-serif';
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   opacity: 0;
