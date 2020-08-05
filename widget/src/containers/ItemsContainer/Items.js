@@ -125,13 +125,6 @@ const Items = props => {
 
   const getItems = () => {}
 
-  const handleSelect = (id, isSelected) => e => {
-    if (e) {
-      e.preventDefault()
-    }
-    return isSelected ? dispatch(removeItem(id)) : dispatch(selectItem(id))
-  }
-
   return (
     <ItemsContainer image={image}>
       <Hero>
@@ -156,30 +149,6 @@ const Items = props => {
           </ButtonContainer>
         </SearchBarContainer>
       </SearchContainer>
-      {/*<CardsContainer>*/}
-      {/*  {loading && <LoadingSpinner />}*/}
-      {/*  {!loading && items.length ? (*/}
-      {/*    items.map(item => {*/}
-      {/*      const { name, description, _id } = item*/}
-      {/*      let isSelected = selectedItems.includes(_id)*/}
-      {/*      return (*/}
-      {/*        <Card*/}
-      {/*          primaryAction={handleSelect(_id, isSelected)}*/}
-      {/*          secondaryAction={() => {*/}
-      {/*            showItem(item)*/}
-      {/*          }}*/}
-      {/*          secondaryBtnText="View"*/}
-      {/*          title={name}*/}
-      {/*          primaryBtnText={isSelected ? 'Remove' : 'Select'}*/}
-      {/*          description={description}*/}
-      {/*          key={_id}*/}
-      {/*        />*/}
-      {/*      )*/}
-      {/*    })*/}
-      {/*  ) : (*/}
-      {/*    <div>{emptyMessage}</div>*/}
-      {/*  )}*/}
-      {/*</CardsContainer>*/}
     </ItemsContainer>
   )
 }
