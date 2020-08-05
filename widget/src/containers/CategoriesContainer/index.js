@@ -10,7 +10,7 @@ import Container from '../../components/ui/Container'
 import Row from '../../components/ui/Row'
 import Column from '../../components/ui/Column'
 
-const ItemsContainer = styled(Container)`
+const StyledContainer = styled(Container)`
   min-height: 100vh;
   // Desktop Styles
   @media all and (min-width: 575px) {
@@ -44,7 +44,7 @@ const CategoriesContainer = ({ navigation }) => {
     navigation.next()
   }
   return (
-    <ItemsContainer>
+    <StyledContainer>
       <SearchContainer>
         <Column>
           <CategoriesHeader title="Department of Conservation & Recreation (DCR)" service={'Parking'} />
@@ -74,12 +74,12 @@ const CategoriesContainer = ({ navigation }) => {
           })}
         </Column>
       </Categories>
-    </ItemsContainer>
+    </StyledContainer>
   )
 }
 
-CategoriesContainer.defaultProps = {}
-
-CategoriesContainer.propTypes = {}
+CategoriesContainer.propTypes = {
+  navigation: PropTypes.object.isRequired,
+}
 
 export default CategoriesContainer
