@@ -33,7 +33,6 @@ const SearchContainer = styled(Row)`
 
 const Categories = styled(Row)`
   overflow: scroll;
-  padding-bottom: 400em;
 `
 
 const CategoriesContainer = ({ navigation }) => {
