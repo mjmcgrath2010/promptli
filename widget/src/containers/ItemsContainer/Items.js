@@ -1,14 +1,13 @@
 import { h } from 'preact'
 import PropTypes from 'prop-types'
+import { useState } from 'preact/hooks'
 import styled from 'styled-components'
 import DateTimePicker from '../../components/ui/DateTimeSelector'
-import Card from '../../components/ui/Card'
 import Button from '../../components/ui/Button'
-import LoadingSpinner from '../../components/ui/LoadingSpinner'
-import { useState } from 'preact/hooks'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchItems, removeItem, selectItem } from '../../actions/items/actionCreators'
+import { fetchItems } from '../../actions/items/actionCreators'
 import Column from '../../components/ui/Column'
+import ItemsList from './ItemsList'
 
 const ItemsContainer = styled.div`
   display: grid;
@@ -89,13 +88,6 @@ const ButtonContainer = styled.div`
   margin-top: 22px;
 `
 
-const CardsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  padding-bottom: 2em;
-`
-
 const SearchButton = styled(Button)`
   width: 90%;
   background-color: #388557;
@@ -107,21 +99,20 @@ const SearchButton = styled(Button)`
 `
 
 const Items = props => {
-  const { loading, emptyMessage, showItem, itemIds, containerNavigation } = props
+  const { containerNavigation } = props
   const [dateRange, setDateRange] = useState({})
-
-  const handleDateChange = val => {
-    setDateRange(prevState => ({ ...prevState, ...val }))
-  }
   const dispatch = useDispatch()
-  const items = useSelector(({ items }) => items.items)
   const category = useSelector(({ categories }) => categories.activeCategory._id)
-  const selectedItems = useSelector(({ items }) => items.selectedItems)
+
   const {
     title,
     image = '//picsum.photos/200',
     location: { city, state },
   } = useSelector(({ categories }) => categories.activeCategory)
+
+  const handleDateChange = val => {
+    setDateRange(prevState => ({ ...prevState, ...val }))
+  }
 
   const getItems = () => {
     // Set loading spinner
@@ -135,7 +126,6 @@ const Items = props => {
   // Set list of selected items in redux store
   // Advance UI to the checkout container
   const confirmAndCheckout = () => {}
-
   return (
     <ItemsContainer image={image}>
       <Hero>
@@ -159,8 +149,10 @@ const Items = props => {
             <SearchButton onClick={getItems} text="Search For Parking" />
           </ButtonContainer>
         </SearchBarContainer>
+        <Column>
+          <ItemsList navigation={containerNavigation} />
+        </Column>
       </SearchContainer>
-      <Column>{items.length && JSON.stringify(items)}</Column>
     </ItemsContainer>
   )
 }

@@ -37,7 +37,6 @@ const FullScreenModal = ({ ctaText, title, itemIds, selectedItems, selectItem, r
   const openDialog = () => setState({ ...state, dialogOpen: true })
 
   const closeDialog = () => setState({ ...state, dialogOpen: false })
-
   return (
     <div>
       <Button onClick={openDialog} text={ctaText || 'Click here!'} />
