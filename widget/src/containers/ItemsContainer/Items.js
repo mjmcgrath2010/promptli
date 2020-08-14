@@ -99,7 +99,7 @@ const SearchButton = styled(Button)`
 `
 
 const Items = props => {
-  const { navigation } = props
+  const { navigation, containerNavigation } = props
   const [dateRange, setDateRange] = useState({})
   const dispatch = useDispatch()
   const category = useSelector(({ categories }) => categories.activeCategory._id)
@@ -151,7 +151,7 @@ const Items = props => {
           </ButtonContainer>
         </SearchBarContainer>
         <Column>
-          <ItemsList navigation={navigation} />
+          <ItemsList containerNavigation={containerNavigation} navigation={navigation} />
         </Column>
       </SearchContainer>
     </ItemsContainer>

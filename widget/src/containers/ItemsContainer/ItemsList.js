@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import Container from '../../components/ui/Container'
 import Column from '../../components/ui/Column'
 import { useEffect, useState } from 'preact/hooks'
-import { setItem, setItems } from '../../actions/items/actionCreators'
+import { setItem } from '../../actions/items/actionCreators'
 
 const ItemCard = styled.div`
   display: grid;
@@ -23,10 +23,6 @@ const ItemsList = ({ onClick, navigation }) => {
       setVisible(true)
     }
   }, [itemsLoaded])
-
-  useEffect(() => {
-    return () => dispatch(setItems([]))
-  }, [])
 
   const handleItemSelect = item => {
     dispatch(setItem({ item }))

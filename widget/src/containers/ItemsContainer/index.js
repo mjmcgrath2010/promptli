@@ -1,6 +1,7 @@
 import { h } from 'preact'
 import PropTypes from 'prop-types'
 import { useSelector, useDispatch } from 'react-redux'
+import { useEffect } from 'preact/hooks'
 
 import Items from './Items'
 import Item from './Item'
@@ -21,6 +22,11 @@ const ItemsContainer = ({ itemIds, selectedItems, selectItem, removeItem, naviga
     dispatchSetItem(item)
     navigation.next()
   }
+
+  useEffect(() => {
+    return () => dispatch(setItems([]))
+  }, [])
+
   const showView = (view, opts = {}) => {
     switch (view) {
       case 'show':
