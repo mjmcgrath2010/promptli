@@ -1,13 +1,14 @@
 import { h } from 'preact'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import DateTimePicker from '../../components/ui/DateTImeSelector'
+import DateTimePicker from '../../components/ui/DateTimeSelector'
 import Card from '../../components/ui/Card'
 import Button from '../../components/ui/Button'
 import LoadingSpinner from '../../components/ui/LoadingSpinner'
 import { useState } from 'preact/hooks'
 import { useDispatch, useSelector } from 'react-redux'
-import { removeItem, selectItem } from '../../actions/items/actionCreators'
+import { fetchItems, removeItem, selectItem } from '../../actions/items/actionCreators'
+import Column from '../../components/ui/Column'
 
 const ItemsContainer = styled.div`
   display: grid;
@@ -107,15 +108,14 @@ const SearchButton = styled(Button)`
 
 const Items = props => {
   const { loading, emptyMessage, showItem, itemIds, containerNavigation } = props
-  const [dateRange, setDateRange] = useState({
-    startDate: '',
-    endDate: '',
-    startTime: '',
-    endTime: '',
-  })
+  const [dateRange, setDateRange] = useState({})
 
+  const handleDateChange = val => {
+    setDateRange(prevState => ({ ...prevState, ...val }))
+  }
   const dispatch = useDispatch()
   const items = useSelector(({ items }) => items.items)
+  const category = useSelector(({ categories }) => categories.activeCategory._id)
   const selectedItems = useSelector(({ items }) => items.selectedItems)
   const {
     title,
@@ -124,11 +124,9 @@ const Items = props => {
   } = useSelector(({ categories }) => categories.activeCategory)
 
   const getItems = () => {
-    // Make API request, set loading spinner
-    console.log('fetching items', dateRange)
-    // Dispatch available items to the store
-
-    // Callback to render items and clear loading spinner
+    // Set loading spinner
+    dispatch(fetchItems({ ...dateRange, category }))
+    // Clear loading spinner
   }
 
   // onClick Handler for selecting an item(s)
@@ -156,12 +154,13 @@ const Items = props => {
       <SearchContainer>
         <Divider />
         <SearchBarContainer>
-          <DateTimePicker onChange={setDateRange} />
+          <DateTimePicker {...dateRange} onChange={handleDateChange} />
           <ButtonContainer>
             <SearchButton onClick={getItems} text="Search For Parking" />
           </ButtonContainer>
         </SearchBarContainer>
       </SearchContainer>
+      <Column>{items.length && JSON.stringify(items)}</Column>
     </ItemsContainer>
   )
 }

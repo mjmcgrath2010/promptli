@@ -22,19 +22,22 @@ const TimePicker = props => {
 
   useEffect(() => {
     setDefaultValues()
-  }, [setState])
+  }, [])
 
   const { onChange } = props
 
   const setDefaultValues = () => {
-    setState({
+    const defaults = {
       startTime: initialTime.format('h:mm A'),
       endTime: initialTime.add(1, 'hour').format('h:mm A'),
-    })
+    }
+    setState(defaults)
+    onChange(defaults)
   }
 
   const handleChange = val => {
     const [[name, { value }]] = Object.entries(val)
+
     setState(prevState => {
       let update = { ...prevState, [name]: value }
       const { startTime: newStart, endTime: newEnd } = update
@@ -60,6 +63,8 @@ const TimePicker = props => {
           endTime: end.format('h:mm A'),
         }
       }
+
+      console.log(update)
 
       return update
     })

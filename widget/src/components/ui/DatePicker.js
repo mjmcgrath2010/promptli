@@ -1,11 +1,10 @@
 import { h } from 'preact'
-import { useState, useEffect } from 'preact/hooks'
+import { useEffect } from 'preact/hooks'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import date from 'dayjs'
 
 import DateSelector from './DateSelector'
-import Column from './Column'
 
 const DatesContainer = styled.div`
   width: auto;
@@ -13,25 +12,37 @@ const DatesContainer = styled.div`
   grid-column: span 12;
 `
 
-const DatePicker = ({ onChange }) => {
-  const [startDate, setStartDate] = useState(date())
-
+const DatePicker = ({ onChange, initialValue, startDate }) => {
   useEffect(() => {
     onChange({
-      startDate: startDate.format('MM-DD-YYYY'),
-      endDate: startDate.format('MM-DD-YYYY'),
+      startDate: initialValue.format('MM-DD-YYYY'),
+      endDate: initialValue.format('MM-DD-YYYY'),
     })
-  }, [startDate])
+  }, [])
+
+  const handleChange = date => {
+    onChange({
+      startDate: date.format('MM-DD-YYYY'),
+      endDate: date.format('MM-DD-YYYY'),
+    })
+  }
 
   return (
     <DatesContainer>
-      <DateSelector value={startDate} name="startDate" onChange={setStartDate} title="Date" minDate={date().toDate()} />
+      <DateSelector
+        value={startDate ? date(startDate) : initialValue}
+        name="startDate"
+        onChange={handleChange}
+        title="Date"
+        minDate={date().toDate()}
+      />
     </DatesContainer>
   )
 }
 
 DatePicker.defaultProps = {
   onChange: () => {},
+  initialValue: date(),
 }
 
 DatePicker.propTypes = {
