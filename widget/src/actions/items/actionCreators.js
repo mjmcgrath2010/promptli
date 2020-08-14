@@ -44,7 +44,6 @@ export const setItems = payload => {
   }
 }
 
-
 export const setItem = payload => {
   return {
     type: SET_ITEM,

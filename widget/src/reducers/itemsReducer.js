@@ -22,7 +22,7 @@ const itemsReducer = (state = initialState, action) => {
       const index = currentItems.indexOf(action.payload)
       return { ...state, selectedItems: currentItems.splice(index, 1) }
     case SELECT_ITEM:
-      return { ...state, selectedItems: Array.from(new Set([...currentItems, ...action.payload])) }
+      return { ...state, selectedItems: Array.from(new Set([...currentItems, action.payload])) }
     default:
       return state
   }

@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Column from '../../components/ui/Column'
 import BackIcon from '../../components/ui/BackIcon'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Container from '../../components/ui/Container'
+import { selectItem } from '../../actions/items/actionCreators'
+import Button from '../../components/ui/Button'
 
 const ItemContainer = styled(Container)`
   background-color: #f8f9fb;
@@ -18,7 +20,12 @@ const ItemDescriptionContainer = styled(Column)`
 
 const Item = props => {
   const { onClickBack } = props
-  const { name, description } = useSelector(({ items }) => items.item)
+  const item = useSelector(({ items }) => items.item)
+  const { name, description } = item
+  const dispatch = useDispatch()
+  const handleSelect = () => {
+    dispatch(selectItem(item))
+  }
   return (
     <ItemContainer>
       <Column>
@@ -28,6 +35,9 @@ const Item = props => {
         <h1>{name}</h1>
         <h2> {description}</h2>
       </ItemDescriptionContainer>
+      <Column>
+        <Button onClick={handleSelect} text="Select Item" />
+      </Column>
     </ItemContainer>
   )
 }
