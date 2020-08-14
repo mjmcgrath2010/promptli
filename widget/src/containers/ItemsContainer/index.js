@@ -14,11 +14,12 @@ const steps = [{ id: 'index' }, { id: 'show' }]
 const ItemsContainer = ({ itemIds, selectedItems, selectItem, removeItem, navigation: containerNavigation }) => {
   const dispatch = useDispatch()
   const item = useSelector(({ items }) => items.item)
+  const category = useSelector(({ categories }) => categories.activeCategory._id)
   const { step, navigation } = useSteps({ steps })
 
   useEffect(() => {
-    dispatch(fetchItems({ startDate: dayjs().format(), endDate: dayjs().format(), items: itemIds.join(',') }))
-  }, [])
+    dispatch(fetchItems({ startDate: dayjs().format(), endDate: dayjs().format(), category }))
+  }, [category])
 
   const dispatchSetItems = items => dispatch(setItems(items))
   const dispatchSetItem = item => dispatch(setItem(item))

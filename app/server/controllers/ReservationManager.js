@@ -3,31 +3,27 @@ const Account = require('../models/Account')
 const Item = require('../models/Item')
 
 exports.params = (req, res, next, id) => {
-  const { items, startDate, endDate } = req.body.items ? req.body : req.query
-  const itemArray =
-    typeof items !== 'string'
-      ? items
-      : items
-          .split(',')
-          .map(entry => !!entry && entry)
-          .filter(Boolean)
+  const { startDate, endDate, category } = req.body.items ? req.body : req.query
 
   Account.findById(id, (err, account) => {
-    if (err) {
+    if (err || !account) {
       return res.send(err)
     }
 
     req.account = account._id
+    req.category = category
 
-    Item.find()
-      .where('_id')
-      .in(itemArray)
+    return Item.find()
+      .where('categories')
+      .in(category)
       .then(itemsDocs => {
         req.items = itemsDocs
         req.quantity = Math.min.apply(
           Math,
           itemsDocs.map(item => item.quantity)
         )
+
+        const itemArray = itemsDocs.map(i => i._id)
 
         getReservations({ account, items: itemArray, startDate, endDate })
           .then(reservations => {

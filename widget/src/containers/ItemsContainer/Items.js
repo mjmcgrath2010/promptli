@@ -123,7 +123,20 @@ const Items = props => {
     location: { city, state },
   } = useSelector(({ categories }) => categories.activeCategory)
 
-  const getItems = () => {}
+  const getItems = () => {
+    // Make API request, set loading spinner
+    console.log('fetching items', dateRange)
+    // Dispatch available items to the store
+
+    // Callback to render items and clear loading spinner
+  }
+
+  // onClick Handler for selecting an item(s)
+  const onItemSelect = () => {}
+
+  // Set list of selected items in redux store
+  // Advance UI to the checkout container
+  const confirmAndCheckout = () => {}
 
   return (
     <ItemsContainer image={image}>
