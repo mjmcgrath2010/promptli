@@ -5,6 +5,7 @@ const initialState = {
   view: 'index',
   item: {},
   selectedItems: [],
+  itemsLoaded: false,
 }
 
 const itemsReducer = (state = initialState, action) => {
@@ -12,9 +13,9 @@ const itemsReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case SET_ITEMS:
-      return { ...state, items: action.payload }
+      return { ...state, items: action.payload, itemsLoaded: !!action.payload.length }
     case FETCH_ITEMS_SUCCESS:
-      return { ...state, ...action.payload }
+      return { ...state, ...action.payload, itemsLoaded: true }
     case SET_ITEM:
       return { ...state, item: action.payload }
     case REMOVE_ITEM:

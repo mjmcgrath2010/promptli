@@ -99,7 +99,7 @@ const SearchButton = styled(Button)`
 `
 
 const Items = props => {
-  const { containerNavigation } = props
+  const { navigation } = props
   const [dateRange, setDateRange] = useState({})
   const dispatch = useDispatch()
   const category = useSelector(({ categories }) => categories.activeCategory._id)
@@ -126,6 +126,7 @@ const Items = props => {
   // Set list of selected items in redux store
   // Advance UI to the checkout container
   const confirmAndCheckout = () => {}
+
   return (
     <ItemsContainer image={image}>
       <Hero>
@@ -150,7 +151,7 @@ const Items = props => {
           </ButtonContainer>
         </SearchBarContainer>
         <Column>
-          <ItemsList navigation={containerNavigation} />
+          <ItemsList navigation={navigation} />
         </Column>
       </SearchContainer>
     </ItemsContainer>

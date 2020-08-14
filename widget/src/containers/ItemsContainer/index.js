@@ -38,6 +38,7 @@ const ItemsContainer = ({ itemIds, selectedItems, selectItem, removeItem, naviga
             setItems={dispatchSetItems}
             showItem={next}
             containerNavigation={containerNavigation}
+            navigation={navigation}
           />
         )
     }
