@@ -17,7 +17,7 @@ const itemsReducer = (state = initialState, action) => {
     case FETCH_ITEMS_SUCCESS:
       return { ...state, ...action.payload, itemsLoaded: true }
     case SET_ITEM:
-      return { ...state, item: action.payload }
+      return { ...state, ...action.payload }
     case REMOVE_ITEM:
       const index = currentItems.indexOf(action.payload)
       return { ...state, selectedItems: currentItems.splice(index, 1) }

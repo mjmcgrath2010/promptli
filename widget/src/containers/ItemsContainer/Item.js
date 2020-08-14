@@ -2,21 +2,33 @@ import { h } from 'preact'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Column from '../../components/ui/Column'
+import BackIcon from '../../components/ui/BackIcon'
+import { useSelector } from 'react-redux'
+import Container from '../../components/ui/Container'
 
-const ServiceContainer = styled.div``
+const ItemContainer = styled(Container)`
+  background-color: #f8f9fb;
+  height: 100%;
+  min-height: 100vh;
+`
 
-const BackButton = styled.button``
+const ItemDescriptionContainer = styled(Column)`
+  padding: 0.5em 2em;
+`
 
 const Item = props => {
-  const { name, description, onClickBack } = props
+  const { onClickBack } = props
+  const { name, description } = useSelector(({ items }) => items.item)
   return (
-    <ServiceContainer>
-      <BackButton onClick={onClickBack}>GO BACK</BackButton>
+    <ItemContainer>
       <Column>
+        <BackIcon dark onClick={onClickBack} />
+      </Column>
+      <ItemDescriptionContainer>
         <h1>{name}</h1>
         <h2> {description}</h2>
-      </Column>
-    </ServiceContainer>
+      </ItemDescriptionContainer>
+    </ItemContainer>
   )
 }
 

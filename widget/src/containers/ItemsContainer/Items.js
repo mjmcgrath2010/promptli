@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchItems } from '../../actions/items/actionCreators'
 import Column from '../../components/ui/Column'
 import ItemsList from './ItemsList'
+import BackIcon from '../../components/ui/BackIcon'
 
 const ItemsContainer = styled.div`
   display: grid;
@@ -30,16 +31,6 @@ const HeroBody = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
-`
-
-const BackIcon = styled.div`
-  grid-column: span 12;
-  font-size: 24px;
-  color: #fff;
-  span {
-    padding: 1em;
-    cursor: pointer;
-  }
 `
 
 const CategoryTitle = styled.div`
@@ -131,11 +122,7 @@ const Items = props => {
     <ItemsContainer image={image}>
       <Hero>
         <HeroBody>
-          <BackIcon>
-            <div onClick={() => containerNavigation.previous()}>
-              <span className="material-icons">arrow_back</span>
-            </div>
-          </BackIcon>
+          <BackIcon onClick={() => containerNavigation.previous()} />
           <CategoryTitle>{title}</CategoryTitle>
           <CategoryTitle>
             {city}, {state}

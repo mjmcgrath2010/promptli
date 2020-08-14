@@ -28,7 +28,6 @@ const SearchContainer = styled(Row)`
     rgba(255, 255, 255, 1) 100%
   );
   top: 0;
-  padding: 0.5em;
 `
 
 const Categories = styled(Row)`
