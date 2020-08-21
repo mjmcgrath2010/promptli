@@ -1,7 +1,7 @@
 import { h } from 'preact'
 import PropTypes from 'prop-types'
 import { useState } from 'preact/hooks'
-import styled from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import DateTimePicker from '../../components/ui/DateTimeSelector'
 import Button from '../../components/ui/Button'
 import { useDispatch, useSelector } from 'react-redux'
@@ -14,14 +14,20 @@ const ItemsContainer = styled.div`
   display: grid;
   height: 100vh;
   position: relative;
-  grid-template-rows: repeat(12, 1fr);
   margin: 0 auto;
   background: ${({ image }) => `url(${image})`} center no-repeat;
   background-size: cover;
 `
 const Hero = styled.div`
   grid-column: span 1;
-  grid-row: span 6;
+  height: 50vh;
+  transition: 0.5s ease all;
+  ${({ itemsVisible }) =>
+    itemsVisible &&
+    css`
+      height: 20vh;
+      transition: 0.5s ease all;
+    `}
 `
 
 const HeroBody = styled.div`
@@ -48,8 +54,15 @@ const SearchContainer = styled.div`
   background-color: #f8f9fb;
   width: 100%;
   margin: -2em auto 0;
-  grid-row: span 6;
+  height: 50vh;
+  transition: 0.5s ease all;
   border-radius: 26px 26px 0 0;
+  ${({ itemsVisible }) =>
+    itemsVisible &&
+    css`
+      height: 80vh;
+      transition: 0.5s ease all;
+    `};
   padding: 1em 0;
 `
 
@@ -94,6 +107,7 @@ const Items = props => {
   const [dateRange, setDateRange] = useState({})
   const dispatch = useDispatch()
   const category = useSelector(({ categories }) => categories.activeCategory._id)
+  const items = useSelector(({ items }) => items.items)
 
   const {
     title,
@@ -117,10 +131,10 @@ const Items = props => {
   // Set list of selected items in redux store
   // Advance UI to the checkout container
   const confirmAndCheckout = () => {}
-
+  const itemsVisible = !!items.length
   return (
     <ItemsContainer image={image}>
-      <Hero>
+      <Hero start={6} end={2} itemsVisible={itemsVisible}>
         <HeroBody>
           <BackIcon onClick={() => containerNavigation.previous()} />
           <CategoryTitle>{title}</CategoryTitle>
@@ -129,7 +143,7 @@ const Items = props => {
           </CategoryTitle>
         </HeroBody>
       </Hero>
-      <SearchContainer>
+      <SearchContainer start={6} end={10} itemsVisible={itemsVisible}>
         <Divider />
         <SearchBarContainer>
           <DateTimePicker {...dateRange} onChange={handleDateChange} />

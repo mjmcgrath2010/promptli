@@ -7,6 +7,7 @@ import Container from '../../components/ui/Container'
 import Column from '../../components/ui/Column'
 import { useEffect, useState } from 'preact/hooks'
 import { setItem } from '../../actions/items/actionCreators'
+import ReservationDetails from '../CategoriesContainer/ReservationDetails'
 
 const ItemsListContainer = styled(Container)`
   background-color: #f8f9fb;
@@ -31,6 +32,7 @@ const ItemDescription = styled.div`
 
 const ItemsList = ({ navigation }) => {
   const [visible, setVisible] = useState(false)
+  const [showDetails, setDetails] = useState(false)
   const items = useSelector(({ items }) => items.items)
   const itemsLoaded = useSelector(({ items }) => items.itemsLoaded)
   const dispatch = useDispatch()
@@ -43,7 +45,7 @@ const ItemsList = ({ navigation }) => {
 
   const handleItemSelect = item => {
     dispatch(setItem({ item }))
-    navigation.next()
+    setDetails(true)
   }
 
   return (
@@ -56,6 +58,7 @@ const ItemsList = ({ navigation }) => {
                 <ItemTitle>{item.name}</ItemTitle>
                 <ItemDescription>{item.description}</ItemDescription>
               </ItemCard>
+              {showDetails && <ReservationDetails />}
             </Column>
           )
         })
