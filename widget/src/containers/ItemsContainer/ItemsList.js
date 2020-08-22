@@ -30,9 +30,8 @@ const ItemDescription = styled.div`
   font-size: 0.75em;
 `
 
-const ItemsList = ({ navigation }) => {
+const ItemsList = ({ navigation, showDetails, onCardClick }) => {
   const [visible, setVisible] = useState(false)
-  const [showDetails, setDetails] = useState(false)
   const items = useSelector(({ items }) => items.items)
   const itemsLoaded = useSelector(({ items }) => items.itemsLoaded)
   const dispatch = useDispatch()
@@ -44,8 +43,8 @@ const ItemsList = ({ navigation }) => {
   }, [itemsLoaded])
 
   const handleItemSelect = item => {
+    onCardClick()
     dispatch(setItem({ item }))
-    setDetails(true)
   }
 
   return (

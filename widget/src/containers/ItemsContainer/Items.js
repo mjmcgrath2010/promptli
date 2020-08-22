@@ -5,7 +5,7 @@ import styled, { css, keyframes } from 'styled-components'
 import DateTimePicker from '../../components/ui/DateTimeSelector'
 import Button from '../../components/ui/Button'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchItems } from '../../actions/items/actionCreators'
+import { fetchItems, setItems } from '../../actions/items/actionCreators'
 import Column from '../../components/ui/Column'
 import ItemsList from './ItemsList'
 import BackIcon from '../../components/ui/BackIcon'
@@ -105,6 +105,7 @@ const SearchButton = styled(Button)`
 const Items = props => {
   const { navigation, containerNavigation } = props
   const [dateRange, setDateRange] = useState({})
+  const [showDetails, setShowDetails] = useState(false)
   const dispatch = useDispatch()
   const category = useSelector(({ categories }) => categories.activeCategory._id)
   const items = useSelector(({ items }) => items.items)
@@ -132,11 +133,20 @@ const Items = props => {
   // Advance UI to the checkout container
   const confirmAndCheckout = () => {}
   const itemsVisible = !!items.length
+
+  const handleBack = () => {
+    if (showDetails) {
+      return setShowDetails(false)
+    } else if (itemsVisible) {
+      return dispatch(setItems([]))
+    }
+    return containerNavigation.previous()
+  }
   return (
     <ItemsContainer image={image}>
       <Hero start={6} end={2} itemsVisible={itemsVisible}>
         <HeroBody>
-          <BackIcon onClick={() => containerNavigation.previous()} />
+          <BackIcon onClick={handleBack} />
           <CategoryTitle>{title}</CategoryTitle>
           <CategoryTitle>
             {city}, {state}
@@ -152,7 +162,12 @@ const Items = props => {
           </ButtonContainer>
         </SearchBarContainer>
         <Column>
-          <ItemsList containerNavigation={containerNavigation} navigation={navigation} />
+          <ItemsList
+            showDetails={showDetails}
+            onCardClick={() => setShowDetails(!showDetails)}
+            containerNavigation={containerNavigation}
+            navigation={navigation}
+          />
         </Column>
       </SearchContainer>
     </ItemsContainer>
