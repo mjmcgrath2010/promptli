@@ -74,10 +74,10 @@ const TimePicker = props => {
   return (
     <Fragment>
       <SelectorContainer>
-        <TimeSelector value={startTime} label="Start Time" name="startTime" onSelect={handleChange} />
+        <TimeSelector {...props} value={startTime} label="Start Time" name="startTime" onSelect={handleChange} />
       </SelectorContainer>
       <SelectorContainer>
-        <TimeSelector value={endTime} label="End Time" name="endTime" onSelect={handleChange} />
+        <TimeSelector {...props} value={endTime} label="End Time" name="endTime" onSelect={handleChange} />
       </SelectorContainer>
     </Fragment>
   )

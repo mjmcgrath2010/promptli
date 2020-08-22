@@ -12,7 +12,7 @@ const DatesContainer = styled.div`
   grid-column: span 12;
 `
 
-const DatePicker = ({ onChange, initialValue, startDate }) => {
+const DatePicker = ({ onChange, initialValue, startDate, ...rest }) => {
   useEffect(() => {
     onChange({
       startDate: initialValue.format('MM-DD-YYYY'),
@@ -35,6 +35,7 @@ const DatePicker = ({ onChange, initialValue, startDate }) => {
         onChange={handleChange}
         title="Date"
         minDate={date().toDate()}
+        {...rest}
       />
     </DatesContainer>
   )

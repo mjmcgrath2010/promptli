@@ -1,6 +1,6 @@
 import { h } from 'preact'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import date from 'dayjs'
 
 import DatePicker from 'react-date-picker'
@@ -12,6 +12,28 @@ const DateSelectorComponent = styled(DatePicker)`
   background-color: #eaeaea;
   border-radius: 6px;
   padding: 0.5em;
+  transition: 0.5s ease-in-out all;
+  ${({ displayMode }) =>
+    displayMode &&
+    css`
+      width: auto;
+      display: inline-flex;
+      transition: 0.5s ease-in-out all;
+      padding: 0.25em;
+
+      .react-date-picker__inputGroup {
+        font-size: 12px;
+      }
+
+      .react-date-picker.react-date-picker--closed.react-date-picker--enabled.sc-AxheI.bgrbqw {
+        padding: 8px;
+        width: fit-content;
+      }
+
+      button.react-date-picker__calendar-button.react-date-picker__button {
+        display: none;
+      }
+    `}
 
   .react-date-picker__wrapper {
     border: none;
@@ -24,7 +46,7 @@ const Title = styled.div`
 `
 
 const DateSelector = props => {
-  const { title, onChange, value, name, minDate, maxDate, ...rest } = props
+  const { title, onChange, value, name, minDate, maxDate, displayMode, ...rest } = props
 
   return (
     <DateSelectorContainer>
@@ -40,6 +62,7 @@ const DateSelector = props => {
           name={name}
           minDate={minDate}
           maxDate={maxDate}
+          displayMode={displayMode}
           {...rest}
         />
       </div>

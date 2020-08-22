@@ -180,10 +180,12 @@ const Items = props => {
       <SearchContainer start={6} end={10} itemsVisible={itemsVisible}>
         <Divider />
         <SearchBarContainer>
-          <DateTimePicker {...dateRange} onChange={handleDateChange} />
-          <ButtonContainer>
-            <SearchButton onClick={getItems} text="Search For Parking" />
-          </ButtonContainer>
+          <DateTimePicker displayMode={itemsVisible} {...dateRange} onChange={handleDateChange} />
+          {!itemsVisible && (
+            <ButtonContainer>
+              <SearchButton onClick={getItems} text="Search For Parking" />
+            </ButtonContainer>
+          )}
         </SearchBarContainer>
         <Column>
           <ItemsList
