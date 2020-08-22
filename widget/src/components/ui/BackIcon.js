@@ -6,6 +6,9 @@ const BackIconContainer = styled.div`
   grid-column: span 12;
   font-size: 24px;
   color: ${({ dark }) => (dark ? '#000' : '#fff')};
+  position: fixed;
+  top: 0;
+  left: 0;
   span {
     padding: 1em;
     cursor: pointer;

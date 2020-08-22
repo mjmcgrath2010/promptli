@@ -21,12 +21,27 @@ const ItemsContainer = styled.div`
 const Hero = styled.div`
   grid-column: span 1;
   height: 50vh;
-  transition: 0.5s ease all;
+  transition: 0.5s ease-in-out all;
+  grid-row: span 5;
   ${({ itemsVisible }) =>
     itemsVisible &&
     css`
       height: 20vh;
-      transition: 0.5s ease all;
+      transition: 0.5s ease-in-out all;
+      grid-row: span 2;
+      ${HeroBody} {
+        height: 20vh;
+        padding: 2em 4em 0;
+        transition: 0.5s ease all;
+      }
+      ${CategoryTitle} {
+        font-size: 20px;
+        transition: 0.5s ease all;
+      }
+      ${CategorySubHeader} {
+        font-size: 16px;
+        transition: 0.5s ease all;
+      }
     `}
 `
 
@@ -36,30 +51,39 @@ const HeroBody = styled.div`
   background: rgba(0, 0, 0, 0.2);
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(12, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  padding: 5em 3em 0;
+  transition: 0.5s ease all;
 `
 
 const CategoryTitle = styled.div`
   grid-column: span 12;
-  padding: 1em;
   text-align: left;
   color: #ffffff;
   font-size: 24px;
+  display: flex;
+  transition: 0.5s ease all;
+`
+
+const CategorySubHeader = styled(CategoryTitle)`
+  font-size: 18px;
+  transition: 0.5s ease all;
 `
 
 const SearchContainer = styled.div`
   grid-column: span 1;
   grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: 1fr;
   background-color: #f8f9fb;
   width: 100%;
   margin: -2em auto 0;
   height: 50vh;
   transition: 0.5s ease all;
   border-radius: 26px 26px 0 0;
+  grid-row: span 5;
   ${({ itemsVisible }) =>
     itemsVisible &&
     css`
+      grid-row: span 8;
       height: 80vh;
       transition: 0.5s ease all;
     `};
@@ -148,9 +172,9 @@ const Items = props => {
         <HeroBody>
           <BackIcon onClick={handleBack} />
           <CategoryTitle>{title}</CategoryTitle>
-          <CategoryTitle>
+          <CategorySubHeader>
             {city}, {state}
-          </CategoryTitle>
+          </CategorySubHeader>
         </HeroBody>
       </Hero>
       <SearchContainer start={6} end={10} itemsVisible={itemsVisible}>
