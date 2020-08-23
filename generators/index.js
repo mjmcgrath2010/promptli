@@ -105,22 +105,22 @@ module.exports = function(plop) {
         case 'widget common component':
           actions.push({
             type: 'add',
-            path: '../widget/src/components/{{dashCase name}}.js',
-            templateFile: 'templates/page.hbs',
+            path: '../widget/src/components/{{properCase name}}.js',
+            templateFile: 'templates/preactComponent.hbs',
           })
           break
         case 'widget container':
           actions.push({
             type: 'add',
-            path: '../widget/src/containers/{{properCase name}}/{{dashCase name}}.js',
-            templateFile: 'templates/page.hbs',
+            path: '../widget/src/containers/{{properCase name}}/index.js',
+            templateFile: 'templates/preactComponent.hbs',
           })
           break
         case 'widget display':
           actions.push({
             type: 'add',
-            path: '../widget/src/displays/{{properCase name}}/{{dashCase name}}.js',
-            templateFile: 'templates/page.hbs',
+            path: '../widget/src/displays/{{properCase name}}/index.js',
+            templateFile: 'templates/preactComponent.hbs',
           })
           break
         default:
