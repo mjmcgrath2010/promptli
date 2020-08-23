@@ -16,6 +16,9 @@ module.exports = function(plop) {
           'admin/component',
           'model',
           'endpoint',
+          'widget common component',
+          'widget container',
+          'widget display',
         ],
       },
       {
@@ -31,71 +34,92 @@ module.exports = function(plop) {
         case 'common/component':
           actions.push({
             type: 'add',
-            path: '../../components/common/{{properCase name}}.js',
+            path: '../app/components/common/{{properCase name}}.js',
             templateFile: 'templates/component.hbs',
           })
           break
         case 'dashboard/component':
           actions.push({
             type: 'add',
-            path: '../../components/dashboard/{{properCase name}}.js',
+            path: '../app/components/dashboard/{{properCase name}}.js',
             templateFile: 'templates/component.hbs',
           })
           break
         case 'admin/component':
           actions.push({
             type: 'add',
-            path: '../../components/admin/{{properCase name}}.js',
+            path: '../app/components/admin/{{properCase name}}.js',
             templateFile: 'templates/component.hbs',
           })
           break
         case 'endpoint':
           actions.push({
             type: 'add',
-            path: '../../server/routes/{{properCase name}}.js',
+            path: '../app/server/routes/{{properCase name}}.js',
             templateFile: 'templates/route.hbs',
           })
           actions.push({
             type: 'add',
-            path: '../../server/controllers/{{properCase name}}.js',
+            path: '../app/server/controllers/{{properCase name}}.js',
             templateFile: 'templates/controller.hbs',
           })
           break
         case 'model':
           actions.push({
             type: 'add',
-            path: '../../server/routes/{{properCase name}}.js',
+            path: '../app/server/routes/{{properCase name}}.js',
             templateFile: 'templates/route.hbs',
           })
           actions.push({
             type: 'add',
-            path: '../../server/models/{{properCase name}}.js',
+            path: '../app/server/models/{{properCase name}}.js',
             templateFile: 'templates/model.hbs',
           })
           actions.push({
             type: 'add',
-            path: '../../server/controllers/{{properCase name}}.js',
+            path: '../app/server/controllers/{{properCase name}}.js',
             templateFile: 'templates/controller.hbs',
           })
           break
         case 'dashboard/page':
           actions.push({
             type: 'add',
-            path: '../../pages/dashboard/{{dashCase name}}.js',
+            path: '../app/pages/dashboard/{{dashCase name}}.js',
             templateFile: 'templates/dashboardPage.hbs',
           })
           break
         case 'admin/page':
           actions.push({
             type: 'add',
-            path: '../../pages/admin/{{dashCase name}}.js',
+            path: '../app/pages/admin/{{dashCase name}}.js',
             templateFile: 'templates/adminPage.hbs',
           })
           break
         case 'page':
           actions.push({
             type: 'add',
-            path: '../../pages/{{dashCase name}}.js',
+            path: '../app/pages/{{dashCase name}}.js',
+            templateFile: 'templates/page.hbs',
+          })
+          break
+        case 'widget common component':
+          actions.push({
+            type: 'add',
+            path: '../widget/src/components/{{dashCase name}}.js',
+            templateFile: 'templates/page.hbs',
+          })
+          break
+        case 'widget container':
+          actions.push({
+            type: 'add',
+            path: '../widget/src/containers/{{properCase name}}/{{dashCase name}}.js',
+            templateFile: 'templates/page.hbs',
+          })
+          break
+        case 'widget display':
+          actions.push({
+            type: 'add',
+            path: '../widget/src/displays/{{properCase name}}/{{dashCase name}}.js',
             templateFile: 'templates/page.hbs',
           })
           break

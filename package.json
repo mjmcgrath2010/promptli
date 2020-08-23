@@ -23,7 +23,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "/bin/bash scripts/build.sh",
-    "start": "cd ./app && yarn start"
+    "start": "cd ./app && yarn start",
+    "generate": "plop --plopfile ./generators/index.js"
   },
   "repository": {
     "type": "git",
