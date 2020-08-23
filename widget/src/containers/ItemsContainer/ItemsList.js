@@ -7,7 +7,7 @@ import Container from '../../components/ui/Container'
 import Column from '../../components/ui/Column'
 import { useEffect, useState } from 'preact/hooks'
 import { setItem } from '../../actions/items/actionCreators'
-import ReservationDetails from '../CategoriesContainer/ReservationDetails'
+import ReservationDetails from './ReservationDetails'
 
 const ItemsListContainer = styled(Container)`
   background-color: #f8f9fb;

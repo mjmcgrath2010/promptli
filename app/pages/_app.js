@@ -17,7 +17,7 @@ if (process.env.SENTRY_DSN) {
 
 class MyApp extends App {
   componentDidMount() {
-    // Remove the server-side injected CSS.
+    // Remove the server-side injected CSS.c
     const jssStyles = document.querySelector('#jss-server-side')
     if (jssStyles) {
       jssStyles.parentNode.removeChild(jssStyles)

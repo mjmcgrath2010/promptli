@@ -9,3 +9,4 @@ node_modules
 app/.next
 widget/build
 app/static/widget
+app/.env.*
