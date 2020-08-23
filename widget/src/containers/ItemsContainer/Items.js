@@ -20,7 +20,6 @@ const ItemsContainer = styled.div`
 `
 const Hero = styled.div`
   grid-column: span 1;
-  height: 50vh;
   transition: 0.5s ease-in-out all;
   grid-row: span 5;
   ${({ itemsVisible }) =>
@@ -30,7 +29,6 @@ const Hero = styled.div`
       transition: 0.5s ease-in-out all;
       grid-row: span 2;
       ${HeroBody} {
-        height: 20vh;
         padding: 2em 4em 0;
         transition: 0.5s ease all;
       }
@@ -76,7 +74,6 @@ const SearchContainer = styled.div`
   background-color: #f8f9fb;
   width: 100%;
   margin: -2em auto 0;
-  height: 50vh;
   transition: 0.5s ease all;
   border-radius: 26px 26px 0 0;
   grid-row: span 5;
@@ -84,7 +81,6 @@ const SearchContainer = styled.div`
     itemsVisible &&
     css`
       grid-row: span 8;
-      height: 80vh;
       transition: 0.5s ease all;
     `};
   padding: 1em 0;

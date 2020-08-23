@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Head from 'next/head'
+import { Container } from '@material-ui/core'
 
 class WidgetTest extends Component {
   static defaultProps = {}
@@ -9,18 +10,12 @@ class WidgetTest extends Component {
 
   componentDidMount() {
     const el = document.getElementById('demo')
-    console.log(
-      el,
-      window.PromptliWidget.init,
-      process.env.TEST_BUSINESS_IDENTIFIER,
-      process.env.TEST_BUSINESS_IDENTIFIER
-    )
     window &&
       el &&
       window.PromptliWidget.init(
         {
           identifier: process.env.TEST_BUSINESS_IDENTIFIER,
-          widgetId: process.env.TEST_BUSINESS_IDENTIFIER,
+          widgetId: process.env.TEST_WIDGET_ID,
         },
         'demo'
       )
@@ -30,9 +25,12 @@ class WidgetTest extends Component {
     return (
       <div>
         <Head>
-          <title>Settings | Promptli</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <title>Widget Integrations | Promptli</title>
         </Head>
-        <div id="demo"></div>
+        <Container>
+          <div id="demo"></div>
+        </Container>
       </div>
     )
   }
