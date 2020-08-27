@@ -10,7 +10,7 @@ const theme = {
   error: 'rgb(232,0,0)',
   disabled: '#a8a8a8',
   // Font Families
-  primaryFont: "'Open Sans', 'sans-serif'",
+  primaryFont: "'Montserrat', sans-serif;",
   secondaryFont: "'Ariel, 'sans-serif'",
   //Font Sizes
   smFont: '12px',

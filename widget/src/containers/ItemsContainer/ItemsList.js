@@ -1,4 +1,4 @@
-import { h } from 'preact'
+import { h, Fragment } from 'preact'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
@@ -62,9 +62,7 @@ const ItemsList = ({ navigation, showDetails, onCardClick }) => {
           )
         })
       ) : (
-        <Column>
-          <ItemCard />
-        </Column>
+        <Fragment />
       )}
     </ItemsListContainer>
   )

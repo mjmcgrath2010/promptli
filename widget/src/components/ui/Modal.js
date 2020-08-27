@@ -36,17 +36,17 @@ const FullScreenModal = styled.div`
   animation: ${({ open }) =>
     css`
       ${open ? slideUp : slideDown} 0.2s linear forwards;
-    `}
+    `};
   height: 100vh;
   z-index: 100000;
   width: 100vw;
   background: #fffdfd;
-  font-family: 'Open Sans', 'sans-serif';
   position: absolute;
   top: 0;
   left: 0;
   opacity: 0;
   transform: translateY(100%);
+  overflow-x: hidden;
 `
 
 const ModalBody = styled.div``
