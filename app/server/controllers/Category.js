@@ -15,7 +15,7 @@ exports.params = (req, res, next, id) => {
 }
 
 exports.get = (req, res, next) => {
-  Category.find({}, (err, categories) => {
+  Category.find({ account: req.user.account() }, (err, categories) => {
     if (err) {
       next(err)
     } else {
