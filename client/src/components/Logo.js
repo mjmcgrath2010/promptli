@@ -4,6 +4,8 @@ import {
   makeStyles
 } from '@material-ui/core';
 import clsx from 'clsx'
+import SettingsContext from '../contexts/SettingsContext'
+import { THEMES } from '../constants'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,30 +25,53 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Logo = ({className, size, colored, ...rest}) => {
+const Logo = ({className, size, white, ...rest}) => {
   const classes = useStyles();
+
   return (
-    <span className={classes.root}>
-      <img
+    <SettingsContext.Consumer>
+      {(context) => {
+        const { settings } = context || {}
+
+        if (settings.theme === THEMES.ONE_DARK && !white) {
+         return  <img
+            alt="Logo"
+            className={clsx(classes[size], className)}
+            src='/static/logo-white.svg'
+            {...rest}
+          />
+        }
+
+        if (settings.theme !== THEMES.ONE_DARK && !white) {
+          return  <img
+            alt="Logo"
+            className={clsx(classes[size], className)}
+            src='/static/logo-color.svg'
+            {...rest}
+          />
+        }
+
+        return <img
           alt="Logo"
           className={clsx(classes[size], className)}
-          src={`/static/logo-${colored ? 'color' : 'white'}.svg`}
+          src={`/static/logo-${white ? 'white' : 'color'}.svg`}
           {...rest}
         />
-    </span>
+      }}
+    </SettingsContext.Consumer>
 
   );
 }
 
 Logo.defaultProps = {
   className: {},
-  colored: false,
+  white: false,
   size: 'sm'
 }
 
 Logo.propTypes = {
-  className: PropTypes.string,
-  color: PropTypes.bool,
+  className: PropTypes.object,
+  white: PropTypes.bool,
   size: PropTypes.oneOf(['sm', 'md', 'lg', 'xl']),
 
 }

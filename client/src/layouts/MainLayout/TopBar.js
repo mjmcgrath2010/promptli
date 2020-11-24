@@ -48,7 +48,7 @@ const TopBar = ({ className, ...rest }) => {
     >
       <Toolbar className={classes.toolbar}>
         <RouterLink to="/">
-          <Logo size="sm" colored />
+          <Logo size="sm" />
         </RouterLink>
 
         <Box flexGrow={1} />

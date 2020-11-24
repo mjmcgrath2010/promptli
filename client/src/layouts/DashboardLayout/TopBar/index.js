@@ -61,7 +61,7 @@ const TopBar = ({
         </Hidden>
         <Hidden mdDown>
           <RouterLink to="/">
-            <Logo />
+            <Logo white />
           </RouterLink>
         </Hidden>
         <Box

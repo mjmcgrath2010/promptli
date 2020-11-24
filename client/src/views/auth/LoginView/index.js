@@ -77,7 +77,7 @@ const LoginView = () => {
           justifyContent="center"
         >
           <RouterLink to="/">
-            <Logo colored size="md" />
+            <Logo size="md" />
           </RouterLink>
         </Box>
         <Card>
