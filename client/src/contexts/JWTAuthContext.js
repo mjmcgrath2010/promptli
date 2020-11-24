@@ -1,16 +1,12 @@
-import React, {
-  createContext,
-  useEffect,
-  useReducer
-} from 'react';
-import jwtDecode from 'jwt-decode';
-import SplashScreen from 'src/components/SplashScreen';
-import axios from 'src/utils/axios';
+import React, { createContext, useEffect, useReducer } from "react";
+import jwtDecode from "jwt-decode";
+import SplashScreen from "src/components/SplashScreen";
+import axios from "src/utils/axios";
 
 const initialAuthState = {
   isAuthenticated: false,
   isInitialised: false,
-  user: null
+  user: null,
 };
 
 const isValidToken = (accessToken) => {
@@ -26,49 +22,49 @@ const isValidToken = (accessToken) => {
 
 const setSession = (accessToken) => {
   if (accessToken) {
-    localStorage.setItem('accessToken', accessToken);
+    localStorage.setItem("accessToken", accessToken);
     axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
   } else {
-    localStorage.removeItem('accessToken');
+    localStorage.removeItem("accessToken");
     delete axios.defaults.headers.common.Authorization;
   }
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'INITIALISE': {
+    case "INITIALISE": {
       const { isAuthenticated, user } = action.payload;
 
       return {
         ...state,
         isAuthenticated,
         isInitialised: true,
-        user
+        user,
       };
     }
-    case 'LOGIN': {
+    case "LOGIN": {
       const { user } = action.payload;
 
       return {
         ...state,
         isAuthenticated: true,
-        user
+        user,
       };
     }
-    case 'LOGOUT': {
+    case "LOGOUT": {
       return {
         ...state,
         isAuthenticated: false,
-        user: null
+        user: null,
       };
     }
-    case 'REGISTER': {
+    case "REGISTER": {
       const { user } = action.payload;
 
       return {
         ...state,
         isAuthenticated: true,
-        user
+        user,
       };
     }
     default: {
@@ -79,86 +75,89 @@ const reducer = (state, action) => {
 
 const AuthContext = createContext({
   ...initialAuthState,
-  method: 'JWT',
+  method: "JWT",
   login: () => Promise.resolve(),
-  logout: () => { },
-  register: () => Promise.resolve()
+  logout: () => {},
+  register: () => Promise.resolve(),
 });
 
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialAuthState);
 
   const login = async (email, password) => {
-    const response = await axios.post('/api/account/login', { email, password });
+    const response = await axios.post("/api/account/login", {
+      email,
+      password,
+    });
     const { accessToken, user } = response.data;
 
     setSession(accessToken);
     dispatch({
-      type: 'LOGIN',
+      type: "LOGIN",
       payload: {
-        user
-      }
+        user,
+      },
     });
   };
 
   const logout = () => {
     setSession(null);
-    dispatch({ type: 'LOGOUT' });
+    dispatch({ type: "LOGOUT" });
   };
 
   const register = async (email, name, password) => {
-    const response = await axios.post('/api/account/register', {
+    const response = await axios.post("/api/account/register", {
       email,
       name,
-      password
+      password,
     });
     const { accessToken, user } = response.data;
 
-    window.localStorage.setItem('accessToken', accessToken);
+    window.localStorage.setItem("accessToken", accessToken);
 
     dispatch({
-      type: 'REGISTER',
+      type: "REGISTER",
       payload: {
-        user
-      }
+        user,
+      },
     });
   };
 
   useEffect(() => {
     const initialise = async () => {
       try {
-        const accessToken = window.localStorage.getItem('accessToken');
+        const accessToken = window.localStorage.getItem("accessToken");
 
         if (accessToken && isValidToken(accessToken)) {
           setSession(accessToken);
 
-          const response = await axios.get('/api/account/me');
+          const response = await axios.get("/api/account/me");
           const { user } = response.data;
 
           dispatch({
-            type: 'INITIALISE',
+            type: "INITIALISE",
             payload: {
               isAuthenticated: true,
-              user
-            }
+              user,
+            },
           });
         } else {
           dispatch({
-            type: 'INITIALISE',
+            type: "INITIALISE",
             payload: {
               isAuthenticated: false,
-              user: null
-            }
+              user: null,
+            },
           });
         }
       } catch (err) {
         console.error(err);
         dispatch({
-          type: 'INITIALISE',
+          type: "INITIALISE",
           payload: {
             isAuthenticated: false,
-            user: null
-          }
+            user: null,
+          },
         });
       }
     };
@@ -174,10 +173,10 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         ...state,
-        method: 'JWT',
+        method: "JWT",
         login,
         logout,
-        register
+        register,
       }}
     >
       {children}
