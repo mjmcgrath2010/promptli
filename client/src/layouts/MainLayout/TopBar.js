@@ -50,16 +50,7 @@ const TopBar = ({ className, ...rest }) => {
         <RouterLink to="/">
           <Logo size="sm" colored />
         </RouterLink>
-        <Hidden mdDown>
-          <Typography
-            variant="caption"
-            color="textSecondary"
-          >
-            Version
-            {' '}
-            {APP_VERSION}
-          </Typography>
-        </Hidden>
+
         <Box flexGrow={1} />
         <Link
           className={classes.link}
@@ -71,26 +62,6 @@ const TopBar = ({ className, ...rest }) => {
         >
           Dashboard
         </Link>
-        <Link
-          className={classes.link}
-          color="textSecondary"
-          component={RouterLink}
-          to="/docs"
-          underline="none"
-          variant="body2"
-        >
-          Documentation
-        </Link>
-        <Divider className={classes.divider} />
-        <Button
-          color="secondary"
-          component="a"
-          href="https://material-ui.com/store/items/devias-kit-pro"
-          variant="contained"
-          size="small"
-        >
-          Get the kit
-        </Button>
       </Toolbar>
     </AppBar>
   );
