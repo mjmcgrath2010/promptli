@@ -141,7 +141,7 @@ const RegisterView = () => {
           justifyContent="center"
         >
           <RouterLink to="/">
-            <Logo />
+            <Logo colored size="md" />
           </RouterLink>
         </Box>
         <Card>

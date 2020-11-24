@@ -23,9 +23,6 @@ const useStyles = makeStyles((theme) => ({
   toolbar: {
     height: 64
   },
-  logo: {
-    marginRight: theme.spacing(2)
-  },
   link: {
     fontWeight: theme.typography.fontWeightMedium,
     '& + &': {
@@ -51,7 +48,7 @@ const TopBar = ({ className, ...rest }) => {
     >
       <Toolbar className={classes.toolbar}>
         <RouterLink to="/">
-          <Logo className={classes.logo} />
+          <Logo size="sm" colored />
         </RouterLink>
         <Hidden mdDown>
           <Typography
