@@ -12,7 +12,8 @@
     "pretty-quick": "^3.1.0"
   },
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "heroku-postbuild": "cd client && yarn && yarn build"
   },
   "prettier": {
     "trailingComma": "all"
