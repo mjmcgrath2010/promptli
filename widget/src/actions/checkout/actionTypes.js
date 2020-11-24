@@ -1,1 +1,0 @@
-export const SET_CHECKOUT_VIEW = 'CHECKOUT/SET_VIEW'
