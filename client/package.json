@@ -1,7 +1,6 @@
 {
-  "name": "@devias-io/material-kit-pro-react",
-  "author": "DeviasIO",
-  "licence": "UNLICENSED",
+  "name": "Promptli",
+  "author": "Mike McGrath",
   "version": "3.1.0",
   "private": true,
   "proxy": "http://localhost:5000",
