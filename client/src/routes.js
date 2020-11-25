@@ -252,6 +252,20 @@ const routes = [
         component: () => <Redirect to="/app/reports/dashboard" />,
       },
       {
+        exact: true,
+        path: "/app/editor/quill",
+        component: lazy(() =>
+          import("src/views/extra/editors/QuillEditorView"),
+        ),
+      },
+      {
+        exact: true,
+        path: "/app/editor/draft",
+        component: lazy(() =>
+          import("src/views/extra/editors/DraftEditorView"),
+        ),
+      },
+      {
         component: () => <Redirect to="/404" />,
       },
     ],

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import React from "react";
+import { Link as RouterLink } from "react-router-dom";
 import {
   Box,
   Breadcrumbs,
@@ -7,29 +7,26 @@ import {
   Link,
   Paper,
   Typography,
-  makeStyles
-} from '@material-ui/core';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import Page from 'src/components/Page';
-import QuillEditor from 'src/components/QuillEditor';
+  makeStyles,
+} from "@material-ui/core";
+import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+import Page from "src/components/Page";
+import QuillEditor from "src/components/QuillEditor";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
-    minHeight: '100%',
+    minHeight: "100%",
     paddingTop: theme.spacing(3),
-    paddingBottom: theme.spacing(3)
-  }
+    paddingBottom: theme.spacing(3),
+  },
 }));
 
 const QuillEditorView = () => {
   const classes = useStyles();
 
   return (
-    <Page
-      className={classes.root}
-      title="Formik Form"
-    >
+    <Page className={classes.root} title="Formik Form">
       <Container maxWidth="lg">
         <Breadcrumbs
           separator={<NavigateNextIcon fontSize="small" />}
@@ -51,17 +48,11 @@ const QuillEditorView = () => {
           >
             Extra
           </Link>
-          <Typography
-            variant="body1"
-            color="textPrimary"
-          >
+          <Typography variant="body1" color="textPrimary">
             Editors
           </Typography>
         </Breadcrumbs>
-        <Typography
-          variant="h3"
-          color="textPrimary"
-        >
+        <Typography variant="h3" color="textPrimary">
           Quill
         </Typography>
         <Box mt={3}>
