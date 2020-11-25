@@ -1,9 +1,9 @@
 /* eslint-disable no-use-before-define */
-import React, { useEffect } from 'react';
-import { useLocation, matchPath } from 'react-router-dom';
-import { Link as RouterLink } from 'react-router-dom';
-import PerfectScrollbar from 'react-perfect-scrollbar';
-import PropTypes from 'prop-types';
+import React, { useEffect } from "react";
+import { useLocation, matchPath } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
+import PerfectScrollbar from "react-perfect-scrollbar";
+import PropTypes from "prop-types";
 import {
   Avatar,
   Box,
@@ -15,305 +15,115 @@ import {
   List,
   ListSubheader,
   Typography,
-  makeStyles
-} from '@material-ui/core';
-import ReceiptIcon from '@material-ui/icons/ReceiptOutlined';
+  makeStyles,
+} from "@material-ui/core";
+import ReceiptIcon from "@material-ui/icons/ReceiptOutlined";
 import {
-  Briefcase as BriefcaseIcon,
   Calendar as CalendarIcon,
-  ShoppingCart as ShoppingCartIcon,
-  Folder as FolderIcon,
-  BarChart as BarChartIcon,
-  Lock as LockIcon,
-  UserPlus as UserPlusIcon,
   AlertCircle as AlertCircleIcon,
   Trello as TrelloIcon,
   User as UserIcon,
-  Layout as LayoutIcon,
-  Edit as EditIcon,
-  DollarSign as DollarSignIcon,
   Mail as MailIcon,
   MessageCircle as MessageCircleIcon,
   PieChart as PieChartIcon,
-  Share2 as ShareIcon,
-  Users as UsersIcon
-} from 'react-feather';
-import Logo from 'src/components/Logo';
-import useAuth from 'src/hooks/useAuth';
-import NavItem from './NavItem';
+} from "react-feather";
+import Logo from "src/components/Logo";
+import useAuth from "src/hooks/useAuth";
+import NavItem from "./NavItem";
 
 const sections = [
   {
-    subheader: 'Reports',
+    subheader: "Dashboard",
     items: [
       {
-        title: 'Dashboard',
+        title: "Overview",
         icon: PieChartIcon,
-        href: '/app/reports/dashboard'
+        href: "/app/reports/dashboard",
       },
       {
-        title: 'Dashboard Alternative',
-        icon: BarChartIcon,
-        href: '/app/reports/dashboard-alternative'
-      }
-    ]
+        title: "Upcoming",
+        icon: AlertCircleIcon,
+        href: "/app/reports/dashboard-alternative",
+      },
+    ],
   },
   {
-    subheader: 'Management',
+    subheader: "Management",
     items: [
       {
-        title: 'Customers',
-        icon: UsersIcon,
-        href: '/app/management/customers',
-        items: [
-          {
-            title: 'List Customers',
-            href: '/app/management/customers'
-          },
-          {
-            title: 'View Customer',
-            href: '/app/management/customers/1'
-          },
-          {
-            title: 'Edit Customer',
-            href: '/app/management/customers/1/edit'
-          }
-        ]
-      },
-      {
-        title: 'Products',
-        icon: ShoppingCartIcon,
-        href: '/app/management/products',
-        items: [
-          {
-            title: 'List Products',
-            href: '/app/management/products'
-          },
-          {
-            title: 'Create Product',
-            href: '/app/management/products/create'
-          }
-        ]
-      },
-      {
-        title: 'Orders',
-        icon: FolderIcon,
-        href: '/app/management/orders',
-        items: [
-          {
-            title: 'List Orders',
-            href: '/app/management/orders'
-          },
-          {
-            title: 'View Order',
-            href: '/app/management/orders/1'
-          }
-        ]
-      },
-      {
-        title: 'Invoices',
+        title: "Invoices",
         icon: ReceiptIcon,
-        href: '/app/management/invoices',
+        href: "/app/management/invoices",
         items: [
           {
-            title: 'List Invoices',
-            href: '/app/management/invoices'
+            title: "List Invoices",
+            href: "/app/management/invoices",
           },
           {
-            title: 'View Invoice',
-            href: '/app/management/invoices/1'
-          }
-        ]
-      }
-    ]
-  },
-  {
-    subheader: 'Applications',
-    items: [
-      {
-        title: 'Projects Platform',
-        href: '/app/projects',
-        icon: BriefcaseIcon,
-        items: [
-          {
-            title: 'Overview',
-            href: '/app/projects/overview'
+            title: "View Invoice",
+            href: "/app/management/invoices/1",
           },
-          {
-            title: 'Browse Projects',
-            href: '/app/projects/browse'
-          },
-          {
-            title: 'Create Project',
-            href: '/app/projects/create'
-          },
-          {
-            title: 'View Project',
-            href: '/app/projects/1'
-          }
-        ]
+        ],
       },
       {
-        title: 'Social Platform',
-        href: '/app/social',
-        icon: ShareIcon,
-        items: [
-          {
-            title: 'Profile',
-            href: '/app/social/profile'
-          },
-          {
-            title: 'Feed',
-            href: '/app/social/feed'
-          }
-        ]
+        title: "Mail",
+        href: "/app/mail",
+        icon: MailIcon,
       },
       {
-        title: 'Kanban',
-        href: '/app/kanban',
-        icon: TrelloIcon
-      },
-      {
-        title: 'Mail',
-        href: '/app/mail',
-        icon: MailIcon
-      },
-      {
-        title: 'Chat',
-        href: '/app/chat',
+        title: "Chat",
+        href: "/app/chat",
         icon: MessageCircleIcon,
-        info: () => (
-          <Chip
-            color="secondary"
-            size="small"
-            label="Updated"
-          />
-        )
+        info: () => <Chip color="secondary" size="small" label="Updated" />,
+      },
+    ],
+  },
+  {
+    subheader: "Projects",
+    items: [
+      {
+        title: "Kanban",
+        href: "/app/kanban",
+        icon: TrelloIcon,
       },
       {
-        title: 'Calendar',
-        href: '/app/calendar',
+        title: "Calendar",
+        href: "/app/calendar",
         icon: CalendarIcon,
-        info: () => (
-          <Chip
-            color="secondary"
-            size="small"
-            label="Updated"
-          />
-        )
-      }
-    ]
+        info: () => <Chip color="secondary" size="small" label="Updated" />,
+      },
+    ],
   },
   {
-    subheader: 'Auth',
+    subheader: "Settings",
     items: [
       {
-        title: 'Login',
-        href: '/login-unprotected',
-        icon: LockIcon
+        title: "Account",
+        href: "/app/account",
+        icon: UserIcon,
       },
-      {
-        title: 'Register',
-        href: '/register-unprotected',
-        icon: UserPlusIcon
-      }
-    ]
+    ],
   },
-  {
-    subheader: 'Pages',
-    items: [
-      {
-        title: 'Account',
-        href: '/app/account',
-        icon: UserIcon
-      },
-      {
-        title: 'Error',
-        href: '/404',
-        icon: AlertCircleIcon
-      },
-      {
-        title: 'Pricing',
-        href: '/pricing',
-        icon: DollarSignIcon
-      }
-    ]
-  },
-  {
-    subheader: 'Extra',
-    items: [
-      {
-        title: 'Charts',
-        href: '/app/extra/charts',
-        icon: BarChartIcon,
-        items: [
-          {
-            title: 'Apex Charts',
-            href: '/app/extra/charts/apex'
-          }
-        ]
-      },
-      {
-        title: 'Forms',
-        href: '/app/extra/forms',
-        icon: EditIcon,
-        items: [
-          {
-            title: 'Formik',
-            href: '/app/extra/forms/formik'
-          },
-          {
-            title: 'Redux Forms',
-            href: '/app/extra/forms/redux'
-          },
-        ]
-      },
-      {
-        title: 'Editors',
-        href: '/app/extra/editors',
-        icon: LayoutIcon,
-        items: [
-          {
-            title: 'DraftJS Editor',
-            href: '/app/extra/editors/draft-js'
-          },
-          {
-            title: 'Quill Editor',
-            href: '/app/extra/editors/quill'
-          }
-        ]
-      }
-    ]
-  }
 ];
 
-function renderNavItems({
-  items,
-  pathname,
-  depth = 0
-}) {
+function renderNavItems({ items, pathname, depth = 0 }) {
   return (
     <List disablePadding>
       {items.reduce(
         (acc, item) => reduceChildRoutes({ acc, item, pathname, depth }),
-        []
+        [],
       )}
     </List>
   );
 }
 
-function reduceChildRoutes({
-  acc,
-  pathname,
-  item,
-  depth
-}) {
+function reduceChildRoutes({ acc, pathname, item, depth }) {
   const key = item.title + depth;
 
   if (item.items) {
     const open = matchPath(pathname, {
       path: item.href,
-      exact: false
+      exact: false,
     });
 
     acc.push(
@@ -328,9 +138,9 @@ function reduceChildRoutes({
         {renderNavItems({
           depth: depth + 1,
           pathname,
-          items: item.items
+          items: item.items,
         })}
-      </NavItem>
+      </NavItem>,
     );
   } else {
     acc.push(
@@ -341,7 +151,7 @@ function reduceChildRoutes({
         info={item.info}
         key={key}
         title={item.title}
-      />
+      />,
     );
   }
 
@@ -350,18 +160,18 @@ function reduceChildRoutes({
 
 const useStyles = makeStyles(() => ({
   mobileDrawer: {
-    width: 256
+    width: 256,
   },
   desktopDrawer: {
     width: 256,
     top: 64,
-    height: 'calc(100% - 64px)'
+    height: "calc(100% - 64px)",
   },
   avatar: {
-    cursor: 'pointer',
+    cursor: "pointer",
     width: 64,
-    height: 64
-  }
+    height: 64,
+  },
 }));
 
 const NavBar = ({ onMobileClose, openMobile }) => {
@@ -377,40 +187,22 @@ const NavBar = ({ onMobileClose, openMobile }) => {
   }, [location.pathname]);
 
   const content = (
-    <Box
-      height="100%"
-      display="flex"
-      flexDirection="column"
-    >
+    <Box height="100%" display="flex" flexDirection="column">
       <PerfectScrollbar options={{ suppressScrollX: true }}>
         <Hidden lgUp>
-          <Box
-            p={2}
-            display="flex"
-            justifyContent="center"
-          >
+          <Box p={2} display="flex" justifyContent="center">
             <RouterLink to="/">
               <Logo />
             </RouterLink>
           </Box>
         </Hidden>
         <Box p={2}>
-          <Box
-            display="flex"
-            justifyContent="center"
-          >
+          <Box display="flex" justifyContent="center">
             <RouterLink to="/app/account">
-              <Avatar
-                alt="User"
-                className={classes.avatar}
-                src={user.avatar}
-              />
+              <Avatar alt="User" className={classes.avatar} src={user.avatar} />
             </RouterLink>
           </Box>
-          <Box
-            mt={2}
-            textAlign="center"
-          >
+          <Box mt={2} textAlign="center">
             <Link
               component={RouterLink}
               to="/app/account"
@@ -420,19 +212,6 @@ const NavBar = ({ onMobileClose, openMobile }) => {
             >
               {user.name}
             </Link>
-            <Typography
-              variant="body2"
-              color="textSecondary"
-            >
-              Your tier:
-              {' '}
-              <Link
-                component={RouterLink}
-                to="/pricing"
-              >
-                {user.tier}
-              </Link>
-            </Typography>
           </Box>
         </Box>
         <Divider />
@@ -440,44 +219,18 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           {sections.map((section) => (
             <List
               key={section.subheader}
-              subheader={(
-                <ListSubheader
-                  disableGutters
-                  disableSticky
-                >
+              subheader={
+                <ListSubheader disableGutters disableSticky>
                   {section.subheader}
                 </ListSubheader>
-              )}
+              }
             >
               {renderNavItems({
                 items: section.items,
-                pathname: location.pathname
+                pathname: location.pathname,
               })}
             </List>
           ))}
-        </Box>
-        <Divider />
-        <Box p={2}>
-          <Box
-            p={2}
-            borderRadius="borderRadius"
-            bgcolor="background.dark"
-          >
-            <Typography
-              variant="h6"
-              color="textPrimary"
-            >
-              Need Help?
-            </Typography>
-            <Link
-              variant="subtitle1"
-              color="secondary"
-              component={RouterLink}
-              to="/docs"
-            >
-              Check our docs
-            </Link>
-          </Box>
         </Box>
       </PerfectScrollbar>
     </Box>
@@ -512,7 +265,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
 
 NavBar.propTypes = {
   onMobileClose: PropTypes.func,
-  openMobile: PropTypes.bool
+  openMobile: PropTypes.bool,
 };
 
 export default NavBar;

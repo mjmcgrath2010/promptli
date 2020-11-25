@@ -76,7 +76,7 @@ const FAQS = ({ className, ...rest }) => {
             <Box mt={6}>
               <dt>
                 <Typography variant="h4" color="textPrimary">
-                  When will Promptli be availible to use?
+                  When will Promptli be available to use?
                 </Typography>
               </dt>
               <dd>
