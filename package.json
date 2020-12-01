@@ -9,7 +9,10 @@
   },
   "scripts": {
     "start": "node server/index.js",
-    "heroku-postbuild": "cd client && yarn install && yarn build"
+    "dev": "docker-compose up",
+    "client:bash": "docker exec -it client bash",
+    "server:bash": "docker exec -it api bash",
+    "heroku-postbuild": "cd client && yarn install --production=false && yarn build"
   },
   "prettier": {
     "trailingComma": "all"
