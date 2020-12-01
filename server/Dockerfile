@@ -1,11 +1,18 @@
 FROM node:14.15.1-alpine
 
-WORKDIR /app/server
+RUN npm install -g nodemon
 
-ENV PATH /app/server/node_modules/.bin:$PATH
+USER node
 
-COPY ./package.json /app/server/package.json
-RUN yarn install
-COPY . /app/server
+RUN mkdir /home/node/app
+RUN mkdir /home/node/app/server
 
-CMD ["yarn", "dev"]
+WORKDIR /home/node/app/server
+
+COPY --chown=node:node  package.json yarn.lock ./
+RUN rm -rf node_modules && yarn install --frozen-lockfile
+COPY --chown=node:node . .
+
+EXPOSE 5000
+
+CMD ["nodemon", "index.js"]
