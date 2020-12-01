@@ -13,8 +13,8 @@
   "scripts": {
     "start": "node server/index.js",
     "dev": "docker-compose up",
-    "client:bash": "docker exec -it client bash",
-    "server:bash": "docker exec -it api bash",
+    "docker:client": "docker exec -it client /bin/sh",
+    "docker:server": "docker exec -it api /bin/sh",
     "heroku-postbuild": "cd server && yarn install && cd ../client && yarn install --production=false && yarn build"
   },
   "prettier": {

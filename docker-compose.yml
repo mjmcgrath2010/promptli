@@ -11,6 +11,7 @@ services:
     volumes:
       - "./server:/server"
     command: yarn dev
+    container_name: api
 
   client:
     build: ./client
@@ -27,6 +28,7 @@ services:
     command: yarn start
     links:
       - api
+    container_name: client
 
   db:
     image: mongo
