@@ -3,7 +3,7 @@
   "author": "Mike McGrath",
   "version": "3.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
+  "proxy": "http://api:5000",
   "scripts": {
     "lint": "eslint ./src",
     "start": "react-scripts start",
