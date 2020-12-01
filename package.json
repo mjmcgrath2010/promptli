@@ -7,12 +7,15 @@
     "prettier": "^2.2.0",
     "pretty-quick": "^3.1.0"
   },
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "start": "node server/index.js",
     "dev": "docker-compose up",
     "client:bash": "docker exec -it client bash",
     "server:bash": "docker exec -it api bash",
-    "heroku-postbuild": "yarn install && cd client && yarn install --production=false && yarn build"
+    "heroku-postbuild": "cd server && yarn install && cd ../client && yarn install --production=false && yarn build"
   },
   "prettier": {
     "trailingComma": "all"
