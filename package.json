@@ -1,5 +1,6 @@
 {
   "name": "promptli",
+  "author": "Mike McGrath",
   "version": "1.0.0",
   "devDependencies": {
     "husky": "^4.3.0",
@@ -29,7 +30,6 @@
     "type": "git",
     "url": "git+https://github.com/mjmcgrath2010/promptli-app.git"
   },
-  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mjmcgrath2010/promptli-app/issues"
